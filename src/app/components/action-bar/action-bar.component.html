@@ -1,0 +1,33 @@
+<div class="action-bar">
+  <div class="action-bar-content">
+    <div class="left-side">
+      <div class="title">
+        {{ title }}
+      </div>
+    </div>
+  
+    <div class="right-side">
+      <ng-container *ngIf="button.secondary">
+        <a (click)="onSecondaryClick(button.secondary)">
+          <i class="material-icons">
+            {{ button.secondaryIcon }}
+          </i>
+          <span>
+            {{ button.secondary }}
+          </span>
+        </a>
+      </ng-container>
+  
+      <ng-container *ngIf="button.primary">
+        <a (click)="onPrimaryClick(button.primary)">
+          <i class="material-icons">
+            {{ button.primaryIcon }}
+          </i>
+          <span>
+            {{ button.primary }}
+          </span>
+        </a>
+      </ng-container>
+    </div>
+  </div>
+</div>

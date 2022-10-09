@@ -1,0 +1,132 @@
+<app-action-bar
+  [title]="viewTitle">
+</app-action-bar>
+
+<div class="form">
+
+  <!-- ------------------------- FIRST AND LAST NAME ------------------------- -->
+  <div class="double-row">
+    <div class="form-group">
+      <label>
+        First
+      </label>
+      <input
+      
+        name="first_name"
+        [(ngModel)]="summary.first_name"
+        type="text"
+        #firstField>
+    </div>
+
+    <div class="form-group">
+      <label>
+        Last
+      </label>
+      <input
+        name="last_name"
+        [(ngModel)]="summary.last_name"
+        type="text">
+    </div>
+  </div>
+
+  <!-- ---------------------------- EMAIL & PHONE ---------------------------- -->
+  <div class="double-row">
+    <div class="form-group">
+      <label>Email</label>
+      <input
+        name="email"
+        [(ngModel)]="summary.email"
+        type="text">
+    </div>
+
+    <div class="form-group">
+      <label>Phone</label>
+      <input
+        name="phone"
+        [(ngModel)]="summary.phone"
+        type="text">
+    </div>
+  </div>
+
+  <!-- ------------------------- LOCATION & WEBSITE -------------------------- -->
+  <div class="double-row">
+    <div class="form-group">
+      <label>Location</label>
+      <input
+        name="location"
+        [(ngModel)]="summary.location"
+        type="text">
+    </div>
+
+    <div class="form-group">
+      <label>URL</label>
+      <input
+        name="url"
+        [(ngModel)]="summary.url"
+        type="text">
+    </div>
+  </div>
+
+  <!-- ------------------------ TWITTER AND LINKEDIN ------------------------- -->
+  <div class="double-row">
+    <div class="form-group">
+      <label>
+        twitter.com/...
+      </label>
+      <input
+        name="twitter"
+        [(ngModel)]="summary.twitter_handle"
+        type="text">
+    </div>
+
+    <div class="form-group">
+      <label>
+        linkedin.com/in/...
+      </label>
+      <input
+        name="linkedin"
+        [(ngModel)]="summary.linkedin_handle"
+        type="text">
+    </div>
+  </div>
+
+  <!-- -------------------------- GITHUB & ALT URL --------------------------- -->
+  <div class="double-row">
+    <div class="form-group">
+      <label>
+        github.com/...
+      </label>
+      <input
+        name="github"
+        [(ngModel)]="summary.github_handle"
+        type="text">
+    </div>
+
+    <div class="form-group">
+      <label>
+        Alt URL
+      </label>
+      <input
+        name="altUrl"
+        [(ngModel)]="summary.alt_url"
+        type="text">
+    </div>
+  </div>
+
+  <!-- -------------------------- SUMMARY-OBJECTIVE -------------------------- -->
+  <label class="quill-label">
+    <div class="line"></div>
+    Summary Objective
+  </label>
+  <quill-editor
+    [placeholder]="' '"
+    [modules]="modules"
+    [style]="style"
+    [style.width]="'inherit'"
+    name="summaryObjective"
+    type="text"
+    [(ngModel)]="summary.summary_objective"
+    >
+  </quill-editor>
+
+</div>

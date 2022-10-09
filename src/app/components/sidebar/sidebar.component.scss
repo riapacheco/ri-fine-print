@@ -1,0 +1,119 @@
+@import 'node_modules/@riapacheco/yutes/season/two.scss';
+@import '../../../scss/variables.scss';
+@import '../../../scss/mixins.scss';
+
+
+$title-height: 15rem;
+$bottom-height: 8rem;
+$routerlink-height: 5rem;
+.sidebar {
+  // position: sticky;
+  position: fixed;
+  left: 0;
+  top: 0;
+  bottom: 0;
+
+  height: $view-height;
+  width: $sidebar-width;
+  background-image: linear-gradient(to bottom, #f9f9f9, white);
+  background-attachment: fixed;
+  
+  .sidebar-content {
+    height: $view-height;
+    display: flex;
+    flex-flow: column nowrap;
+    align-items: flex-start;
+    justify-content: space-between;
+
+    .top-content {
+      display: flex;
+      flex-flow: column nowrap;
+      width: calc($sidebar-width - ($sidebar-padding * 2));
+      margin: auto;
+
+      .title {
+        height: $title-height;
+        text-align: center;
+        display: flex;
+        flex-flow: column nowrap;
+        align-items: center;
+        justify-content: center;
+        span {
+          @include text('h2');
+          font-weight: 800;
+          font-size: 3.8rem;
+          letter-spacing: -0.16rem;;
+        }
+      }
+
+
+      /* ------------------------------ SECTION GROUP ----------------------------- */
+      .section-group {
+        display: flex;
+        flex-flow: column nowrap;
+        align-items: flex-start;
+        justify-content: flex-start;
+
+        height: calc($view-height - ($title-height + $bottom-height));
+        
+        a {
+          width: calc($sidebar-width - ($sidebar-padding * 2));
+          height: $routerlink-height;
+          min-height: $routerlink-height;
+          max-height: $routerlink-height;
+          border-radius: 6px;
+
+          display: flex;
+          flex-flow: row nowrap;
+          align-items: center;
+          justify-content: flex-start;
+          margin-top: 1.5rem;
+          padding-left: 1.5rem;
+
+          background-image: linear-gradient(to bottom right, white, white, #f5f5f5);
+
+          box-shadow: -6px -4px 18px #FFFFFF,
+          6px 4px 15px #00000019;
+
+          position: relative;
+          .material-icons {
+            font-size: 1.8rem;
+            margin-right: 1rem;
+
+            &.drag {
+              position: absolute;
+              right: 0;
+              color: $hint-grey;
+
+              &:hover {
+                cursor: grab;
+              }
+            }
+          }
+          span {
+            font-size: 1.4rem;
+            font-weight: 500;
+          }
+
+          &:hover {
+            transform: scale(1.05);
+          }
+
+          &.active {
+            box-shadow: inset 4px 4px 12px #00000020;
+
+            &:hover {
+              transform: scale(1);
+            }
+          }
+        }
+      }
+    }
+
+    .bottom-content {
+      height: $bottom-height;
+      width: calc($sidebar-width - ($sidebar-padding * 2 ));
+      margin: auto;
+    }
+  }
+}

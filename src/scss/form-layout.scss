@@ -1,0 +1,95 @@
+@import 'node_modules/@riapacheco/yutes/season/two.scss';
+@import './mixins.scss';
+@import './variables.scss';
+
+%alignment {
+  width: inherit;
+  display: flex;
+  flex-flow: row nowrap;
+  align-items: flex-end;
+  justify-content: space-between;
+}
+
+/* -------------------------------------------------------------------------- */
+/*                              ATTRIBUTE STYLING                             */
+/* -------------------------------------------------------------------------- */
+/* ----------------------------- UNDERLINE-STYLE ---------------------------- */
+%us-label {
+  font-size: 1.03rem !important;
+  text-transform: uppercase;
+  font-weight: 600 !important;
+  letter-spacing: 0.15rem;
+  color: $black;
+  display: inline-block;
+  width: fit-content;
+  padding: 0.5rem;
+  margin-bottom: 0.5rem;
+  border-radius: 3px;
+}
+
+%us-input {
+  font-size: 1.6rem !important;
+  font-weight: 400;
+  letter-spacing: 0rem;
+  height: 36px !important;
+  border-radius: 0px !important;
+  background-color: transparent !important;
+  border-bottom: 2px solid $black;
+  padding-bottom: -1rem !important;
+  font-size: 10px;
+}
+
+/* -------------------------------------------------------------------------- */
+/*                                 NEUMORPHIC                                 */
+/* -------------------------------------------------------------------------- */
+%neu-label {
+  font-size: 1.1rem !important;
+  text-transform: uppercase;
+  font-weight: 600 !important;
+  letter-spacing: 0.15rem;
+  display: inline-block;
+  width: fit-content;
+  padding: 0.5rem;
+  margin-bottom: 0.5rem;
+  border-radius: 3px;
+  color: $hint-grey;
+}
+%neu-input {
+  background-color: white;
+  box-shadow: inset 2px 2px 8px $hint-ish-grey;
+  border-radius: 4px;
+  color: black;
+  font-weight: 400;
+
+  &.on-focus {
+    box-shadow: inset 1px 1px 4px $hint-ish-grey;
+  }
+}
+
+label {
+  // @extend %us-label;
+  @extend %neu-label;
+}
+
+input {
+  // @extend %us-input;
+  @extend %neu-input;
+}
+
+
+/* ------------------------------- ROW STYLING ------------------------------ */
+.double-row {
+  @extend %alignment;
+  margin-bottom: 3.5rem;
+  .form-group {
+    width: 46%;
+    max-width: 300px;
+  }
+}
+
+.triple-row {
+  @extend %alignment;
+  .form-group {
+    width: 30%;
+  }
+}

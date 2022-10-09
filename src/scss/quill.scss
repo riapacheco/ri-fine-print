@@ -1,0 +1,77 @@
+@import './form-layout.scss';
+@import './mixins.scss';
+@import './variables.scss';
+$quill-corner: 5px;
+
+%neu-label {
+  font-size: 1.1rem !important;
+  text-transform: uppercase;
+  font-weight: 600 !important;
+  letter-spacing: 0.15rem;
+  display: inline-block;
+  width: fit-content;
+  padding: 0.5rem;
+  margin-bottom: 0.5rem;
+  border-radius: 3px;
+  color: $hint-grey;
+}
+
+/* ---------------------------------- LABEL --------------------------------- */
+label {
+  &.quill-label {
+    width: inherit;
+    display: flex;
+    flex-flow: row nowrap;
+    align-items: flex-end;
+    white-space: nowrap;
+
+    @extend %neu-label;
+    .line {
+      height: 8px;
+      width: inherit;
+      border-top: 2px solid $ish-grey;
+      margin-right: 1rem;
+    }
+  }
+}
+/* --------------------------------- TOOLBAR -------------------------------- */
+// Overall toolbar
+.ql-toolbar.ql-snow{
+  border-radius: $quill-corner $quill-corner 0px 0px;
+  border-bottom: 1px solid transparent;
+  padding-bottom: 1rem;
+  border: 1px solid transparent;
+  background: white !important;
+  @include style-bg('light');
+  // box-shadow: inset 3px 3px 12px $hint-ish-grey;
+  color: $hint-grey !important;
+}
+
+// Icon / options styles
+.ql-toolbar.ql-snow > * {
+  padding-left: 1rem;
+  transform: scale(1.18);
+  color: $hint-grey !important;
+}
+
+/* -------------------------------- TEXTAREA -------------------------------- */
+.ql-container.ql-snow {
+  // transform: scale(1);
+  // font-size: 1.6rem;
+  // font-family: "Inter", sans-serif;
+  // border-radius: 0px 0px $quill-corner $quill-corner;
+  // border: 1px solid transparent;
+  // background: white !important;
+  // font-weight: 500;
+  // box-shadow: 1px 10px 10px #00000005;\  background-color: white;
+  box-shadow: inset 2px 2px 8px $hint-ish-grey;
+  border-radius: $quill-corner;
+  color: black;
+  font-weight: 400;
+  border: 0px solid transparent;
+  font-size: 100%;
+  font-family: "Inter", sans-serif;
+  padding-top: 0.5rem;
+}
+
+

@@ -1,1 +1,25 @@
-/* You can add global styles to this file, and also import other style files */
+@import 'node_modules/@riapacheco/yutes/main.scss';
+@import 'node_modules/@riapacheco/yutes/season/two.scss';
+@import './scss/mixins.scss/';
+@import './scss/variables.scss/';
+@import '~quill/dist/quill.snow.css';
+@import './scss/quill.scss';
+
+* {
+  -webkit-font-smoothing: antialiased !important;
+}
+
+html {
+  font-size: 10px;
+}
+body {
+  font-size: 1.6rem;
+}
+
+/* -------------------------------------------------------------------------- */
+/*                                   Z-INDEX                                  */
+/* -------------------------------------------------------------------------- */
+
+app-sidebar {
+  z-index: 12;
+}

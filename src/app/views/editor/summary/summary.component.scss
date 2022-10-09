@@ -1,0 +1,13 @@
+@import '../../../../scss/variables.scss';
+@import '../../../../scss/mixins.scss';
+@import '../../../../scss/form-layout.scss';
+@import '../../../../scss/quill.scss';
+
+.form {
+  padding-top: $view-padding-top;
+  padding-bottom: $view-padding-bottom;
+  width: 90%;
+  // margin: auto;
+  max-width: 600px;
+  margin-left: 4rem;
+}
