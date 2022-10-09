@@ -43,6 +43,7 @@ $routerlink-height: 5rem;
           font-weight: 800;
           font-size: 3.8rem;
           letter-spacing: -0.16rem;;
+          color: $black-ish;
         }
       }
 
@@ -79,7 +80,7 @@ $routerlink-height: 5rem;
           .material-icons {
             font-size: 1.8rem;
             margin-right: 1rem;
-
+            color: $black-ish;
             &.drag {
               position: absolute;
               right: 0;

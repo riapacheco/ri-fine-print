@@ -2,6 +2,18 @@
 @import './mixins.scss';
 @import './variables.scss';
 
+/* -------------------------------------------------------------------------- */
+/*                                   GENERAL                                  */
+/* -------------------------------------------------------------------------- */
+.form {
+  padding-top: $view-padding-top;
+  padding-bottom: $view-padding-bottom;
+  width: 90%;
+  max-width: 600px;
+  margin-left: 4rem;
+}
+
+
 %alignment {
   width: inherit;
   display: flex;

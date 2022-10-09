@@ -10,8 +10,17 @@ import { SummaryService } from 'src/app/services/summary.service';
   styleUrls: ['./summary.component.scss']
 })
 export class SummaryComponent implements OnInit, AfterViewInit, OnDestroy {
-  viewTitle = '';
+  
   summary!: ISummary;
+
+  /* ------------------------------- ACTION BAR ------------------------------- */
+  viewTitle = '';
+  button = {
+    primary: 'Save',
+    primaryIcon: 'save',
+    secondary: '',
+    secondaryIcon: 'add'
+  };
 
   /* ------------------------------ FIELD STYLES ------------------------------ */
   inputFocus!: boolean;
