@@ -1,0 +1,13 @@
+<div
+  [style.height.in]="heightInches"
+  [style.width.in]="widthInches"
+  [style.transform]="transform"
+  [style.background-color]="'white'"
+  class="preview-doc">
+  
+  <div class="summary-section">
+    <h1>
+      {{ (sumService.summary$ | async)?.first_name }} {{ (sumService.summary$ | async)?.last_name }}
+    </h1>
+  </div>
+</div>

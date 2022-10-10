@@ -1,4 +1,6 @@
 import { Component, EventEmitter, Input, OnInit, Output } from '@angular/core';
+import { PrintPreviewService } from 'src/app/services/print-preview.service';
+
 
 @Component({
   selector: 'app-action-bar',
@@ -9,14 +11,14 @@ export class ActionBarComponent implements OnInit {
   @Input() title = 'Summary';
   @Input() button = {
     primary: '',
-    primaryIcon: 'add',
-    secondary: '',
-    secondaryIcon: 'add'
+    primaryIcon: 'add'
   };
   @Output() primaryClick = new EventEmitter<any>();
   @Output() secondaryClick = new EventEmitter<any>();
 
-  constructor() { }
+  constructor(
+    public printPrev: PrintPreviewService,
+  ) { }
 
   ngOnInit(): void {
   }

@@ -6,11 +6,27 @@
 /*                                   GENERAL                                  */
 /* -------------------------------------------------------------------------- */
 .form {
-  padding-top: $view-padding-top;
+  // padding-top: $view-padding-top;
   padding-bottom: $view-padding-bottom;
   width: 90%;
   max-width: 600px;
   margin-left: 4rem;
+
+  
+
+  .quill-label {
+    position: relative;
+
+    app-spinner {
+      position: absolute;
+      bottom: 0;
+    }
+  }
+
+  quill-editor {
+    width: inherit;
+  }
+  
 }
 
 
@@ -37,6 +53,7 @@
   padding: 0.5rem;
   margin-bottom: 0.5rem;
   border-radius: 3px;
+  white-space: nowrap;;
 }
 
 %us-input {
@@ -78,6 +95,12 @@
   }
 }
 
+.form-group {
+  position: relative;
+}
+
+
+
 label {
   // @extend %us-label;
   @extend %neu-label;
@@ -90,6 +113,36 @@ input {
 
 
 /* ------------------------------- ROW STYLING ------------------------------ */
+.single-row {
+  width: inherit;
+  position: relative;
+  &.add-btn {
+    .form-group {
+      width: 90%;
+    }
+  }
+
+  a {
+    position: absolute;
+    right: 0;
+    bottom: 0rem;
+
+    background-color: $ish-black;
+    color: white;
+    height: 3.6rem;
+    width: 3.6rem;
+    border-radius: 3.6rem;
+    display: flex;
+    flex-flow: column nowrap;
+    align-items: center;
+    justify-content: center;
+
+    .material-icons {
+      font-size: 1.6rem;
+    }
+
+  }
+}
 .double-row {
   @extend %alignment;
   margin-bottom: 3.5rem;
@@ -99,9 +152,36 @@ input {
   }
 }
 
+
+
 .triple-row {
   @extend %alignment;
   .form-group {
     width: 30%;
+  }
+}
+
+.clear-block {
+  // width: inherit;
+  width: 580px;
+  display: flex;
+  flex-flow: row nowrap;
+  align-items: center;
+  justify-content: flex-end;
+  color: $hint-grey;
+
+  .clear-all-btn {
+    display: flex;
+    flex-flow: row nowrap;
+    align-items: center;
+
+    .material-icons {
+      font-size: 1.7rem;
+      margin-right: 0.5rem;
+    }
+    span {
+      font-size: 1.4rem;
+      font-weight: 500;
+    }
   }
 }

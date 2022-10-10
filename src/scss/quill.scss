@@ -71,7 +71,14 @@ label {
   border: 0px solid transparent;
   font-size: 100%;
   font-family: "Inter", sans-serif;
+  font-size: 1.4rem;
   padding-top: 0.5rem;
+  
+  line-height: 1.8 !important;
+
+  li {
+    margin-bottom: 1rem;
+  }
 }
 
 

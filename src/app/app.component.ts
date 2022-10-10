@@ -1,4 +1,6 @@
-import { Component } from '@angular/core';
+import { Component, OnInit } from '@angular/core';
+import { Observable } from 'rxjs';
+import { PrintPreviewService } from './services/print-preview.service';
 
 // TODO Create toast as onboarding
 
@@ -7,6 +9,13 @@ import { Component } from '@angular/core';
   templateUrl: './app.component.html',
   styleUrls: ['./app.component.scss']
 })
-export class AppComponent {
-  title = 'ri-fine-print';
+export class AppComponent implements OnInit {
+  scrollStatus$!: Observable<boolean>;
+  constructor(
+    public printPrev: PrintPreviewService,
+  ) {}
+
+  ngOnInit(): void {
+  }
+
 }

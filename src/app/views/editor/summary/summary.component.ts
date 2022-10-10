@@ -2,6 +2,7 @@ import { AfterViewInit, Component, ElementRef, OnDestroy, OnInit, ViewChild } fr
 import { Subscription } from 'rxjs';
 import { QUILL } from 'src/app/constants/quill.constants';
 import { ISummary } from 'src/app/interfaces/summary.interface';
+import { PrintPreviewService } from 'src/app/services/print-preview.service';
 import { SummaryService } from 'src/app/services/summary.service';
 
 @Component({
@@ -16,10 +17,8 @@ export class SummaryComponent implements OnInit, AfterViewInit, OnDestroy {
   /* ------------------------------- ACTION BAR ------------------------------- */
   viewTitle = '';
   button = {
-    primary: 'Save',
+    primary: '',
     primaryIcon: 'save',
-    secondary: '',
-    secondaryIcon: 'add'
   };
 
   /* ------------------------------ FIELD STYLES ------------------------------ */
@@ -27,10 +26,25 @@ export class SummaryComponent implements OnInit, AfterViewInit, OnDestroy {
   modules = QUILL.MODULES;
   style = QUILL.STYLE;
 
+  spin = {
+    firstName: false,
+    lastName: false,
+    summaryObjective: false,
+    email: false,
+    phone: false,
+    location: false,
+    url: false,
+    altUrl: false,
+    twitterHandle: false,
+    linkedinHandle: false,
+    githubHandle: false,
+  };
+
   @ViewChild('firstField') firstField!: ElementRef;
   private sub = new Subscription();
   constructor(
-    public ss: SummaryService
+    public ss: SummaryService,
+    public printPrev: PrintPreviewService
   ) { }
 
   ngOnInit(): void {
@@ -41,7 +55,10 @@ export class SummaryComponent implements OnInit, AfterViewInit, OnDestroy {
     this.firstField.nativeElement.focus();
   }
 
-  ngOnDestroy() { this.sub.unsubscribe(); }
+  ngOnDestroy() {
+    this.sub.unsubscribe();
+    this.ss.updateSummary(this.summary);
+  }
 
   initSummary() {
     this.sub.add(this.ss.getSummary().subscribe((res: ISummary) => {
@@ -50,5 +67,27 @@ export class SummaryComponent implements OnInit, AfterViewInit, OnDestroy {
     this.sub.add(this.ss.getHeading().subscribe((heading: string) => {
       this.viewTitle = heading;
     }));
+  }
+
+  private stopAllSpinners() {
+    this.spin = {
+      firstName: false,
+      lastName: false,
+      summaryObjective: false,
+      email: false,
+      phone: false,
+      location: false,
+      url: false,
+      altUrl: false,
+      twitterHandle: false,
+      linkedinHandle: false,
+      githubHandle: false,
+    }
+  }
+  onUpdateSummary() {
+    this.ss.updateSummary(this.summary);
+    setTimeout(() => {
+      this.stopAllSpinners();
+    }, 300);
   }
 }

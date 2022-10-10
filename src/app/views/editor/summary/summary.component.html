@@ -3,8 +3,18 @@
   [title]="viewTitle">
 </app-action-bar>
 
+<div class="pt-5"></div>
+<div class="clear-block">
+  <a
+    (click)="ss.onClearSummary()"
+    class="clear-all-btn">
+    <i class="material-icons">clear_all</i>
+    <span>
+      Clear All
+    </span>
+  </a>
+</div>
 <div class="form">
-
   <!-- ------------------------- FIRST AND LAST NAME ------------------------- -->
   <div class="double-row">
     <div class="form-group">
@@ -12,11 +22,12 @@
         First
       </label>
       <input
-      
+        (focusout)="onUpdateSummary();spin.firstName = true"
         name="first_name"
         [(ngModel)]="summary.first_name"
         type="text"
         #firstField>
+        <app-spinner [spin]="spin.firstName"></app-spinner>
     </div>
 
     <div class="form-group">
@@ -24,9 +35,11 @@
         Last
       </label>
       <input
+        (focusout)="onUpdateSummary(); spin.lastName = true;"
         name="last_name"
         [(ngModel)]="summary.last_name"
         type="text">
+        <app-spinner [spin]="spin.lastName"></app-spinner>
     </div>
   </div>
 
@@ -36,16 +49,20 @@
       <label>Email</label>
       <input
         name="email"
+        (focusout)="onUpdateSummary(); spin.email = true;"
         [(ngModel)]="summary.email"
         type="text">
+        <app-spinner [spin]="spin.email"></app-spinner>
     </div>
 
     <div class="form-group">
       <label>Phone</label>
       <input
         name="phone"
+        (focusout)="onUpdateSummary(); spin.phone = true;"
         [(ngModel)]="summary.phone"
         type="text">
+        <app-spinner [spin]="spin.phone"></app-spinner>
     </div>
   </div>
 
@@ -55,16 +72,20 @@
       <label>Location</label>
       <input
         name="location"
+        (focusout)="onUpdateSummary(); spin.location = true"
         [(ngModel)]="summary.location"
         type="text">
+        <app-spinner [spin]="spin.location"></app-spinner>
     </div>
 
     <div class="form-group">
       <label>URL</label>
       <input
         name="url"
+        (focusout)="onUpdateSummary(); spin.url = true"
         [(ngModel)]="summary.url"
         type="text">
+        <app-spinner [spin]="spin.url"></app-spinner>
     </div>
   </div>
 
@@ -76,8 +97,10 @@
       </label>
       <input
         name="twitter"
+        (focusout)="onUpdateSummary(); spin.twitterHandle = true"
         [(ngModel)]="summary.twitter_handle"
         type="text">
+        <app-spinner [spin]="spin.twitterHandle"></app-spinner>
     </div>
 
     <div class="form-group">
@@ -86,8 +109,10 @@
       </label>
       <input
         name="linkedin"
+        (focusout)="onUpdateSummary(); spin.linkedinHandle = true"
         [(ngModel)]="summary.linkedin_handle"
         type="text">
+        <app-spinner [spin]="spin.linkedinHandle"></app-spinner>
     </div>
   </div>
 
@@ -99,8 +124,10 @@
       </label>
       <input
         name="github"
+        (focusout)="onUpdateSummary(); spin.githubHandle = true"
         [(ngModel)]="summary.github_handle"
         type="text">
+        <app-spinner [spin]="spin.githubHandle"></app-spinner>
     </div>
 
     <div class="form-group">
@@ -109,17 +136,21 @@
       </label>
       <input
         name="altUrl"
+        (focusout)="onUpdateSummary(); spin.altUrl = true"
         [(ngModel)]="summary.alt_url"
         type="text">
+        <app-spinner [spin]="spin.altUrl"></app-spinner>
     </div>
   </div>
 
   <!-- -------------------------- SUMMARY-OBJECTIVE -------------------------- -->
-  <label class="quill-label">
+  <label class="quill-label mt-5">
     <div class="line"></div>
     Summary Objective
+    <app-spinner [spin]="spin.summaryObjective"></app-spinner>
   </label>
   <quill-editor
+    (focusout)="onUpdateSummary(); spin.summaryObjective = true"
     [placeholder]="' '"
     [modules]="modules"
     [style]="style"

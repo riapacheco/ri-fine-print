@@ -1,3 +1,8 @@
-<app-sidebar></app-sidebar>
-<div class="sidebar-spacer"></div>
+<ng-container *ngIf="(printPrev.showsPreview$ | async)">
+  <app-print-preview></app-print-preview>
+</ng-container>
+<app-sidebar
+  >
+</app-sidebar>
+
 <router-outlet></router-outlet>

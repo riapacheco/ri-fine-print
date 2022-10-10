@@ -7,10 +7,20 @@ export const PROJECTS_INIT_STATE: IProject[] = [
     name: 'RiReader',
     description: 'RiReader is an application offered on Web, iOS, and Android, which enables a user to both consume and retain data they\'ve read from a physical book.',
     url: 'https://rireader.app',
-    tools: [
-      'TypeScript / JavaScript'
-    ],
-    cover_image: ''
+    tools: [],
+    cover_image: '',
+    toolsString: 'Typescript, Angular, NodeJS'
+  }
+];
+
+export const PROJECTS_CLEAR_STATE: IProject[] = [
+  {
+    name: '',
+    description: '',
+    url: '',
+    tools: [],
+    cover_image: '',
+    toolsString: ''
   }
 ];
 
@@ -29,7 +39,7 @@ export class ProjectService {
 
   /* ----------------------------------- GET ---------------------------------- */
   public getProjects() {
-    return this._projects$;
+    return this.projects$;
   }
   /* --------------------------------- CREATE --------------------------------- */
   public addProjects(projects: IProject[]) {
@@ -42,6 +52,11 @@ export class ProjectService {
     this._projects$.next(this.projects);
     return this.projects$;
   }
+  public updateProjects(projects: IProject[]) {
+    this.projects = projects;
+    this._projects$.next(projects);
+    return this.projects$;
+  }
 
   /* --------------------------------- UPDATE --------------------------------- */
   public updateProject(project: IProject) {
@@ -51,6 +66,7 @@ export class ProjectService {
     this._projects$.next(this.projects);
     return this.projects$;
   }
+  
 
   /* --------------------------------- DELETE --------------------------------- */
   public deleteProject(projectName: string) {
@@ -58,5 +74,11 @@ export class ProjectService {
     this.projects = projectsList;
     this._projects$.next(this.projects);
     return this.projects$;
+  }
+
+
+
+  public onClearProjects() {
+    this._projects$.next(PROJECTS_CLEAR_STATE);
   }
 }

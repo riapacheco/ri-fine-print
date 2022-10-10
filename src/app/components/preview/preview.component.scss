@@ -1,0 +1,9 @@
+@import '../../../scss/mixins.scss';
+
+:host {
+
+}
+
+h1 {
+  @include text('h1')
+}

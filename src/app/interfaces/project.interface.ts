@@ -9,5 +9,6 @@ export interface IProject {
   url?: string;
   cover_image?: string;
   tools?: string[];
+  toolsString?: string;
 }
 

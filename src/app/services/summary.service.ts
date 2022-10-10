@@ -16,6 +16,20 @@ export const SUMMARY_INIT_STATE: ISummary = {
   github_handle: 'riapacheco'
 }
 
+export const SUMMARY_CLEAR_STATE: ISummary = {
+  first_name: '',
+  last_name: '',
+  summary_objective: '',
+  email: '',
+  phone: '',
+  location: '',
+  url: '',
+  alt_url: '',
+  twitter_handle: '',
+  linkedin_handle: '',
+  github_handle: '',
+}
+
 @Injectable({
   providedIn: 'root'
 })
@@ -49,5 +63,10 @@ export class SummaryService {
   /* --------------------------------- DELETE --------------------------------- */
   public deleteSummary() {
     this._summary$.next({});
+  }
+
+  /* -------------------------------- CLEAR ALL ------------------------------- */
+  public onClearSummary() {
+    this._summary$.next(SUMMARY_CLEAR_STATE);
   }
 }

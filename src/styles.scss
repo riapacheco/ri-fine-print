@@ -16,10 +16,34 @@ body {
   font-size: 1.6rem;
 }
 
+.divider {
+  display: block;
+  width: 550px;
+  border-bottom: 2px solid $ish-grey;
+  margin-top: 10rem;
+}
+.ql-container.ql-snow {
+  line-height: 1.6 !important;
+}
+
+.hint-grey { color: $hint-grey; }
+.hint-ish-grey { color: $hint-ish-grey; }
+.ish-grey { color: $ish-grey; }
 /* -------------------------------------------------------------------------- */
 /*                                   Z-INDEX                                  */
 /* -------------------------------------------------------------------------- */
 
-app-sidebar {
+app-sidebar,
+.slim-sidebar {
   z-index: 12;
+}
+
+app-print-preview,
+.print-preview {
+  z-index: 15;
+}
+
+app-action-bar,
+.action-bar {
+  z-index: 20;
 }

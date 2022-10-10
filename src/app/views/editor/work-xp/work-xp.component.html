@@ -1,1 +1,114 @@
-<p>work-xp works!</p>
+<app-action-bar
+  [button]="button"
+  [title]="'Work Experience'"
+  (primaryClick)="onAddWork()"
+  >
+</app-action-bar>
+
+<div class="pt-5"></div>
+<div class="clear-block">
+  <a
+    (click)="ws.onClear()"
+    class="clear-all-btn">
+    <i class="material-icons">clear_all</i>
+    <span>
+      Clear All
+    </span>
+  </a>
+</div>
+
+<!-- -------------------------------- FORM --------------------------------- -->
+<div
+  *ngFor="let work of works; let i = index;"
+  class="form">
+
+  <!-- -------------------------- TITLE AND COMPANY -------------------------- -->
+  <div class="double-row">
+    <!--Title-->
+    <div class="form-group">
+      <label>Job title</label>
+      <input
+        name="jobTitle"
+        (focusout)="onUpdate(); spin.jobTitle = true"
+        [(ngModel)]="work.job_title"
+        type="text">
+        <app-spinner [spin]="spin.jobTitle"></app-spinner>
+    </div>
+
+    <!--Company name-->
+    <div class="form-group">
+      <label>
+        Company name
+      </label>
+      <input
+        name="companyName"
+        (focusout)="onUpdate(); spin.company = true"
+        [(ngModel)]="work.company"
+        type="text">
+        <app-spinner [spin]="spin.company"></app-spinner>
+    </div>
+  </div>
+
+  <!-- ------------------------- START AND END DATES ------------------------- -->
+  <div class="double-row">
+    <div class="form-group">
+      <label>
+        Start date
+      </label>
+      <input
+        name="startDate"
+        (focusout)="onUpdate(); spin.startDate = true"
+        [(ngModel)]="work.start_date"
+        type="date">
+        <app-spinner [spin]="spin.startDate"></app-spinner>
+    </div>
+
+    <!--End date-->
+    <div class="form-group">
+      <label>End date</label>
+      <input
+        name="endDate"
+        (focusout)="onUpdate(); spin.endDate = true"
+        [(ngModel)]="work.end_date"
+        type="date">
+      <app-spinner [spin]="spin.endDate"></app-spinner>
+    </div>
+  </div>
+
+  <!-- --------------------------------- URL --------------------------------- -->
+  <div class="double-row">
+    <div class="form-group">
+      <label>
+        URL
+      </label>
+      <input
+        name="url"
+        (focusout)="onUpdate(); spin.url = true"
+        [(ngModel)]="work.url"
+        type="text">
+        <app-spinner [spin]="spin.url"></app-spinner>
+    </div>
+  </div>
+
+  <label class="quill-label">
+    <div class="line"></div>
+    Duties & Responsibilities
+    <app-spinner [style.position]="'absolute'" [spin]="spin.duties"></app-spinner>  
+  </label>
+  <div class="flex-row nowrap align-end justify-end mt-1" style="width: inherit;">
+    <small class="hint-grey">
+      Separate each data point by converting it into a bullet point
+    </small>
+  </div>
+  <quill-editor
+    [style]="style"
+    (focusout)="onUpdate(); spin.duties = true"
+    name="workDuties"
+    [(ngModel)]="work.dutiesString"
+    [modules]="modules">
+  </quill-editor>
+
+  <div *ngIf="works.length > 1" class="divider"></div>
+</div>
+
+<div #bottom></div>

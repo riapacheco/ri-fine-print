@@ -6,6 +6,7 @@
 $title-height: 15rem;
 $bottom-height: 8rem;
 $routerlink-height: 5rem;
+$button-width: calc($slim-width - 35px);
 .sidebar {
   // position: sticky;
   position: fixed;
@@ -74,7 +75,7 @@ $routerlink-height: 5rem;
           background-image: linear-gradient(to bottom right, white, white, #f5f5f5);
 
           box-shadow: -6px -4px 18px #FFFFFF,
-          6px 4px 15px #00000019;
+          6px 4px 10px #00000025;
 
           position: relative;
           .material-icons {
@@ -118,3 +119,85 @@ $routerlink-height: 5rem;
     }
   }
 }
+
+
+/* -------------------------------------------------------------------------- */
+/*                                   SPACERS                                  */
+/* -------------------------------------------------------------------------- */
+.sidebar-spacer {
+  width: $sidebar-width;
+}
+.slim-spacer {
+  width: $slim-width;
+}
+
+
+/* -------------------------------------------------------------------------- */
+/*                                SLIM SIDEBAR                                */
+/* -------------------------------------------------------------------------- */
+.slim-sidebar {
+  position: fixed;
+  left: 0;
+  top: 0;
+  bottom: 0;
+  width: $slim-width;
+  height: $view-height;
+  background-image: linear-gradient(to bottom, #f9f9f9, white);
+  // background-attachment: fixed;
+  .slim-top {
+    width: inherit;
+    .title {
+      height: $title-height;
+      width: inherit;
+      display: flex;
+      flex-flow: column nowrap;
+      align-items: center;
+      justify-content: center;
+      h1 {
+        @include text('h2');
+        font-weight: 800;
+        
+      }
+    }
+  }
+
+  .slim-bottom {
+    width: inherit;
+    .button-group {
+      width: inherit;
+      // border: 1px solid red;
+      display: flex;
+      flex-flow: column nowrap;
+      align-items: center;
+      justify-content: center;
+      a {
+        // width: inherit;
+        width: $button-width;
+        height: $button-width;
+        border-radius: 5px;
+        margin-bottom: 1rem;
+        margin-top: 1.5rem;
+        // border: 1px solid blue;
+        display: flex;
+        flex-flow: row nowrap;
+        align-items: center;
+        justify-content: center;
+        background-image: linear-gradient(to bottom right, white, #f1f1f1);
+        
+        box-shadow: -4px -4px 10px #FFFFFF,
+        4px 3px 10px #00000030;
+        border: 1px solid $steel-light;
+        .material-icons {
+          font-size: 1.75rem;
+          color: $black-ish;
+        }
+        &.active {
+          box-shadow: inset 4px 4px 4px #00000020;
+        }
+      }
+
+      
+    }
+  }
+}
+

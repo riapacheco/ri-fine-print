@@ -8,6 +8,30 @@
   
     <div class="right-side">
 
+      <ng-container *ngIf="!(printPrev.showsPreview$ | async)">
+        <a [ngClass]="(printPrev.showsPreview$ | async) ? 'secondary disabled' : 'secondary' "
+          (click)="printPrev.onShowPreview()">
+          <i class="material-icons">
+            file_open
+          </i>
+          <span>
+            Doc Viewer
+          </span>
+        </a>
+      </ng-container>
+
+      <ng-container *ngIf="(printPrev.showsPreview$ | async)">
+        <a [ngClass]="(printPrev.showsPreview$ | async) ? 'secondary disabled' : 'secondary' "
+          (click)="printPrev.onShowPreview()">
+          <i class="material-icons">
+            file_open
+          </i>
+          <span>
+            Doc Viewer
+          </span>
+        </a>
+      </ng-container>
+      
       <a class="print">
         <i class="material-icons">print</i>
         <span>
@@ -15,17 +39,6 @@
         </span>
       </a>
 
-      <ng-container *ngIf="button.secondary">
-        <a class="secondary"
-          (click)="onSecondaryClick(button.secondary)">
-          <i class="material-icons">
-            {{ button.secondaryIcon }}
-          </i>
-          <span>
-            {{ button.secondary }}
-          </span>
-        </a>
-      </ng-container>
   
       <ng-container *ngIf="button.primary">
         <a (click)="onPrimaryClick(button.primary)">

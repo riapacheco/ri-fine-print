@@ -3,7 +3,7 @@ import { NgModule } from '@angular/core';
 import { FormsModule } from '@angular/forms';
 import { BrowserModule } from '@angular/platform-browser';
 import { QuillModule } from 'ngx-quill';
-
+import { PdfViewerModule } from 'ng2-pdf-viewer';
 import { AppRoutingModule } from './app-routing.module';
 import { AppComponent } from './app.component';
 import { SidebarComponent } from './components/sidebar/sidebar.component';
@@ -19,6 +19,13 @@ import { SummaryService } from './services/summary.service';
 import { ProjectService } from './services/project.service';
 import { WorkService } from './services/work.service';
 import { SkillService } from './services/skill.service';
+import { PrintPreviewComponent } from './components/print-preview/print-preview.component';
+import { SidebarService } from './services/sidebar.service';
+import {DragDropModule} from '@angular/cdk/drag-drop';
+import { PrintPreviewService } from './services/print-preview.service';
+import { PreviewComponent } from './components/preview/preview.component';
+import { SpinnerComponent } from './components/spinner/spinner.component';
+import { ScrollService } from './services/scroll.service';
 
 @NgModule({
   declarations: [
@@ -32,19 +39,28 @@ import { SkillService } from './services/skill.service';
     EducationComponent,
     InputsComponent,
     ActionBarComponent,
+    PrintPreviewComponent,
+    PreviewComponent,
+    SpinnerComponent,
   ],
   imports: [
     BrowserModule,
     AppRoutingModule,
     CommonModule,
     FormsModule,
-    QuillModule.forRoot()
+    QuillModule.forRoot(),
+    PdfViewerModule,
+    DragDropModule
   ],
   providers: [
     SummaryService,
     ProjectService,
     WorkService,
-    SkillService
+    SkillService,
+    SidebarService,
+    PrintPreviewService,
+    ProjectService,
+    ScrollService
   ],
   bootstrap: [AppComponent]
 })

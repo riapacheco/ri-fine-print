@@ -2,9 +2,11 @@
 /* --------------------------------- COLORS --------------------------------- */
 $black: #15181b;
 $black-ish: #232a31;
+$ish-black: #343a41;
 $hint-grey: #b8bdc3;
 $hint-ish-grey: #e1e6ea;
 $ish-grey: #ecf1f5;
+
 
 /* --------------------------------- GENERAL -------------------------------- */
 // So all components using it will calculate and adjust the same
@@ -16,6 +18,7 @@ $view-padding-bottom: 10rem;
 /* --------------------------------- SIDEBAR -------------------------------- */
 $sidebar-width: 250px;
 $sidebar-padding: 20px;
+$slim-width: 80px;
 
 /* ------------------------------- ACTION BAR ------------------------------- */
 $action-bar-height: 5.3rem;
