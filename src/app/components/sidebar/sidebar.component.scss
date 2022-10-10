@@ -116,6 +116,10 @@ $button-width: calc($slim-width - 35px);
       height: $bottom-height;
       width: calc($sidebar-width - ($sidebar-padding * 2 ));
       margin: auto;
+      display: flex;
+      flex-flow: row nowrap;
+      align-items: flex-end;
+      
     }
   }
 }
