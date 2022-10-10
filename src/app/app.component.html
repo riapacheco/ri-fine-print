@@ -1,8 +1,8 @@
 <ng-container *ngIf="(printPrev.showsPreview$ | async)">
   <app-print-preview></app-print-preview>
 </ng-container>
-<app-sidebar
-  >
-</app-sidebar>
+<ng-container *ngIf="!isMobile">
+  <app-sidebar></app-sidebar>
+</ng-container>
 
 <router-outlet></router-outlet>

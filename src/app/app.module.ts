@@ -1,6 +1,7 @@
 import { CommonModule } from '@angular/common';
 import { NgModule } from '@angular/core';
 import { FormsModule } from '@angular/forms';
+import { LayoutModule } from '@angular/cdk/layout';
 import { BrowserModule } from '@angular/platform-browser';
 import { QuillModule } from 'ngx-quill';
 import { PdfViewerModule } from 'ng2-pdf-viewer';
@@ -8,7 +9,6 @@ import { AppRoutingModule } from './app-routing.module';
 import { AppComponent } from './app.component';
 import { HashLocationStrategy, LocationStrategy } from '@angular/common';
 import { SidebarComponent } from './components/sidebar/sidebar.component';
-import { EditorComponent } from './views/editor/editor.component';
 import { SummaryComponent } from './views/editor/summary/summary.component';
 import { ProjectsComponent } from './views/editor/projects/projects.component';
 import { WorkXpComponent } from './views/editor/work-xp/work-xp.component';
@@ -22,17 +22,18 @@ import { WorkService } from './services/work.service';
 import { SkillService } from './services/skill.service';
 import { PrintPreviewComponent } from './components/print-preview/print-preview.component';
 import { SidebarService } from './services/sidebar.service';
-import {DragDropModule} from '@angular/cdk/drag-drop';
+import { DragDropModule } from '@angular/cdk/drag-drop';
 import { PrintPreviewService } from './services/print-preview.service';
 import { PreviewComponent } from './components/preview/preview.component';
 import { SpinnerComponent } from './components/spinner/spinner.component';
 import { ScrollService } from './services/scroll.service';
+import { GuardComponent } from './views/guard/guard.component';
 
 @NgModule({
   declarations: [
     AppComponent,
     SidebarComponent,
-    EditorComponent,
+    
     SummaryComponent,
     ProjectsComponent,
     WorkXpComponent,
@@ -43,6 +44,7 @@ import { ScrollService } from './services/scroll.service';
     PrintPreviewComponent,
     PreviewComponent,
     SpinnerComponent,
+    GuardComponent,
   ],
   imports: [
     BrowserModule,
@@ -51,7 +53,8 @@ import { ScrollService } from './services/scroll.service';
     FormsModule,
     QuillModule.forRoot(),
     PdfViewerModule,
-    DragDropModule
+    DragDropModule,
+    LayoutModule
   ],
   providers: [
     SummaryService,

@@ -3,8 +3,8 @@
 @import '../../../scss/mixins.scss';
 
 
-$title-height: 15rem;
-$bottom-height: 8rem;
+$title-height: 10rem;
+$bottom-height: 5rem;
 $routerlink-height: 5rem;
 $button-width: calc($slim-width - 35px);
 .sidebar {
@@ -36,15 +36,22 @@ $button-width: calc($slim-width - 35px);
         height: $title-height;
         text-align: center;
         display: flex;
-        flex-flow: column nowrap;
-        align-items: center;
+        flex-flow: row nowrap;
+        align-items: flex-end;
         justify-content: center;
+        
         span {
           @include text('h2');
           font-weight: 800;
           font-size: 3.8rem;
           letter-spacing: -0.16rem;;
           color: $black-ish;
+          &:first-child { margin-right: 0.4rem;}
+        }
+
+        sup {
+          // color: $hint-grey;
+          font-weight: 500;
         }
       }
 
@@ -55,7 +62,7 @@ $button-width: calc($slim-width - 35px);
         flex-flow: column nowrap;
         align-items: flex-start;
         justify-content: flex-start;
-
+        padding-top: 4rem;
         height: calc($view-height - ($title-height + $bottom-height));
         
         a {
@@ -118,8 +125,25 @@ $button-width: calc($slim-width - 35px);
       margin: auto;
       display: flex;
       flex-flow: row nowrap;
-      align-items: flex-end;
+      align-items: center;
+      justify-content: flex-start;
       
+      a {
+        margin-right: 1rem;
+        &:last-child {
+          margin-right: 0rem;
+        }
+        .material-icons {
+          font-size: 2.4rem;
+          color: $hint-grey;
+        }
+
+        &:hover {
+          .material-icons {
+            color: $blood-orange-regular;
+          }
+        }
+      }
     }
   }
 }
@@ -160,7 +184,6 @@ $button-width: calc($slim-width - 35px);
       h1 {
         @include text('h2');
         font-weight: 800;
-        
       }
     }
   }

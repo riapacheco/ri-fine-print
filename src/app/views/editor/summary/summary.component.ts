@@ -1,6 +1,10 @@
+import { BreakpointObserver, BreakpointState } from '@angular/cdk/layout';
 import { AfterViewInit, Component, ElementRef, OnDestroy, OnInit, ViewChild } from '@angular/core';
+import { Router } from '@angular/router';
 import { Subscription } from 'rxjs';
+
 import { QUILL } from 'src/app/constants/quill.constants';
+import { BREAKPOINT_VALUE } from 'src/app/enums/breakpoints.enums';
 import { ISummary } from 'src/app/interfaces/summary.interface';
 import { PrintPreviewService } from 'src/app/services/print-preview.service';
 import { SummaryService } from 'src/app/services/summary.service';
@@ -27,15 +31,19 @@ export class SummaryComponent implements OnInit, AfterViewInit, OnDestroy {
   modules = QUILL.MODULES;
   style = QUILL.STYLE;
 
+  isMobile!: boolean;
   @ViewChild('firstField') firstField!: ElementRef;
   private sub = new Subscription();
   constructor(
     public ss: SummaryService,
-    public printPrev: PrintPreviewService
+    public printPrev: PrintPreviewService,
+    private router: Router,
+    private observer: BreakpointObserver
   ) { }
 
   ngOnInit(): void {
-    this.initSummary()
+    this.checkDevice();
+    this.initSummary();
   }
 
   ngAfterViewInit() {
@@ -45,6 +53,16 @@ export class SummaryComponent implements OnInit, AfterViewInit, OnDestroy {
   ngOnDestroy() {
     this.sub.unsubscribe();
     this.ss.updateSummary(this.summary);
+  }
+
+  checkDevice() {
+    this.sub.add(this.observer.observe([BREAKPOINT_VALUE.mobile]).subscribe((state: BreakpointState) => {
+      if (state.breakpoints[BREAKPOINT_VALUE.mobile]) {
+        this.router.navigateByUrl('status');
+      } else {
+        this.router.navigateByUrl('editor/summary');
+      }
+    }))
   }
 
   initSummary() {

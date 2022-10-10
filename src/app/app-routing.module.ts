@@ -6,6 +6,7 @@ import { ProjectsComponent } from './views/editor/projects/projects.component';
 import { SkillsComponent } from './views/editor/skills/skills.component';
 import { SummaryComponent } from './views/editor/summary/summary.component';
 import { WorkXpComponent } from './views/editor/work-xp/work-xp.component';
+import { GuardComponent } from './views/guard/guard.component';
 
 const routes: Routes = [
   {
@@ -32,6 +33,10 @@ const routes: Routes = [
   {
     path: 'editor/education',
     component: EducationComponent
+  },
+  {
+    path: 'status',
+    component: GuardComponent
   }
 ];
 
