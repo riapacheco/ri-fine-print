@@ -23,7 +23,7 @@ export const ORIGINAL_SIZE = {
 })
 export class PrintPreviewService {
 
-  private _showsPreview$ = new BehaviorSubject<boolean>(!false);
+  private _showsPreview$ = new BehaviorSubject<boolean>(false);
   public showsPreview$: Observable<boolean> = this._showsPreview$.asObservable();
   
   private _previewSize$ = new BehaviorSubject<any>(PREVIEW_SIZE);
