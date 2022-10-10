@@ -17,7 +17,7 @@ export class WorkXpComponent implements OnInit, OnDestroy {
   dutiesIndex!: number;
   @ViewChild('bottom') bottomDiv!: ElementRef;
   button = { primary: 'Add Work', primaryIcon: 'add'}
-
+  showsSpinner = false;
   modules = QUILL.MODULES_BULLETS;
   style = QUILL.STYLE;
   
@@ -62,7 +62,9 @@ export class WorkXpComponent implements OnInit, OnDestroy {
   }
 
   onAddWork() {
-    const newWorkItem: IWork = {
+    let lastId = this.works.length + 1;
+    const newWorkItem = {
+      id: lastId++,
       company: '',
       job_title: '',
       start_date: '',
@@ -77,10 +79,14 @@ export class WorkXpComponent implements OnInit, OnDestroy {
     }, 400);
   }
 
+  onRemoveWork(workId: number){
+    this.ws.onRemoveWork(workId, this.works);
+  }
+
   onUpdate() {
     this.ws.updateWorks(this.works);
     setTimeout(() => {
-      this.stopSpinners();
+      this.showsSpinner = false;
     }, 320);
   }
 

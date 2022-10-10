@@ -4,23 +4,38 @@ import { IProject } from '../interfaces/project.interface';
 
 export const PROJECTS_INIT_STATE: IProject[] = [
   {
+    id: 1,
     name: 'RiReader',
     description: 'RiReader is an application offered on Web, iOS, and Android, which enables a user to both consume and retain data they\'ve read from a physical book.',
     url: 'https://rireader.app',
+    tools: [
+    ],
+    cover_image: '',
+    toolsString: 'Typescript, Angular, TesseractJS (OCR), Capacitor (iOS/Android), @riapacheco/yutes',
+    spins: false
+  },
+  {
+    id: 2,
+    name: 'FinePrint',
+    spins: false,
+    description: 'A free PDF / print-friendly resume generator app',
+    url: 'https://fine-print.app',
     tools: [],
     cover_image: '',
-    toolsString: 'Typescript, Angular, NodeJS'
+    toolsString: 'TypeScript, JavaScript, Angular, jsPDF, @riapacheco/yutes',
   }
 ];
 
 export const PROJECTS_CLEAR_STATE: IProject[] = [
   {
+    id: 1,
     name: '',
     description: '',
     url: '',
     tools: [],
     cover_image: '',
-    toolsString: ''
+    toolsString: '',
+    spins: false
   }
 ];
 
@@ -75,10 +90,18 @@ export class ProjectService {
     this._projects$.next(this.projects);
     return this.projects$;
   }
+  public removeProject(projectId: number, projects: IProject[]) {
+    this.projects = projects;
+    const projectsList = this.projects.filter((proj: IProject) => proj.id !== projectId);
+    this.projects = projectsList;
+    this._projects$.next(this.projects);
+    return this.projects$;
+  }
 
 
 
   public onClearProjects() {
+    this.projects = PROJECTS_CLEAR_STATE;
     this._projects$.next(PROJECTS_CLEAR_STATE);
   }
 }

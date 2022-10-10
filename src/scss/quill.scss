@@ -56,14 +56,6 @@ label {
 
 /* -------------------------------- TEXTAREA -------------------------------- */
 .ql-container.ql-snow {
-  // transform: scale(1);
-  // font-size: 1.6rem;
-  // font-family: "Inter", sans-serif;
-  // border-radius: 0px 0px $quill-corner $quill-corner;
-  // border: 1px solid transparent;
-  // background: white !important;
-  // font-weight: 500;
-  // box-shadow: 1px 10px 10px #00000005;\  background-color: white;
   box-shadow: inset 2px 2px 8px $hint-ish-grey;
   border-radius: $quill-corner;
   color: black;
@@ -78,6 +70,10 @@ label {
 
   li {
     margin-bottom: 1rem;
+  }
+
+  p {
+    line-height: 1.6;
   }
 }
 

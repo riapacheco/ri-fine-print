@@ -20,25 +20,12 @@ export class SummaryComponent implements OnInit, AfterViewInit, OnDestroy {
     primary: '',
     primaryIcon: 'save',
   };
+  showsSpinner = false;
 
   /* ------------------------------ FIELD STYLES ------------------------------ */
   inputFocus!: boolean;
   modules = QUILL.MODULES;
   style = QUILL.STYLE;
-
-  spin = {
-    firstName: false,
-    lastName: false,
-    summaryObjective: false,
-    email: false,
-    phone: false,
-    location: false,
-    url: false,
-    altUrl: false,
-    twitterHandle: false,
-    linkedinHandle: false,
-    githubHandle: false,
-  };
 
   @ViewChild('firstField') firstField!: ElementRef;
   private sub = new Subscription();
@@ -68,26 +55,10 @@ export class SummaryComponent implements OnInit, AfterViewInit, OnDestroy {
       this.viewTitle = heading;
     }));
   }
-
-  private stopAllSpinners() {
-    this.spin = {
-      firstName: false,
-      lastName: false,
-      summaryObjective: false,
-      email: false,
-      phone: false,
-      location: false,
-      url: false,
-      altUrl: false,
-      twitterHandle: false,
-      linkedinHandle: false,
-      githubHandle: false,
-    }
-  }
   onUpdateSummary() {
     this.ss.updateSummary(this.summary);
     setTimeout(() => {
-      this.stopAllSpinners();
-    }, 300);
+      this.showsSpinner = false;
+    }, 350);
   }
 }

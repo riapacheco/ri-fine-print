@@ -19,8 +19,8 @@ body {
 .divider {
   display: block;
   width: 550px;
-  border-bottom: 2px solid $ish-grey;
-  margin-top: 10rem;
+  border-bottom: 2px dashed $ish-grey;
+  margin-top: 7rem;
 }
 .ql-container.ql-snow {
   line-height: 1.6 !important;
@@ -29,6 +29,16 @@ body {
 .hint-grey { color: $hint-grey; }
 .hint-ish-grey { color: $hint-ish-grey; }
 .ish-grey { color: $ish-grey; }
+
+.bold {
+  font-weight: 700;
+}
+
+.inner-wrapper {
+  p {
+    line-height: 1.5;
+  }
+}
 /* -------------------------------------------------------------------------- */
 /*                                   Z-INDEX                                  */
 /* -------------------------------------------------------------------------- */
@@ -38,12 +48,17 @@ app-sidebar,
   z-index: 12;
 }
 
-app-print-preview,
-.print-preview {
-  z-index: 15;
-}
-
 app-action-bar,
 .action-bar {
   z-index: 20;
+}
+
+.remove-item {
+  z-index: 100;
+}
+
+app-preview,
+app-print-preview,
+.print-preview {
+  z-index: 1000;
 }

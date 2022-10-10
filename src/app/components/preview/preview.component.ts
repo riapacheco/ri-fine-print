@@ -1,7 +1,10 @@
 import { Component, Input, OnDestroy, OnInit } from '@angular/core';
 import { Subscription } from 'rxjs';
 import { ISummary } from 'src/app/interfaces/summary.interface';
+import { ProjectService } from 'src/app/services/project.service';
+import { SkillService } from 'src/app/services/skill.service';
 import { SummaryService } from 'src/app/services/summary.service';
+import { WorkService } from 'src/app/services/work.service';
 
 @Component({
   selector: 'app-preview',
@@ -18,7 +21,10 @@ export class PreviewComponent implements OnInit, OnDestroy {
 
   private sub = new Subscription();
   constructor(
-    public sumService: SummaryService
+    public sumService: SummaryService,
+    public proj: ProjectService,
+    public work: WorkService,
+    public skill: SkillService
   ) { }
 
   ngOnInit(): void {

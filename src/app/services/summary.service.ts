@@ -5,15 +5,15 @@ import { ISummary } from '../interfaces/summary.interface';
 export const SUMMARY_INIT_STATE: ISummary = {
   first_name: 'Ria',
   last_name: 'Pacheco',
-  summary_objective: 'Chase that paper',
   email: 'me@riapacheco.com',
   phone: '555 1234',
   location: 'Calgary, Alberta',
-  url: 'https://ria.run',
-  alt_url: 'https://riapacheco.codes',
+  url: 'ria.run',
+  alt_url: 'riapacheco.codes',
   twitter_handle: 'realriapacheco',
   linkedin_handle: 'riapacheco',
-  github_handle: 'riapacheco'
+  github_handle: 'riapacheco',
+  summary_objective: `<p>Ambitious and curious former Product Manager (of 8 years) turned frontend developer &amp; UX/UI designer, searching for an opportunity to complete the transition to full stack development under the mentorship of an innovative team.</p>`,
 }
 
 export const SUMMARY_CLEAR_STATE: ISummary = {

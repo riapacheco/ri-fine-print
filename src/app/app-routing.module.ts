@@ -10,12 +10,8 @@ import { WorkXpComponent } from './views/editor/work-xp/work-xp.component';
 const routes: Routes = [
   {
     path: '',
-    redirectTo: 'editor',
+    redirectTo: 'editor/summary',
     pathMatch: 'full',
-  },
-  {
-    path: 'editor',
-    component: EditorComponent
   },
   {
     path: 'editor/summary',

@@ -1,5 +1,6 @@
 <app-action-bar
   [button]="button"
+  [showsSpinner]="showsSpinner"
   [title]="viewTitle">
 </app-action-bar>
 
@@ -22,12 +23,11 @@
         First
       </label>
       <input
-        (focusout)="onUpdateSummary();spin.firstName = true"
+        (focusout)="onUpdateSummary();showsSpinner = true"
         name="first_name"
         [(ngModel)]="summary.first_name"
         type="text"
         #firstField>
-        <app-spinner [spin]="spin.firstName"></app-spinner>
     </div>
 
     <div class="form-group">
@@ -35,11 +35,10 @@
         Last
       </label>
       <input
-        (focusout)="onUpdateSummary(); spin.lastName = true;"
+        (focusout)="onUpdateSummary(); showsSpinner = true;"
         name="last_name"
         [(ngModel)]="summary.last_name"
         type="text">
-        <app-spinner [spin]="spin.lastName"></app-spinner>
     </div>
   </div>
 
@@ -49,20 +48,18 @@
       <label>Email</label>
       <input
         name="email"
-        (focusout)="onUpdateSummary(); spin.email = true;"
+        (focusout)="onUpdateSummary(); showsSpinner = true;"
         [(ngModel)]="summary.email"
         type="text">
-        <app-spinner [spin]="spin.email"></app-spinner>
     </div>
 
     <div class="form-group">
       <label>Phone</label>
       <input
         name="phone"
-        (focusout)="onUpdateSummary(); spin.phone = true;"
+        (focusout)="onUpdateSummary(); showsSpinner = true;"
         [(ngModel)]="summary.phone"
         type="text">
-        <app-spinner [spin]="spin.phone"></app-spinner>
     </div>
   </div>
 
@@ -72,20 +69,18 @@
       <label>Location</label>
       <input
         name="location"
-        (focusout)="onUpdateSummary(); spin.location = true"
+        (focusout)="onUpdateSummary(); showsSpinner = true"
         [(ngModel)]="summary.location"
         type="text">
-        <app-spinner [spin]="spin.location"></app-spinner>
     </div>
 
     <div class="form-group">
       <label>URL</label>
       <input
         name="url"
-        (focusout)="onUpdateSummary(); spin.url = true"
+        (focusout)="onUpdateSummary(); showsSpinner = true"
         [(ngModel)]="summary.url"
         type="text">
-        <app-spinner [spin]="spin.url"></app-spinner>
     </div>
   </div>
 
@@ -97,10 +92,9 @@
       </label>
       <input
         name="twitter"
-        (focusout)="onUpdateSummary(); spin.twitterHandle = true"
+        (focusout)="onUpdateSummary(); showsSpinner = true"
         [(ngModel)]="summary.twitter_handle"
         type="text">
-        <app-spinner [spin]="spin.twitterHandle"></app-spinner>
     </div>
 
     <div class="form-group">
@@ -109,10 +103,9 @@
       </label>
       <input
         name="linkedin"
-        (focusout)="onUpdateSummary(); spin.linkedinHandle = true"
+        (focusout)="onUpdateSummary(); showsSpinner = true"
         [(ngModel)]="summary.linkedin_handle"
         type="text">
-        <app-spinner [spin]="spin.linkedinHandle"></app-spinner>
     </div>
   </div>
 
@@ -124,10 +117,9 @@
       </label>
       <input
         name="github"
-        (focusout)="onUpdateSummary(); spin.githubHandle = true"
+        (focusout)="onUpdateSummary(); showsSpinner = true"
         [(ngModel)]="summary.github_handle"
         type="text">
-        <app-spinner [spin]="spin.githubHandle"></app-spinner>
     </div>
 
     <div class="form-group">
@@ -136,10 +128,9 @@
       </label>
       <input
         name="altUrl"
-        (focusout)="onUpdateSummary(); spin.altUrl = true"
+        (focusout)="onUpdateSummary(); showsSpinner = true"
         [(ngModel)]="summary.alt_url"
         type="text">
-        <app-spinner [spin]="spin.altUrl"></app-spinner>
     </div>
   </div>
 
@@ -147,10 +138,9 @@
   <label class="quill-label mt-5">
     <div class="line"></div>
     Summary Objective
-    <app-spinner [spin]="spin.summaryObjective"></app-spinner>
   </label>
   <quill-editor
-    (focusout)="onUpdateSummary(); spin.summaryObjective = true"
+    (focusout)="onUpdateSummary(); showsSpinner = true"
     [placeholder]="' '"
     [modules]="modules"
     [style]="style"

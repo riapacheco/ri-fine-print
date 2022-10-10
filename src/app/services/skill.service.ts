@@ -4,13 +4,18 @@ import { ISkillTool } from '../interfaces/skills-tools.interface';
 
 export const SKILL_INIT_STATE: ISkillTool[] = [
   {
+    id: 1,
     name: 'Being awesome',
     description: 'sometimes I am awesome sometimes i am not',
-    details: [
-      'bleh',
-      'blee',
-      'blow'
-    ]
+  }
+];
+
+export const SKILL_CLEAR_STATE: ISkillTool[] = [
+  {
+    id: 1,
+    name: '',
+    description: '',
+    details: ['']
   }
 ];
 
@@ -30,7 +35,7 @@ export class SkillService {
 
   /* ----------------------------------- GET ---------------------------------- */
   public getSkills() {
-    return this._skills$;
+    return this.skills$;
   }
   /* --------------------------------- CREATE --------------------------------- */
   public addSkills(skills: ISkillTool[]) {
@@ -51,6 +56,11 @@ export class SkillService {
     this._skills$.next(this.skills);
     return this.skills$;
   }
+  public updateSkills(skills: ISkillTool[]) {
+    this.skills = skills;
+    this._skills$.next(skills);
+    return this.skills$;
+  }
 
   /* --------------------------------- DELETE --------------------------------- */
   public deleteSkill(skill: ISkillTool) {
@@ -58,6 +68,19 @@ export class SkillService {
     this.skills = skillList;
     this._skills$.next(this.skills);
     return this.skills$;
+  }
+
+  onRemoveSkill(skillId: number, skills: ISkillTool[]) {
+    this.skills = skills;
+    const skillList = this.skills.filter((skill: ISkillTool) => skill.id !== skillId);
+    this.skills = skillList;
+    this._skills$.next(this.skills);
+    return this.skills$;
+  }
+
+  onClearAll() {
+    this.skills = []
+    this._skills$.next(SKILL_CLEAR_STATE);
   }
 
 }

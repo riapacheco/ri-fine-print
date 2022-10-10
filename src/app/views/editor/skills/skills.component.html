@@ -1,3 +1,52 @@
 <app-action-bar
+  [title]="'Skills & Tools'"
+  (primaryClick)="onAddSkill()"
+  [showsSpinner]="showsSpinner"
   [button]="button">
 </app-action-bar>
+
+<div class="pt-5"></div>
+<div class="clear-block">
+  <a
+    (click)="ss.onClearAll()"
+    class="clear-all-btn">
+    <i class="material-icons">clear_all</i>
+    <span>
+      Clear All
+    </span>
+  </a>
+</div>
+
+<div
+  *ngFor="let skill of skills; let i = index;"
+  class="form short">
+  <div *ngIf="skills.length > 1" class="remove-item slim">
+    <a (click)="onRemoveSkill(skill.id)">
+      <i class="material-icons">cancel</i>
+      <span>Remove</span>
+    </a>
+  </div>
+  <div class="double-row add-each">
+    <div class="form-group">
+      <label>
+        Skill name
+      </label>
+      <input
+        (focusout)="onUpdate(); showsSpinner = true"
+        name="skill"
+        [(ngModel)]="skill.name"
+        type="text">
+    </div>
+
+    <div class="form-group">
+      <label>
+        Brief Description
+      </label>
+      <input
+        name="description"
+        (focusout)="onUpdate(); showsSpinner = true"
+        [(ngModel)]="skill.description"
+        type="text">
+    </div>
+  </div>
+</div>

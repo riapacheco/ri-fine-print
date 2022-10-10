@@ -9,6 +9,7 @@ import { PrintPreviewService } from 'src/app/services/print-preview.service';
 })
 export class ActionBarComponent implements OnInit {
   @Input() title = 'Summary';
+  @Input() showsSpinner = false;
   @Input() button = {
     primary: '',
     primaryIcon: 'add'

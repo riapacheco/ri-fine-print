@@ -12,12 +12,23 @@ import { ProjectService } from 'src/app/services/project.service';
 export class ProjectsComponent implements OnInit, AfterViewInit, OnDestroy {
   projects!: IProject[];
 
+  blankProject = {
+    name: 'NewProject',
+    description: '',
+    url: '',
+    cover_image: '',
+    tools: [],
+    toolsString: '',
+    spins: false
+  }
+  @ViewChild('projectNameElement') projectNameElement!: ElementRef;
   @ViewChild('scrollBottom') newProject!: ElementRef;
   // Action bar
   button = {
     primary: 'Add Project',
     primaryIcon: 'add',
   };
+  showsSpinner = false;
 
   spin = {
     name: false,
@@ -47,63 +58,51 @@ export class ProjectsComponent implements OnInit, AfterViewInit, OnDestroy {
 
   loadProjectData() {
     this.sub.add(this.projService.getProjects().subscribe((data: IProject[]) => {
+      data.map((project: IProject) => {
+        project.spins = false;
+      })
       this.projects = data;
+      console.log(this.projects);
     }))
   }
 
-  private stopAllSpinners() {
-    this.spin = {
-      name: false,
-      url: false,
-      tools: false,
-      description: false
-    }
+  onClearAll() {
+    this.projects = [];
+    this.projService.onClearProjects();
+
+    setTimeout(() => {
+      this.projectNameElement.nativeElement.focus();
+    }, 100);
   }
-  private convertToArray() {
-    this.projects.map((project: IProject) => {
-      if (project.toolsString) {
-        project.tools = project.toolsString.split(', ');
-      }
-    })
+
+  onRemove(value: any){
+    this.projService.removeProject(value, this.projects);
   }
 
   onAddNew() {
-    const newBlankProject = {
-      name: 'NewProject',
+    let lastId = this.projects.length+1;
+    const project = {
+      id: lastId++,
+      name: 'Project ',
       description: '',
       url: '',
       cover_image: '',
       tools: [],
-      toolsString: ''
+      toolsString: '',
+      spins: false
     }
-    this.projects.push(newBlankProject);
+    this.projects.push(project);
+    this.projService.updateProjects(this.projects);
     setTimeout(() => {
       this.newProject.nativeElement.scrollIntoView({ behavior: 'smooth' });
     }, 500);
   }
 
   onUpdate(field: string) {
-    switch (field) {
-      case 'name':
-        this.spin.name = true;
-        this.convertToArray();
-        break;
-      case 'url':
-        this.spin.url = true;
-        this.convertToArray();
-        break;
-      case 'tools':
-        this.spin.tools = true;
-        this.convertToArray();
-        break;
-      case 'description':
-        this.spin.description = true;
-        this.convertToArray();
-        break;
-    }
+
     this.projService.updateProjects(this.projects);
     setTimeout(() => {
-      this.stopAllSpinners();
-    }, 520);
+      this.showsSpinner = false;
+    }, 320);
   }
 }

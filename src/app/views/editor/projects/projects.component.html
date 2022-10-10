@@ -1,6 +1,7 @@
 <app-action-bar
   [title]="viewTitle"
   [button]="button"
+  [showsSpinner]="showsSpinner"
   (primaryClick)="onAddNew()"
   >
 </app-action-bar>
@@ -8,7 +9,7 @@
 <div class="pt-5"></div>
 <div class="clear-block">
   <a
-    (click)="projService.onClearProjects()"
+    (click)="onClearAll()"
     class="clear-all-btn">
     <i class="material-icons">clear_all</i>
     <span>
@@ -21,7 +22,12 @@
   class="form"
   *ngFor="let project of projects;let i = index"
   >
-
+  <div *ngIf="projects.length > 1" class="remove-item">
+    <a (click)="onRemove(project.id)">
+      <i class="material-icons">cancel</i>
+      <span>Remove</span>
+    </a>
+  </div>
   <!-- ------------------------ PROJECT NAME AND URL ------------------------- -->
   <div class="double-row">
     <div class="form-group">
@@ -30,12 +36,10 @@
       </label>
       <input
         name="projectName"
-        (focusout)="onUpdate('name')"
+        (focusout)="onUpdate('name'); showsSpinner = true;"
         [(ngModel)]="project.name"
-        type="text">
-      <app-spinner
-        [spin]="spin.name">
-      </app-spinner>
+        type="text"
+        #projectNameElement>
     </div>
 
     <div class="form-group">
@@ -44,13 +48,9 @@
       </label>
       <input
         name="url"
-        (focusout)="onUpdate('url')"
+        (focusout)="onUpdate('url'); showsSpinner = true"
         [(ngModel)]="project.url"
         type="text">
-
-        <app-spinner
-          [spin]="spin.url">
-        </app-spinner>
     </div>
   </div>
 
@@ -64,23 +64,22 @@
 
     <input
       name="tools"
-      (focusout)="onUpdate('tools')"
+      (focusout)="onUpdate('tools'); showsSpinner = true"
       [(ngModel)]="project.toolsString"
       type="text">
-      <app-spinner [spin]="spin.tools"></app-spinner>
+      
   </div>
   <label class="quill-label">
     <div class="line"></div>
     Project Description
-
-    <app-spinner [spin]="spin.description"></app-spinner>  
   </label>
   
   <quill-editor
       [placeholder]="' '"
       [modules]="modules"
       [style]="style"
-      (focusout)="onUpdate('description')"
+      [(ngModel)]="project.description"
+      (focusout)="onUpdate('description'); showsSpinner = true"
       [style.width]="'inherit'"
       name="summaryObjective"
       type="text"

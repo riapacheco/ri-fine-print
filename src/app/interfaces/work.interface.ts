@@ -1,5 +1,6 @@
 
 export interface IWork {
+  id: number;
   company?: string;
   job_title?: string;
   start_date?: Date | string;

@@ -1,6 +1,7 @@
 <app-action-bar
   [button]="button"
   [title]="'Work Experience'"
+  [showsSpinner]="showsSpinner"
   (primaryClick)="onAddWork()"
   >
 </app-action-bar>
@@ -21,7 +22,12 @@
 <div
   *ngFor="let work of works; let i = index;"
   class="form">
-
+  <div *ngIf="works.length > 1" class="remove-item">
+    <a (click)="onRemoveWork(work.id)">
+      <i class="material-icons">cancel</i>
+      <span>Remove</span>
+    </a>
+  </div>
   <!-- -------------------------- TITLE AND COMPANY -------------------------- -->
   <div class="double-row">
     <!--Title-->
@@ -29,10 +35,9 @@
       <label>Job title</label>
       <input
         name="jobTitle"
-        (focusout)="onUpdate(); spin.jobTitle = true"
+        (focusout)="onUpdate(); showsSpinner = true"
         [(ngModel)]="work.job_title"
         type="text">
-        <app-spinner [spin]="spin.jobTitle"></app-spinner>
     </div>
 
     <!--Company name-->
@@ -42,10 +47,9 @@
       </label>
       <input
         name="companyName"
-        (focusout)="onUpdate(); spin.company = true"
+        (focusout)="onUpdate(); showsSpinner = true"
         [(ngModel)]="work.company"
         type="text">
-        <app-spinner [spin]="spin.company"></app-spinner>
     </div>
   </div>
 
@@ -57,10 +61,9 @@
       </label>
       <input
         name="startDate"
-        (focusout)="onUpdate(); spin.startDate = true"
+        (focusout)="onUpdate(); showsSpinner = true"
         [(ngModel)]="work.start_date"
         type="date">
-        <app-spinner [spin]="spin.startDate"></app-spinner>
     </div>
 
     <!--End date-->
@@ -68,10 +71,9 @@
       <label>End date</label>
       <input
         name="endDate"
-        (focusout)="onUpdate(); spin.endDate = true"
+        (focusout)="onUpdate(); showsSpinner = true"
         [(ngModel)]="work.end_date"
         type="date">
-      <app-spinner [spin]="spin.endDate"></app-spinner>
     </div>
   </div>
 
@@ -83,17 +85,15 @@
       </label>
       <input
         name="url"
-        (focusout)="onUpdate(); spin.url = true"
+        (focusout)="onUpdate(); showsSpinner = true"
         [(ngModel)]="work.url"
         type="text">
-        <app-spinner [spin]="spin.url"></app-spinner>
     </div>
   </div>
 
   <label class="quill-label">
     <div class="line"></div>
     Duties & Responsibilities
-    <app-spinner [style.position]="'absolute'" [spin]="spin.duties"></app-spinner>  
   </label>
   <div class="flex-row nowrap align-end justify-end mt-1" style="width: inherit;">
     <small class="hint-grey">
@@ -102,7 +102,7 @@
   </div>
   <quill-editor
     [style]="style"
-    (focusout)="onUpdate(); spin.duties = true"
+    (focusout)="onUpdate(); showsSpinner = true"
     name="workDuties"
     [(ngModel)]="work.dutiesString"
     [modules]="modules">

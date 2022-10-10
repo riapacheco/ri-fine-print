@@ -4,6 +4,9 @@
       <div class="title">
         {{ title }}
       </div>
+      <ng-container *ngIf="showsSpinner">
+        <app-spinner [spin]="true"></app-spinner>
+      </ng-container>
     </div>
   
     <div class="right-side">

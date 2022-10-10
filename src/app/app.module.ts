@@ -6,6 +6,7 @@ import { QuillModule } from 'ngx-quill';
 import { PdfViewerModule } from 'ng2-pdf-viewer';
 import { AppRoutingModule } from './app-routing.module';
 import { AppComponent } from './app.component';
+import { HashLocationStrategy, LocationStrategy } from '@angular/common';
 import { SidebarComponent } from './components/sidebar/sidebar.component';
 import { EditorComponent } from './views/editor/editor.component';
 import { SummaryComponent } from './views/editor/summary/summary.component';
@@ -60,7 +61,11 @@ import { ScrollService } from './services/scroll.service';
     SidebarService,
     PrintPreviewService,
     ProjectService,
-    ScrollService
+    ScrollService,
+    {
+      provide: LocationStrategy,
+      useClass: HashLocationStrategy
+    }
   ],
   bootstrap: [AppComponent]
 })

@@ -4,6 +4,7 @@ import { IWork } from '../interfaces/work.interface';
 
 export const WORK_INIT_STATE: IWork[] = [
   {
+    id: 1,
     company: 'Cold Bore Technology',
     job_title: 'Sr. Technical TPM',
     start_date: '2021-11-01',
@@ -15,6 +16,7 @@ export const WORK_INIT_STATE: IWork[] = [
 ]
 export const WORK_CLEAR_STATE: IWork[] = [
   {
+    id: 1,
     company: '',
     job_title: '',
     start_date: new Date(),
@@ -69,7 +71,13 @@ export class WorkService {
   }
 
   /* --------------------------------- DELETE --------------------------------- */
-  
+  onRemoveWork(workId: number, works: IWork[]) {
+    this.works = works;
+    const workList = this.works.filter((work: IWork) => work.id !== workId);
+    this.works = workList;
+    this._works$.next(this.works);
+    return this.works$;
+  }
   onClear() {
     this._works$.next(WORK_CLEAR_STATE);
   }

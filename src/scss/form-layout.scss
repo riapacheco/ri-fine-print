@@ -16,17 +16,15 @@
 
   .quill-label {
     position: relative;
-
-    app-spinner {
-      position: absolute;
-      bottom: 0;
-    }
   }
 
   quill-editor {
     width: inherit;
   }
   
+  &.short {
+    padding-bottom: 0rem;
+  }
 }
 
 
@@ -57,7 +55,7 @@
 }
 
 %us-input {
-  font-size: 1.6rem !important;
+  font-size: 1.5rem !important;
   font-weight: 400;
   letter-spacing: 0rem;
   height: 36px !important;
@@ -66,6 +64,7 @@
   border-bottom: 2px solid $black;
   padding-bottom: -1rem !important;
   font-size: 10px;
+
 }
 
 /* -------------------------------------------------------------------------- */
@@ -89,7 +88,7 @@
   border-radius: 4px;
   color: black;
   font-weight: 400;
-
+  font-size: 1.4rem;
   &.on-focus {
     box-shadow: inset 1px 1px 4px $hint-ish-grey;
   }
@@ -150,6 +149,19 @@ input {
     width: 46%;
     max-width: 300px;
   }
+
+  &.add-each {
+    .form-group {
+      max-width: 400px;
+      width: 100%;
+      margin-left: 2.5rem;
+      &:first-child {
+        margin-left: 0rem;
+        width: 150px;
+      }
+
+    }
+  }
 }
 
 
@@ -160,7 +172,37 @@ input {
     width: 30%;
   }
 }
-
+.remove-item {
+  // width: 580px;
+  margin-top: 1.5rem;
+  margin-bottom: 1rem;
+  width: inherit;
+  display: flex;
+  flex-flow: row nowrap;
+  align-items: center;
+  justify-content: flex-end;
+  color: $hint-grey;
+  cursor: pointer !important;
+  &.slim {
+    margin-bottom: -0.5rem;
+  }
+  a {
+    display: flex;
+    flex-flow: row nowrap;
+    align-items: center;
+    .material-icons {
+      font-size: 1.5rem;
+      margin-right: 0.5rem;
+    }
+    span {
+      font-size: 1.4rem;
+      font-weight: 500;
+    }
+  }
+  &:hover {
+    color: $black-ish;
+  }
+}
 .clear-block {
   // width: inherit;
   width: 580px;

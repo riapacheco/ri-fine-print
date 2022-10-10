@@ -32,6 +32,9 @@ $action-width: calc($view-width - $sidebar-width);
     justify-content: space-between;
 
     .left-side {
+      position: relative;
+
+      padding-right: 5rem;
       .title {
         @include text('h4');
         padding-top: 0.5rem;
