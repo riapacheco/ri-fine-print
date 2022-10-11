@@ -1,31 +1,75 @@
-<div class="guard">
+<ng-container *ngIf="!formMode; else formModeBlock">
+  <div class="guard">
 
-  <div class="guard-content">
-    <div class="alpha-tag">
-      pre-alpha
+    <div class="guard-content">
+      <div class="alpha-tag">
+        pre-alpha
+      </div>
+      <div class="title mb-1">
+        <span class="">
+          FinePrint
+        </span>
+        <span>
+          Why it's only available on desktop
+        </span>
+      </div>
+      
+      <div class="body">
+        <span style="font-weight: 800">FinePrint</span> is a free web application for building print- and download-friendly docs with responsive templates that adjust themselves as they're populated.
+        <br>
+        <br>
+        (not an ideal workflow for mobile)
+      </div>
+  
     </div>
-    <div class="title mb-1">
-      <span class="">
-        FinePrint
-      </span>
-      <span>
-        Why isn't this on mobile?
-      </span>
+  
+    <div class="caption-block mt-6">
+      <a
+        (click)="formMode = !formMode"
+        class="email-yourself">
+        <!-- <i class="material-icons">email</i> -->
+        🔗&nbsp;<u>Send a link to your mailbox!</u>
+      </a>
+      <a class="ria-run-link" href="https://ria.run" target="_blank">
+        Who developed this?
+      </a>
     </div>
-    
-    <div class="body">
-      <span style="font-weight: 800">FinePrint</span> is a free web application for building print- and download-friendly docs with responsive templates that adjust themselves as they're populated.
-      <br>
-      <br>
-      (not an ideal workflow for mobile)
-    </div>
+  </div>  
+</ng-container>
 
+<ng-template #formModeBlock>
+  <div class="form-mode">
+    <div class="form-mode-content">
+      <div class="form-content">
+        <h1>
+          Send yourself a &nbsp;🔗
+        </h1>
+        <p>
+          Trigger an email containing the app's link so you can try the app on desktop!
+        </p>
+        <div [ngClass]="errorMode ? 'form-group error' : 'form-group'">
+          <label>
+            Email Address
+          </label>
+          <input
+            name="email"
+            [(ngModel)]="email"
+            (focus)="errorMode = false"
+            type="text">
+            <small *ngIf="errorMode">
+              Requires a valid email, pls.
+            </small>
+        </div>
+
+        <div
+          (click)="onSendEmail()" class="flex-row nowrap align-end justify-end mt-3">
+          <a
+            (click)="onSendEmail()"
+            class="send-btn">
+            Trigger Email
+          </a>
+        </div>
+      </div>
+    </div>
   </div>
-
-  <div class="caption-block mt-5">
-    <a class="ria-run-link" href="https://ria.run" target="_blank">
-      Who developed this?
-    </a>
-  </div>
-</div>
-
+</ng-template>

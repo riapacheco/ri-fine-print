@@ -17,6 +17,29 @@ $mobile-content-width: 90%;
   margin: auto;
 }
 
+/* ------------------------------- FORM MIXINS ------------------------------ */
+@mixin neu-label {
+  font-size: 1.1rem !important;
+  text-transform: uppercase;
+  font-weight: 600 !important;
+  letter-spacing: 0.15rem;
+  display: inline-block;
+  width: fit-content;
+  padding: 0.5rem;
+  margin-bottom: 0.5rem;
+  border-radius: 3px;
+  color: $hint-grey;
+}
+@mixin neu-input {
+  background-color: white;
+  -webkit-appearance: none;
+  box-shadow: inset 2px 2px 8px $hint-ish-grey !important;
+  -webkit-box-shadow: inset 2px 2px 8px $hint-ish-grey !important;
+  border-radius: 4px;
+  color: black;
+  font-weight: 400;
+  font-size: 1.4rem;
+}
 
 /* -------------------------------------------------------------------------- */
 /*                              TEXT-BASED MIXINS                             */
@@ -98,7 +121,7 @@ $mobile-content-width: 90%;
 /* ---------------------- Mobile Version of Text Types ---------------------- */
 @mixin mobile-text($textElement) {
   @if $textElement == 'body' {
-    font-size: 1.35rem;
+    font-size: 1.3rem;
     line-height: 1.85;
   }
 

@@ -3,7 +3,8 @@
 @import '../../../scss/mixins.scss';
 @import '../../../scss/variables.scss';
 
-.guard {
+
+%guard-bg {
   width: $view-width;
   height: $view-height;
   overflow: hidden;
@@ -13,15 +14,23 @@
   flex-flow: column nowrap;
   align-items: center;
   justify-content: center;
+}
+%guard-content {
+  margin-top: 6rem;
+  width: 89%;
+  background-color: white;
+  padding-top: 3rem;
+  padding-bottom: 4rem;
+  border-radius: 6px;
+  box-shadow: 4px 4px 18px #00000010;
+  position: relative;
+}
+
+.guard {
+  @extend %guard-bg;
 
   .guard-content {
-    width: 89%;
-    background-color: white;
-    padding-top: 3rem;
-    padding-bottom: 4rem;
-    border-radius: 6px;
-    box-shadow: 4px 4px 18px #00000010;
-    position: relative;
+    @extend %guard-content;
     
     .title {
       width: 100%;
@@ -66,7 +75,7 @@
     height: 8rem;
     // border: 1px solid red;
     display: flex;
-    flex-flow: row nowrap;
+    flex-flow: column nowrap;
     align-items: center;
     a {
       display: flex;
@@ -101,4 +110,79 @@
   color: $steel-light;
   padding: 0.4rem 0.6rem;
   border-radius: 0px 6px 0px 4px;
+}
+
+.email-yourself {
+  font-family: "Inter", sans-serif !important;
+  margin-bottom: 5rem;
+  display: flex;
+  flex-flow: row nowrap;
+  align-items: center;
+  justify-content: center;
+  .material-icons {
+    
+    font-size: 1.4rem;
+    margin-right: 0.5rem;
+  }
+}
+
+/* -------------------------------- Form Mode ------------------------------- */
+.form-mode {
+
+  @extend %guard-bg;
+  padding-bottom: 15rem;
+  .form-mode-content {
+    @extend %guard-content;
+    padding-top: 3rem;
+    padding-bottom: 3rem;
+    
+    .form-content {
+      width: 85%; 
+      margin: auto;
+      h1 {
+        // line-height: 1.25;
+        @include mobile-text('h2');
+        // letter-spacing: -0.15rem;
+        color: $ish-black;
+      }
+      .form-group {
+        // margin-top: 1rem;
+        input {
+          @include neu-input;
+        }
+
+        &.error {
+          input {
+            border: 2px solid $danger;
+          }
+
+          small {
+            color: $danger;
+            font-size: 1.2rem;
+            font-weight: 500;
+            padding-top: 0.2rem;
+          }
+        }
+      }
+
+      p {
+        @include mobile-text('body');
+        margin-bottom: 3rem;
+      }
+    }
+  }
+}
+
+.send-btn {
+  background-color: $ish-black;
+  background-image: linear-gradient(to top right, $black-ish, $ish-black);
+  color: $steel-light;
+  padding: 0.7rem 1.2rem;
+  @include mobile-text('body');
+  border-radius: 5px;
+  font-weight: 500;
+  letter-spacing: 0rem;
+  // font-size: 1.5rem;
+
+  
 }
