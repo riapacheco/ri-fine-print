@@ -24,6 +24,12 @@
   
   &.short {
     padding-bottom: 0rem;
+    margin-bottom: 0rem;
+    &.double-row {
+      margin-top: -1rem;
+      margin-bottom: 0rem;
+    }
+
   }
 }
 

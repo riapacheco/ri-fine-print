@@ -1,4 +1,4 @@
-import { Component, OnDestroy, OnInit } from '@angular/core';
+import { Component, ElementRef, OnDestroy, OnInit, ViewChild } from '@angular/core';
 import { Subscription } from 'rxjs';
 import { ISkillTool } from 'src/app/interfaces/skills-tools.interface';
 import { SkillService } from 'src/app/services/skill.service';
@@ -11,6 +11,7 @@ import { SkillService } from 'src/app/services/skill.service';
 export class SkillsComponent implements OnInit, OnDestroy {
   skills!: ISkillTool[];
   button = { primary: 'Add Skill', primaryIcon: 'add' }
+  @ViewChild('bottomScroll') bottomScroll!: ElementRef;
   showsSpinner = false;
   private sub = new Subscription();
   constructor(
@@ -38,6 +39,9 @@ export class SkillsComponent implements OnInit, OnDestroy {
       description: ''
     }
     this.skills.push(newSkill);
+    setTimeout(() => {
+      this.bottomScroll.nativeElement.scrollIntoView({ behavior: 'smooth' })
+    }, 100)
   }
   onRemoveSkill(skillId: number) {
     this.ss.onRemoveSkill(skillId, this.skills);

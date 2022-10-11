@@ -22,6 +22,21 @@ export const SKILL_INIT_STATE: ISkillTool[] = [
     id: 4,
     name: 'Code',
     description: `Likely the best thing that's ever happened to me.`
+  },
+  {
+    id: 5,
+    name: 'Typewriter Restoration',
+    description: `Yes, I'm your typical hipster.`
+  },
+  {
+    id: 6,
+    name: 'Avid Reading',
+    description: `Unsure if this is a skill... but it's gotten me pretty far.`
+  },
+  {
+    id: 7,
+    name: 'Angular',
+    description: `If I could marry a framework, I would marry Angular.`
   }
 ];
 

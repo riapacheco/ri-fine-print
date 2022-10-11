@@ -72,8 +72,13 @@ label {
   }
 
   p {
+    -webkit-font-smoothing: antialiased !important;
     font-size: 1.4rem;
     line-height: 1.6;
+    margin-bottom: 1rem;
+    strong {
+      font-weight: 600;
+    }
   }
 }
 

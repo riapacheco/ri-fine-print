@@ -18,7 +18,7 @@ export const PROJECTS_INIT_STATE: IProject[] = [
     id: 2,
     name: 'FinePrint',
     spins: false,
-    description: 'A free PDF / print-friendly resume generator app',
+    description: `FinePrint is a free web application for building print- and download-friendly docs with responsive templates that adjust themselves as they're populated.`,
     url: 'https://fine-print.app',
     tools: [],
     cover_image: '',

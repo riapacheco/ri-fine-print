@@ -13,7 +13,7 @@ export const SUMMARY_INIT_STATE: ISummary = {
   twitter_handle: 'realriapacheco',
   linkedin_handle: 'riapacheco',
   github_handle: 'riapacheco',
-  summary_objective: `<p>Ambitious and curious former Product Manager (of 8 years) turned frontend developer &amp; UX/UI designer, searching for an opportunity to complete the transition to full stack development under the mentorship of an innovative team.</p>`,
+  summary_objective: `<p>Ambitious and curious former Product Manager turned frontend developer &amp; UX / UI designer, searching for an opportunity to complete the transition to full stack development under the mentorship of an innovative team.</p><p>If you've seen any of my recent work, you've likely noticed my passion for <strong>experience-first</strong> software development :)</p>`,
 }
 
 export const SUMMARY_CLEAR_STATE: ISummary = {
