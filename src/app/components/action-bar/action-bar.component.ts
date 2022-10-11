@@ -1,5 +1,6 @@
 import { Component, EventEmitter, Input, OnInit, Output } from '@angular/core';
 import { PrintPreviewService } from 'src/app/services/print-preview.service';
+import { ToastService } from 'src/app/services/toast.service';
 
 
 @Component({
@@ -19,6 +20,7 @@ export class ActionBarComponent implements OnInit {
 
   constructor(
     public printPrev: PrintPreviewService,
+    public toast: ToastService
   ) { }
 
   ngOnInit(): void {
@@ -30,5 +32,15 @@ export class ActionBarComponent implements OnInit {
 
   onSecondaryClick(value: any) {
     this.secondaryClick.emit(value);
+  }
+
+  onPrintClick(e: any) {
+    if (e) {
+      this.toast.callToast(`This feature is on its way!`);
+      setTimeout(() => {
+        this.toast.dismissToast();
+      }, 2500);
+    }
+
   }
 }

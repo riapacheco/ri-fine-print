@@ -28,6 +28,7 @@ p {
 }
 .ql-container.ql-snow {
   line-height: 1.6 !important;
+  
 }
 
 .hint-grey { color: $hint-grey; }
@@ -65,4 +66,9 @@ app-preview,
 app-print-preview,
 .print-preview {
   z-index: 1000;
+}
+
+app-toast,
+.toast {
+  z-index: 2000;
 }

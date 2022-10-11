@@ -3,15 +3,18 @@ import { BreakpointObserver, BreakpointState } from '@angular/cdk/layout';
 import { Component, OnDestroy, OnInit } from '@angular/core';
 import { Router } from '@angular/router';
 import { Observable, Subscription } from 'rxjs';
+import { slideTD } from './constants/animations.constants';
 import { BREAKPOINT_VALUE } from './enums/breakpoints.enums';
 import { PrintPreviewService } from './services/print-preview.service';
+import { ToastService } from './services/toast.service';
 
 // TODO Create toast as onboarding
 
 @Component({
   selector: 'app-root',
   templateUrl: './app.component.html',
-  styleUrls: ['./app.component.scss']
+  styleUrls: ['./app.component.scss'],
+  animations: [ slideTD ]
 })
 export class AppComponent implements OnInit, OnDestroy {
   scrollStatus$!: Observable<boolean>;
@@ -20,7 +23,8 @@ export class AppComponent implements OnInit, OnDestroy {
   constructor(
     public printPrev: PrintPreviewService,
     private observer: BreakpointObserver,
-    private router: Router
+    private router: Router,
+    public toast: ToastService
   ) {}
 
   ngOnInit(): void {

@@ -1,0 +1,7 @@
+<div [@triggerSlideTD]="(toast.showsToast$ | async) ? 'open' : 'close'" class="toast">
+  <div class="toast-content">
+    <div class="inner-wrapper">
+      <div [innerHTML]="(toast.toastMessage$ | async)"></div>
+    </div>
+  </div>
+</div>

@@ -61,18 +61,18 @@ label {
   color: black;
   font-weight: 400;
   border: 0px solid transparent;
-  font-size: 100%;
-  font-family: "Inter", sans-serif;
-  font-size: 1.4rem;
-  padding-top: 0.5rem;
-  
-  line-height: 1.8 !important;
 
+  font-family: "Inter", sans-serif;
+  // font-size: 1.3rem !important;
+  @include mobile-text('body');
+  padding-top: 0.5rem;
+  line-height: 1.8 !important;
   li {
     margin-bottom: 1rem;
   }
 
   p {
+    font-size: 1.4rem;
     line-height: 1.6;
   }
 }

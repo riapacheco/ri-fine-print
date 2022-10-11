@@ -7,6 +7,8 @@ import { QuillModule } from 'ngx-quill';
 import { PdfViewerModule } from 'ng2-pdf-viewer';
 import { AppRoutingModule } from './app-routing.module';
 import { AppComponent } from './app.component';
+import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
+
 import { HashLocationStrategy, LocationStrategy } from '@angular/common';
 import { SidebarComponent } from './components/sidebar/sidebar.component';
 import { SummaryComponent } from './views/editor/summary/summary.component';
@@ -28,6 +30,8 @@ import { PreviewComponent } from './components/preview/preview.component';
 import { SpinnerComponent } from './components/spinner/spinner.component';
 import { ScrollService } from './services/scroll.service';
 import { GuardComponent } from './views/guard/guard.component';
+import { ToastService } from './services/toast.service';
+import { ToastComponent } from './components/toast/toast.component';
 
 @NgModule({
   declarations: [
@@ -45,6 +49,7 @@ import { GuardComponent } from './views/guard/guard.component';
     PreviewComponent,
     SpinnerComponent,
     GuardComponent,
+    ToastComponent,
   ],
   imports: [
     BrowserModule,
@@ -54,7 +59,8 @@ import { GuardComponent } from './views/guard/guard.component';
     QuillModule.forRoot(),
     PdfViewerModule,
     DragDropModule,
-    LayoutModule
+    LayoutModule,
+    BrowserAnimationsModule
   ],
   providers: [
     SummaryService,
@@ -68,7 +74,8 @@ import { GuardComponent } from './views/guard/guard.component';
     {
       provide: LocationStrategy,
       useClass: HashLocationStrategy
-    }
+    },
+    ToastService
   ],
   bootstrap: [AppComponent]
 })

@@ -5,8 +5,23 @@ import { ISkillTool } from '../interfaces/skills-tools.interface';
 export const SKILL_INIT_STATE: ISkillTool[] = [
   {
     id: 1,
-    name: 'Being awesome',
-    description: 'sometimes I am awesome sometimes i am not',
+    name: 'Guitar',
+    description: 'I played recitals as a kid.',
+  },
+  {
+    id: 2,
+    name: 'Painting',
+    description: 'I once painted a collection of (mostly) self-made billionaires for fun'
+  },
+  {
+    id: 3,
+    name: 'Woodworking',
+    description: `Though I have a woodworking shed on my condo balcony, I haven't been kicked out yet!`
+  },
+  {
+    id: 4,
+    name: 'Code',
+    description: `Likely the best thing that's ever happened to me.`
   }
 ];
 
