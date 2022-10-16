@@ -7,13 +7,14 @@ export const SUMMARY_INIT_STATE: ISummary = {
   last_name: 'Pacheco',
   email: 'me@riapacheco.com',
   phone: '555 1234',
-  location: 'Calgary, Alberta',
+  location: '112 14 AVE SE, Calgary, Alberta',
   url: 'ria.run',
   alt_url: 'riapacheco.codes',
   twitter_handle: 'realriapacheco',
   linkedin_handle: 'riapacheco',
   github_handle: 'riapacheco',
-  summary_objective: `<p>Ambitious and curious former Product Manager turned frontend developer &amp; UX / UI designer, searching for an opportunity to complete the transition to full stack development under the mentorship of an innovative team.</p><p>If you've seen any of my recent work, you've likely noticed my passion for <strong>experience-first</strong> software development :)</p>`,
+  // summary_objective: `<p>Ambitious and curious former Product Manager turned frontend developer &amp; UX / UI designer, searching for an opportunity to complete the transition to full stack development under the mentorship of an innovative team.</p><p>If you've seen any of my recent work, you've likely noticed my passion for <strong>experience-first</strong> software development :)</p>`,
+  summary_objective: `<p>Ambitious and curious former Product Manager turned frontend developer &amp; UX / UI designer, searching for an opportunity to complete the transition to full stack development under the mentorship of an innovative team.</p>`,
 }
 
 export const SUMMARY_CLEAR_STATE: ISummary = {

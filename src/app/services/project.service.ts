@@ -23,6 +23,14 @@ export const PROJECTS_INIT_STATE: IProject[] = [
     tools: [],
     cover_image: '',
     toolsString: 'TypeScript, JavaScript, Angular, jsPDF, @riapacheco/yutes',
+  },
+  {
+    id: 3,
+    name: 'Asset Tracker',
+    spins: false,
+    description: `AssetTracker is an internal equipment tracking tool that enables the manufacturing team to track all sensor and had compute technology equipment by location and MFG/M&R process`,
+    toolsString: `Typescript, Angular, AWS`,
+    url: `Internal solution (no url available)`
   }
 ];
 

@@ -10,7 +10,44 @@
     </div>
   
     <div class="right-side">
+      <ng-container *ngIf="(printPrev.showsPreview$ | async)">
+        <a
+          (click)="printPrev.onBigger()"
+          [ngClass]="(printPrev.sizeScale$ | async) == 'scale(1)' ? 'disabled' : ''">
+          <i class="material-icons">
+            add
+          </i>
+          <span>
+            Bigger
+          </span>
+        </a>
 
+        <a
+          (click)="printPrev.onSmaller()"
+          [ngClass]="(printPrev.sizeScale$ | async) == 'scale(0.7)' ? 'disabled' : ''">
+          <i class="material-icons">remove</i>
+          <span>
+            Smaller
+          </span>
+        </a>
+      </ng-container>
+
+      <ng-container *ngIf="(printPrev.showsPreview$ | async)">
+        <a
+          (click)="printPrev.onHidePreview()"
+          class="print close-viewer">
+          <i class="material-icons">
+            cancel
+          </i>
+          <span>
+            Close Viewer
+          </span>
+        </a>
+      </ng-container>
+
+      <ng-container *ngIf="(printPrev.showsPreview$ | async)">
+        <div class="bar-divider"></div>
+      </ng-container>
       <ng-container *ngIf="!(printPrev.showsPreview$ | async)">
         <a [ngClass]="(printPrev.showsPreview$ | async) ? 'secondary disabled' : 'secondary' "
           (click)="printPrev.onShowPreview()">
@@ -22,6 +59,8 @@
           </span>
         </a>
       </ng-container>
+
+
 
       <ng-container *ngIf="(printPrev.showsPreview$ | async)">
         <a [ngClass]="(printPrev.showsPreview$ | async) ? 'secondary disabled' : 'secondary' "

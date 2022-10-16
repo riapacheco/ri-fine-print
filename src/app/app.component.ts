@@ -1,6 +1,6 @@
 import { BreakpointObserver, BreakpointState } from '@angular/cdk/layout';
 
-import { Component, OnDestroy, OnInit } from '@angular/core';
+import { Component, ElementRef, OnDestroy, OnInit, ViewChild } from '@angular/core';
 import { Router } from '@angular/router';
 import { Observable, Subscription } from 'rxjs';
 import { slideTD } from './constants/animations.constants';
@@ -19,11 +19,13 @@ import { ToastService } from './services/toast.service';
 export class AppComponent implements OnInit, OnDestroy {
   scrollStatus$!: Observable<boolean>;
   isMobile!: boolean;
+  isPrinting = false;
+  @ViewChild('topScroll') topScroll!: ElementRef;
   private sub = new Subscription();
   constructor(
     public printPrev: PrintPreviewService,
     private observer: BreakpointObserver,
-    private router: Router,
+    public router: Router,
     public toast: ToastService
   ) {}
 
@@ -35,15 +37,19 @@ export class AppComponent implements OnInit, OnDestroy {
     this.sub.unsubscribe();
   }
 
+  onRouteActivation() {
+    setTimeout(() => {
+      this.topScroll.nativeElement.scrollIntoView();
+    }, 120);
+  }
+
   checkDevice() {
     this.sub.add(this.observer.observe([BREAKPOINT_VALUE.mobile]).subscribe((state: BreakpointState) => {
       if (state.breakpoints[BREAKPOINT_VALUE.mobile]) {
         this.isMobile = true;
-        this.router.navigateByUrl('status')
       }
       else {
         this.isMobile = false;
-        this.router.navigateByUrl('editor/summary')
       }
     }))
   }

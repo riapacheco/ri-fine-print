@@ -1,0 +1,33 @@
+
+@import '../../../scss/variables.scss';
+
+:host {
+  position: absolute;
+  // bottom: -5rem;
+  // left: calc($sidebar-width + ($sidebar-padding * 2) + 500px);
+  // right: 5rem;
+  right: 0;
+}
+.doc-viewer {
+  cursor: grab;
+  &:active {
+    cursor: grabbing;
+  }
+}
+.cdk-drag-dragging {
+  cursor: grabbing;
+}
+
+.instructions-block {
+  width: 100%;
+  display: flex;
+  flex-flow: row nowrap;
+  align-items: center;
+  justify-content: flex-end;
+  padding-bottom: 0.5rem;
+  span {
+    
+    font-weight: 500;
+    color: $ish-black;
+  }
+}

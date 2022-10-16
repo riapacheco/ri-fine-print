@@ -9,9 +9,24 @@ export const WORK_INIT_STATE: IWork[] = [
     job_title: 'Sr. Technical TPM',
     start_date: '2021-11-01',
     end_date: '2022-09-01',
-    duties: '<ul> Owned and executed full enterprise product portfolio re-launch, re-positioning flagship offering (SmartPAD) to include all sensor-to-cloud capabilities for immediate customer & market understanding <ul> Strategically introduced under-utilized data products in branded product line (ColdEDGE Web Services) <ul> Led product, market, and competitor research resulting in roadmap and sales enablement insights <ul> Created product marketing relational database </li></ul>',
     url: 'https://ria-run-site.carrd.co/#cold-bore-technology',
-    dutiesString: '<ul> Owned and executed full enterprise product portfolio re-launch, re-positioning flagship offering (SmartPAD) to include all sensor-to-cloud capabilities for immediate customer & market understanding <ul> Strategically introduced under-utilized data products in branded product line (ColdEDGE Web Services) <ul> Led product, market, and competitor research resulting in roadmap and sales enablement insights <ul> Created product marketing relational database </li></ul>'
+    dutiesString: `<ul><li>Owned and executed full enterprise product portfolio re-launch, re-positioning flagship offering (SmartPAD) to include all sensor-to-cloud capabilities for immediate customer &amp; market understanding</li><li>Strategically introduced under-utilized data products in branded product line (ColdEDGE Web Services)</li><li>Led product, market, and competitor research resulting in roadmap and sales enablement insights</li><li>Created product marketing relational database</li></ul>`
+  },
+  {
+    id: 2,
+    company: 'Mydoma Inc.',
+    job_title: 'Director, Product Management',
+    start_date: '2021-04-01',
+    end_date: '2021-09-01',
+    dutiesString: `<ul><li>Owned and executed full enterprise product portfolio re-launch, re-positioning flagship offering (SmartPAD) to include all sensor-to-cloud capabilities for immediate customer &amp; market understanding</li><li>Strategically introduced under-utilized data products in branded product line (ColdEDGE Web Services)</li><li>Led product, market, and competitor research resulting in roadmap and sales enablement insights</li><li>Created product marketing relational database</li></ul>`,
+  },
+  {
+    id: 3,
+    company: 'Steer Software',
+    job_title: 'Founder & CEO',
+    start_date: '2018-07-01',
+    end_date: '2021-04-01',
+    dutiesString: `<ul><li>Delivered MVP product, from prototype testing to pilot customer release, directly resulting in pilot customer's 200% boost in revenue</li><li>Raised capital for product research, marketing, and development</li><li>Integrated small (4-person) development team with pilot customer for ongoing collaboration</li></ul>`
   }
 ]
 export const WORK_CLEAR_STATE: IWork[] = [

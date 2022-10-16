@@ -8,6 +8,7 @@ import { PdfViewerModule } from 'ng2-pdf-viewer';
 import { AppRoutingModule } from './app-routing.module';
 import { AppComponent } from './app.component';
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
+import { NgxCaptureModule } from 'ngx-capture';
 
 import { HashLocationStrategy, LocationStrategy } from '@angular/common';
 import { SidebarComponent } from './components/sidebar/sidebar.component';
@@ -22,22 +23,25 @@ import { SummaryService } from './services/summary.service';
 import { ProjectService } from './services/project.service';
 import { WorkService } from './services/work.service';
 import { SkillService } from './services/skill.service';
-import { PrintPreviewComponent } from './components/print-preview/print-preview.component';
 import { SidebarService } from './services/sidebar.service';
 import { DragDropModule } from '@angular/cdk/drag-drop';
 import { PrintPreviewService } from './services/print-preview.service';
-import { PreviewComponent } from './components/preview/preview.component';
 import { SpinnerComponent } from './components/spinner/spinner.component';
 import { ScrollService } from './services/scroll.service';
 import { GuardComponent } from './views/guard/guard.component';
 import { ToastService } from './services/toast.service';
 import { ToastComponent } from './components/toast/toast.component';
+import { DocViewerComponent } from './views/doc-viewer/doc-viewer.component';
+import { ResizeLRDirective } from './directives/resize-lr.directive';
+import { DocComponent } from './views/doc-viewer/doc/doc.component';
+import { PrintPreviewComponent } from './views/print-preview/print-preview.component';
+import { GeneratePdfService } from './services/generate-pdf.service';
+
 
 @NgModule({
   declarations: [
     AppComponent,
     SidebarComponent,
-    
     SummaryComponent,
     ProjectsComponent,
     WorkXpComponent,
@@ -45,11 +49,13 @@ import { ToastComponent } from './components/toast/toast.component';
     EducationComponent,
     InputsComponent,
     ActionBarComponent,
-    PrintPreviewComponent,
-    PreviewComponent,
     SpinnerComponent,
     GuardComponent,
     ToastComponent,
+    DocViewerComponent,
+    ResizeLRDirective,
+    DocComponent,
+    PrintPreviewComponent,
   ],
   imports: [
     BrowserModule,
@@ -60,7 +66,8 @@ import { ToastComponent } from './components/toast/toast.component';
     PdfViewerModule,
     DragDropModule,
     LayoutModule,
-    BrowserAnimationsModule
+    BrowserAnimationsModule,
+    NgxCaptureModule
   ],
   providers: [
     SummaryService,
@@ -75,7 +82,8 @@ import { ToastComponent } from './components/toast/toast.component';
       provide: LocationStrategy,
       useClass: HashLocationStrategy
     },
-    ToastService
+    ToastService,
+    GeneratePdfService
   ],
   bootstrap: [AppComponent]
 })

@@ -8,8 +8,17 @@
 
 $action-width: calc($view-width - $sidebar-width);
 
+.bar-divider {
+  height: 2.5rem;
+  display: block;
+  width: 0px;
+  border-right: 2px solid $ish-black;
+  margin-left: 2rem;
+  margin-right: 1rem;
+}
+
 .action-bar {
-  position: sticky;
+  position: fixed;
   top: 0;
 
 
@@ -77,6 +86,11 @@ $action-width: calc($view-width - $sidebar-width);
           border: 2px solid $black-ish;
           color: $black-ish;
           padding: 0.67rem 1.7rem 0.6rem 0.8rem;
+
+          &.close-viewer {
+            color: $danger;
+            border: 2px solid $danger;
+          }
         }
 
         &:hover {
@@ -93,3 +107,4 @@ $action-width: calc($view-width - $sidebar-width);
     }
   }
 }
+

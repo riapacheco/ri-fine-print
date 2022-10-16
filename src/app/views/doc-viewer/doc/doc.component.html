@@ -1,0 +1,165 @@
+<div
+  [style.padding]="config.margins"
+  [style.min-height]="config.minHeight"
+  [style.width]="config.width"
+  class="doc"
+  id="docData"
+  #docElement>
+  <!-- ---------------------------- CONTACT INFO ----------------------------- -->
+  <div
+    [style.margin-bottom.px]="config.sectionSpacingPx"
+    class="doc-section">
+    <div class="doc-content contact-info">
+      <!-- ------------------------------ FULL NAME ------------------------------ -->
+      <div class="profile-name">
+        <span>
+          {{ (profile.summary$ | async)?.first_name }} {{ (profile.summary$ | async)?.last_name }}
+        </span>
+      </div>
+
+      <!-- --------------------- LOCATION, EMAIL, PHONE, URL --------------------- -->
+      <ul class="list-unstyled">
+        <li>
+          {{ (profile.summary$ | async)?.location }}
+        </li>
+        <li>
+          {{ (profile.summary$ | async)?.email }}
+        </li>
+        <li>
+          {{ (profile.summary$ | async)?.phone }}
+        </li>
+        <li>
+          {{ (profile.summary$ | async)?.url }}
+        </li>
+      </ul>
+
+      <!-- ----------------- ALT URL, TWITTER, LINKEDIN, GITHUB ------------------ -->
+      <ul class="list-unstyled">
+        <li>
+          {{ (profile.summary$ | async)?.alt_url }}
+        </li>
+        <li>
+          {{ (profile.summary$ | async)?.twitter_handle }}
+        </li>
+        <li>
+          {{ (profile.summary$ | async)?.linkedin_handle }}
+        </li>
+        <li>
+          {{ (profile.summary$ | async)?.github_handle }}
+        </li>
+      </ul>
+    </div>
+  </div>
+
+  <!-- -------------------------- SUMMARY OBJECTIVE -------------------------- -->
+  <div
+    [style.margin-bottom.px]="config.sectionSpacingPx"
+    class="doc-section">
+    <div class="doc-content">
+      <div class="doc-header">
+        <div class="header-title">
+          <span>
+            Objective
+          </span>
+        </div>
+
+        <div class="header-divider"></div>
+      </div>
+
+      <div
+        class="doc-body inner-wrapper"
+        [style.margin-left]="'auto'"
+        [style.width.%]="85"
+        >
+        <div [innerHTML]="(profile.summary$ | async)?.summary_objective"></div>
+      </div>
+    </div>
+  </div>
+
+  <!-- ------------------------------ PROJECTS ------------------------------- -->
+  <div
+    class="doc-section"
+    [style.margin-bottom.px]="config.sectionSpacingPx"
+    >
+    <div class="doc-content">
+      <div class="doc-header">
+        <div class="header-title">
+          <span>
+            Projects
+          </span>
+        </div>
+        <div class="header-divider"></div>
+      </div>
+
+      <div
+        [style.margin-left]="'auto'"
+        class="doc-body">
+        <table>
+          <tr *ngFor="let project of (project.projects$ | async)" class="projects-body">
+            <td class="project-name">
+              <span>
+                {{ project.name }}
+              </span>
+            </td>
+            <td class="project">
+              <div class="inner-wrapper">
+                <div [innerHTML]="project.description"></div>
+              </div>
+
+              <ul class="projects-ul">
+                <li>
+                  {{ project.toolsString }}
+                </li>
+                <li>
+                  {{ project.url }}
+                </li>
+              </ul>
+            </td>
+          </tr>
+        </table>
+      </div>
+    </div>
+  </div>
+
+  <!-- ----------------------------- EXPERIENCE ------------------------------ -->
+  <div
+    class="doc-section"
+    [style.margin-bottom.px]="config.sectionSpacingPx"
+    >
+    <div class="doc-content">
+      <div class="doc-header">
+        <div class="header-title">
+          <span>
+            Work Experience
+          </span>
+        </div>
+        <div class="header-divider"></div>
+      </div>
+
+      <div
+        class="doc-body"
+        [style.margin-left]="'auto'"
+        >
+        <table>
+          <tr *ngFor="let work of (works.works$ | async)" class="projects-body">
+            <td class="project-name work">
+              <div class="work-title">
+                {{ work.job_title }}
+              </div>
+
+              <div class="work-company">
+                {{ work.company }}
+              </div>
+              <div class="work-dates">
+                {{ work.start_date }} <span class="hint-grey">></span> {{ work.end_date }}
+              </div>
+            </td>
+            <td class=" inner-wrapper">
+              <div [innerHTML]="work.dutiesString"></div>
+            </td>
+          </tr>
+        </table>
+      </div>
+    </div>
+  </div>
+</div>

@@ -1,9 +1,17 @@
-<app-toast></app-toast>
-<ng-container *ngIf="(printPrev.showsPreview$ | async)">
-  <app-print-preview></app-print-preview>
-</ng-container>
-<ng-container *ngIf="!isMobile">
-  <app-sidebar></app-sidebar>
+<div #topScroll></div>
+
+<ng-container *ngIf="!isMobile;else onMobileBlock">
+  <app-toast></app-toast>
+  <ng-container *ngIf="(printPrev.showsPreview$ | async)">
+    <app-doc-viewer></app-doc-viewer>
+  </ng-container>
+  <ng-container *ngIf="!router.isActive('print-preview', true)">
+    <app-sidebar></app-sidebar>
+  </ng-container>
+
+  <router-outlet (activate)="onRouteActivation()"></router-outlet>
 </ng-container>
 
-<router-outlet></router-outlet>
+<ng-template #onMobileBlock>
+  <app-guard></app-guard>
+</ng-template>

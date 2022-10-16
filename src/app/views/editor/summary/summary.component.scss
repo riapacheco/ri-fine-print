@@ -2,6 +2,11 @@
 @import '../../../../scss/mixins.scss';
 @import '../../../../scss/form-layout.scss';
 @import '../../../../scss/quill.scss';
+
+:host {
+  -webkit-font-smoothing: antialiased !important;
+  overflow: hidden;
+}
 .ql-container.ql-snow {
   font-size: 1.3rem !important;
 }

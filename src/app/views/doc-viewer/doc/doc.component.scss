@@ -1,0 +1,168 @@
+
+
+@import 'node_modules/@riapacheco/yutes/season/two.scss';
+@import '../../../../scss/mixins.scss';
+@import '../../../../scss/variables.scss';
+
+pdf-viewer {
+  border: 1px solid black;
+  color: black;
+}
+
+$header-padding: 1rem;
+$font-size: 1.35rem;
+
+@page {
+  size: auto !important;
+  margin: 0px !important;
+}
+
+:host {
+  display: flex;
+  flex-flow: row nowrap;
+  align-items: center;
+  justify-content: center;
+  overflow-y: visible;
+}
+
+.doc {
+  font-size: 1.35rem;
+  box-shadow: 0px 0px 32px #00000020;
+  background-color: white;
+  position: relative;
+
+  .page-break-line {
+    position: absolute;
+    top: 8.5in;
+    left: 0;
+    right: 0;
+    display: flex;
+    flex-flow: row nowrap;
+    align-items: center;
+    justify-content: space-around;
+
+    .page-break-label {
+      white-space: nowrap;
+    }
+    .page-break-divider {
+      display: inline-block;
+      width: inherit;
+      border-bottom: 3px solid black;
+    }
+
+  }
+  
+  p {
+    font-size: $font-size;
+    line-height: 1.5;
+  }
+
+  .doc-section {
+    width: 100%;
+    // border: 1px solid red;
+    .doc-content {
+      display: flex;
+      flex-flow: column nowrap;
+      align-items: flex-start;
+      justify-content: flex-start;
+
+      &.contact-info {
+        display: flex;
+        flex-flow: row nowrap;
+        align-items: center;
+        justify-content: space-around;
+      }
+
+      .doc-header {
+        padding-top: $header-padding;
+        padding-bottom: $header-padding;
+        // border: 1px solid blue;
+        width: 100%;
+        display: flex;
+        flex-flow: row nowrap;
+        align-items: center;
+        .header-title {
+          white-space: nowrap;
+          span {
+            @include text('h5');
+          }
+        }
+        .header-divider {
+          width: 100%;
+          border-bottom: 2px solid $hint-ish-grey;
+          margin-left: 1.5rem;
+        }
+      }
+
+      .doc-body {
+        font-size: $font-size !important;
+
+        p {
+          font-size: $font-size !important;
+        }
+      }
+    }
+  }
+}
+
+/* ---------------------------- PROFILE / SUMMARY --------------------------- */
+.contact-info {
+  padding-top: $header-padding;
+}
+.profile-name {
+  @include text('h3');
+}
+
+/* -------------------------------- PROJECTS -------------------------------- */
+table {
+
+  tr {
+    
+    td {
+      padding-bottom: 0.5rem;
+      line-height: 1.5;
+      &.project-name {
+        @include text('h6');
+        padding-right: 1rem;
+        padding-bottom: 0.5rem;
+        white-space: nowrap;
+        text-align: right;
+
+        span {
+          color: $black-ish;
+          padding: 0.8rem;
+          border-radius: 5px;
+          font-weight: 700;
+          margin-top: -2rem;
+        }
+      }
+      padding-left: 2rem;
+
+      &.project {
+        padding-bottom: 1.5rem;
+      }
+    }
+  }
+}
+.project:nth-child(1) {
+  padding-top: 0rem;
+}
+
+/* ------------------------------- EXPERIENCE ------------------------------- */
+.work-title {
+  padding-bottom: 1rem;
+  margin-bottom: 1rem;
+  border-bottom: 2px solid $ish-grey;
+}
+.work-company,
+.work-dates {
+  font-weight: 500;
+  font-size: 1.1rem;
+  padding-bottom: 0.5rem;
+}
+.hint-ish-grey {
+  color: $hint-ish-grey;
+}
+.work-dates {
+  font-weight: 500;
+}

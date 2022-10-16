@@ -41,12 +41,62 @@ p {
 
 .inner-wrapper {
   p {
+    font-size: 1.35rem;
     line-height: 1.5;
+    margin: 0px;
+    // padding-bottom: 1rem;
   }
 }
 
 input {
   -webkit-font-smoothing: antialiased !important;
+}
+.hint-grey {
+  color: $hint-grey !important;
+}
+
+.top-spacer {
+  display: block;
+  height: $action-bar-height;
+}
+
+.clear-block {
+  padding-top: 10rem;
+}
+.form {
+  margin-bottom: -10rem;
+}
+.cdk-drag-dragging {
+  cursor: grabbing;
+}
+/* -------------------------------------------------------------------------- */
+/*                                    PRINT                                   */
+/* -------------------------------------------------------------------------- */
+// @media print {
+//   :not(.canPrint) {
+//     visibility: hidden; 
+//   }
+// }
+// @media print {
+//   .canPrint {
+//     visibility: visible !important;
+//     @page {
+//       size: auto;
+//       margin: 0px;
+//     }
+//   }
+//   footer {
+//     display: none;
+//   }
+// }
+@media print {
+  .doNotPrint {
+    visibility: hidden;
+  }
+
+  .page-break {
+    page-break-after: always;
+  }
 }
 /* -------------------------------------------------------------------------- */
 /*                                   Z-INDEX                                  */
@@ -57,22 +107,18 @@ app-sidebar,
   z-index: 12;
 }
 
-app-action-bar,
-.action-bar {
-  z-index: 20;
-}
-
 .remove-item {
   z-index: 100;
 }
 
-app-preview,
-app-print-preview,
-.print-preview {
+app-doc-viewer {
   z-index: 1000;
 }
 
 app-toast,
-.toast {
+.toast,
+.doc-data,
+app-action-bar,
+.action-bar {
   z-index: 2000;
 }

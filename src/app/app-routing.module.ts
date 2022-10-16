@@ -1,18 +1,18 @@
 import { NgModule } from '@angular/core';
 import { RouterModule, Routes } from '@angular/router';
-import { EditorComponent } from './views/editor/editor.component';
 import { EducationComponent } from './views/editor/education/education.component';
 import { ProjectsComponent } from './views/editor/projects/projects.component';
 import { SkillsComponent } from './views/editor/skills/skills.component';
 import { SummaryComponent } from './views/editor/summary/summary.component';
 import { WorkXpComponent } from './views/editor/work-xp/work-xp.component';
 import { GuardComponent } from './views/guard/guard.component';
+import { PrintPreviewComponent } from './views/print-preview/print-preview.component';
 
 const routes: Routes = [
   {
     path: '',
     redirectTo: 'editor/summary',
-    pathMatch: 'full',
+    pathMatch: 'full'
   },
   {
     path: 'editor/summary',
@@ -33,6 +33,10 @@ const routes: Routes = [
   {
     path: 'editor/education',
     component: EducationComponent
+  },
+  {
+    path: 'print-preview',
+    component: PrintPreviewComponent
   },
   {
     path: 'status',

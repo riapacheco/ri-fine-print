@@ -42,7 +42,24 @@
             "allowedCommonJsDependencies": [
               "quill",
               "pdfjs-dist/build/pdf",
-              "pdfjs-dist/web/pdf_viewer"
+              "pdfjs-dist/web/pdf_viewer",
+              "rgbcolor",
+              "html2canvas",
+              "core-js/modules/web.dom-collections.iterator.js",
+              "core-js/modules/es.string.trim.js",
+              "core-js/modules/es.string.starts-with.js",
+              "core-js/modules/es.string.split.js",
+              "core-js/modules/es.string.replace.js",
+              "core-js/modules/es.string.match.js",
+              "core-js/modules/es.string.includes.js",
+              "core-js/modules/es.string.ends-with.js",
+              "core-js/modules/es.regexp.to-string.js",
+              "core-js/modules/es.promise.js",
+              "core-js/modules/es.array.reverse.js",
+              "core-js/modules/es.array.reduce.js",
+              "core-js/modules/es.array.iterator.js",
+              "core-js/modules/es.array.index-of.js",
+              "raf"
             ],
             "outputPath": "dist/ri-fine-print",
             "index": "src/index.html",
@@ -57,7 +74,10 @@
             "styles": [
               "src/styles.scss"
             ],
-            "scripts": []
+            "scripts": [
+              "node_modules/html2canvas/dist/html2canvas.min.js",
+              "node_modules/jspdf/dist/jspdf.min.js"
+            ]
           },
           "configurations": {
             "production": {

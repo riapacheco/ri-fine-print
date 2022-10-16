@@ -74,7 +74,7 @@ $mobile-content-width: 90%;
   @if $textEl == 'h3' {
     font-size: 2.8rem;
     line-height: 2.8rem;
-    letter-spacing: -0.1rem;
+    letter-spacing: -0.13rem;
     margin-block-start: -1px;
     margin-block-end: 3px;
     margin-inline-start: 0px;
@@ -105,15 +105,16 @@ $mobile-content-width: 90%;
     -webkit-font-smoothing: antialiased !important;
   }
   @if $textEl == 'h6' {
-    font-size: 1.3rem;
+    font-size: 1.2rem;
     line-height: 1.3rem;
-    letter-spacing: 0.09rem;
+    letter-spacing: 0.07rem;
     margin-block-start: 1px;
     font-weight: 600;
     margin-block-end: 2px;
     margin-inline-start: 1px;
     margin-inline-end: 1px;
     -webkit-font-smoothing: antialiased !important;
+    text-transform: uppercase;
   }
   
 }

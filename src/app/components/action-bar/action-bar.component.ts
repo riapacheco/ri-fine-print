@@ -1,5 +1,7 @@
-import { Component, EventEmitter, Input, OnInit, Output } from '@angular/core';
-import { PrintPreviewService } from 'src/app/services/print-preview.service';
+import { Component, EventEmitter, Input, OnDestroy, OnInit, Output } from '@angular/core';
+import { Router } from '@angular/router';
+import { Observable, Subscription } from 'rxjs';
+import { PrintPreviewService, TScaleType } from 'src/app/services/print-preview.service';
 import { ToastService } from 'src/app/services/toast.service';
 
 
@@ -8,7 +10,7 @@ import { ToastService } from 'src/app/services/toast.service';
   templateUrl: './action-bar.component.html',
   styleUrls: ['./action-bar.component.scss']
 })
-export class ActionBarComponent implements OnInit {
+export class ActionBarComponent implements OnInit, OnDestroy {
   @Input() title = 'Summary';
   @Input() showsSpinner = false;
   @Input() button = {
@@ -18,12 +20,19 @@ export class ActionBarComponent implements OnInit {
   @Output() primaryClick = new EventEmitter<any>();
   @Output() secondaryClick = new EventEmitter<any>();
 
+
+  private sub = new Subscription();
   constructor(
     public printPrev: PrintPreviewService,
-    public toast: ToastService
+    public toast: ToastService,
+    public router: Router
   ) { }
 
   ngOnInit(): void {
+
+  }
+  ngOnDestroy() {
+    this.sub.unsubscribe();
   }
 
   onPrimaryClick(value: any) {
@@ -36,11 +45,20 @@ export class ActionBarComponent implements OnInit {
 
   onPrintClick(e: any) {
     if (e) {
-      this.toast.callToast(`This feature is on its way!`);
+      this.toast.callToast('Feature coming soon!');
       setTimeout(() => {
         this.toast.dismissToast();
       }, 2500);
     }
-
   }
+
+  // onPrintClick(e: any) {
+  //   if (e) {
+  //     this.printPrev.onHidePreview();
+  //     this.router.navigateByUrl('/print-preview');
+  //   }
+  // }
+
+  
+
 }
