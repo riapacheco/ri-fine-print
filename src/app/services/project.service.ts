@@ -11,7 +11,7 @@ export const PROJECTS_INIT_STATE: IProject[] = [
     tools: [
     ],
     cover_image: '',
-    toolsString: 'Typescript, Angular, TesseractJS (OCR), Capacitor (iOS/Android), @riapacheco/yutes',
+    toolsString: 'Typescript, Angular, TesseractJS (OCR), Capacitor (iOS/Android), @riapacheco/yutes, Supabase, Postgres',
     spins: false
   },
   {
@@ -22,15 +22,15 @@ export const PROJECTS_INIT_STATE: IProject[] = [
     url: 'https://fine-print.app',
     tools: [],
     cover_image: '',
-    toolsString: 'TypeScript, JavaScript, Angular, jsPDF, @riapacheco/yutes',
+    toolsString: 'TypeScript, JavaScript, Angular, jsPDF, @riapacheco/yutes, RxJS',
   },
   {
     id: 3,
     name: 'Asset Tracker',
     spins: false,
     description: `AssetTracker is an internal equipment tracking tool that enables the manufacturing team to track all sensor and had compute technology equipment by location and MFG/M&R process`,
-    toolsString: `Typescript, Angular, AWS`,
-    url: `Internal solution (no url available)`
+    toolsString: `Internal solution (no details available)`,
+    url: `Internal solution (no details available)`
   }
 ];
 

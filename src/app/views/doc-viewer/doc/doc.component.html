@@ -39,13 +39,13 @@
           {{ (profile.summary$ | async)?.alt_url }}
         </li>
         <li>
-          {{ (profile.summary$ | async)?.twitter_handle }}
+          twitter.com/{{ (profile.summary$ | async)?.twitter_handle }}
         </li>
         <li>
-          {{ (profile.summary$ | async)?.linkedin_handle }}
+          linkedin.com/in/{{ (profile.summary$ | async)?.linkedin_handle }}
         </li>
         <li>
-          {{ (profile.summary$ | async)?.github_handle }}
+          github.com/{{ (profile.summary$ | async)?.github_handle }}
         </li>
       </ul>
     </div>
