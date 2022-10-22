@@ -1,93 +1,61 @@
-import { Component, ElementRef, OnDestroy, OnInit, ViewChild } from '@angular/core';
-import { Subscription } from 'rxjs';
+import { Component, ElementRef, OnInit, ViewChild } from '@angular/core';
 import { QUILL } from 'src/app/constants/quill.constants';
 import { IWork } from 'src/app/interfaces/work.interface';
-import { WorkService } from 'src/app/services/work.service';
-import { pipe } from 'rxjs';
+import { ResumeService } from 'src/app/services/resume.service';
 
 @Component({
   selector: 'app-work-xp',
   templateUrl: './work-xp.component.html',
   styleUrls: ['./work-xp.component.scss']
 })
-export class WorkXpComponent implements OnInit, OnDestroy {
+export class WorkXpComponent implements OnInit {
 
   works!: IWork[];
-
-  dutiesIndex!: number;
   @ViewChild('bottom') bottomDiv!: ElementRef;
   button = { primary: 'Add Work', primaryIcon: 'add'}
   showsSpinner = false;
   modules = QUILL.MODULES_BULLETS;
   style = QUILL.STYLE;
-  
-  spin = {
-    company: false,
-    jobTitle: false,
-    startDate: false,
-    endDate: false,
-    duties: false,
-    url: false,
-  };
-  private sub = new Subscription();
+
   constructor(
-    public ws: WorkService
+    public resume: ResumeService
   ) { }
 
   ngOnInit(): void {
     this.loadData();
   }
-  ngOnDestroy() {
-    this.sub.unsubscribe()
-  }
-  private stopSpinners() {
-    this.spin = {
-      company: false,
-      jobTitle: false,
-      startDate: false,
-      endDate: false,
-      duties: false,
-      url: false,
-    };
+
+  private scrollToBottom() {
+    setTimeout(() => { this.bottomDiv.nativeElement.scrollIntoView({ behavior: 'smooth'}); }, 400);
   }
 
   loadData() {
-    this.sub.add(this.ws.getWorks().subscribe((work: IWork[]) => {
-      this.works = work;
-    }))
-  }
-
-  public makeDutyArray(data: any) {
-    console.log(data);
+    const works = this.resume.getExperience();
+    this.works = works;
   }
 
   onAddWork() {
-    let lastId = this.works.length + 1;
-    const newWorkItem = {
-      id: lastId++,
-      company: '',
-      job_title: '',
-      start_date: '',
-      end_date: '',
-      duties: '',
-      url: '',
-      dutiesString: ''
-    }
-    this.works.push(newWorkItem);
-    setTimeout(() => {
-      this.bottomDiv.nativeElement.scrollIntoView({ behavior: 'smooth'});
-    }, 400);
+    const works = this.resume.addBlankExperience();
+    this.works = works;
+    this.scrollToBottom();
   }
 
-  onRemoveWork(workId: number){
-    this.ws.onRemoveWork(workId, this.works);
+  onRemoveWork(workId: number | undefined){
+    if (workId) {
+      const works = this.resume.deleteExperience(workId, this.works);
+      this.works = works;
+    }
   }
 
   onUpdate() {
-    this.ws.updateWorks(this.works);
+    this.resume.updateExperience(this.works);
     setTimeout(() => {
       this.showsSpinner = false;
     }, 320);
   }
 
+  onClearAll() {
+    const works = this.resume.clearExperiences();
+    this.works = works;
+  }
 }

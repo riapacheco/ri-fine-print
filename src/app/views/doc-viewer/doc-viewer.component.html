@@ -4,7 +4,6 @@
     [style.transform]="(print.sizeScale$ | async)"
     class="doc-viewer" 
     cdkDrag>
-    <ng-container [ngTemplateOutlet]="instructions"></ng-container>
     <app-doc></app-doc>
   </div>
 
@@ -18,7 +17,6 @@
   <div
     *ngSwitchCase="'scale(0.9)'"
     [style.transform]="(print.sizeScale$ | async)"
-    
     class="doc-viewer" cdkDrag>
     <app-doc></app-doc>
   </div>
@@ -27,16 +25,7 @@
   <div
     *ngSwitchCase="'scale(1)'"
     [style.transform]="(print.sizeScale$ | async)"
-    
     class="doc-viewer" cdkDrag>
     <app-doc></app-doc>
   </div>
 </ng-container>
-
-<ng-template #instructions> 
-  <div class="instructions-block">
-    <span>
-      Draggable window
-    </span>
-  </div>
-</ng-template>

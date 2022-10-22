@@ -7,7 +7,7 @@
 
 <div class="clear-block">
   <a
-    (click)="ss.onClearAll()"
+    (click)="onClearAll()"
     class="clear-all-btn">
     <i class="material-icons">clear_all</i>
     <span>
@@ -34,7 +34,8 @@
         (focusout)="onUpdate(); showsSpinner = true"
         name="skill"
         [(ngModel)]="skill.name"
-        type="text">
+        type="text"
+        [id]="skill.id">
     </div>
 
     <div class="form-group">
@@ -42,6 +43,7 @@
         Brief Description
       </label>
       <input
+        (keydown.enter)="onAddSkill()"
         name="description"
         (focusout)="onUpdate(); showsSpinner = true"
         [(ngModel)]="skill.description"
@@ -49,4 +51,12 @@
     </div>
   </div>
 </div>
+
+<div class="form-width ml-4 pt-2">
+  <a class="add-new" (click)="onAddSkill()">
+    <i class="material-icons">add</i>
+    Add new
+  </a>
+</div>
+
 <div #bottomScroll></div>

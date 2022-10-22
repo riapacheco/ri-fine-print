@@ -1,4 +1,447 @@
 <div
-  class="wrapper">
-  <app-doc></app-doc>
+  [class]="previewClass"
+  [style.width.in]="8.5">
+  <div
+    id="docData"
+    
+    [style.padding-top.in]="isPrinting ? 0 : marginInches"
+    [style.padding-left.in]="marginInches"
+    [style.padding-bottom.in]="marginInches"
+    [style.padding-right.in]="marginInches"
+
+    class="doc-data"
+    >
+    <ng-container *ngIf="marginHighlight">
+      <div
+        [style.height.in]="marginInches"
+        class="margin-highlight top">
+      </div>
+      <div
+        [style.height.in]="marginInches"
+        class="margin-highlight bottom">
+      </div>
+      <div
+        [style.width.in]="marginInches"
+        class="margin-highlight left">
+      </div>
+
+      <div
+        [style.width.in]="marginInches"
+        class="margin-highlight right-highlight">
+      </div>
+
+    </ng-container>
+
+    <!-- ------------------------------- SUMMARY ------------------------------- -->
+    <div
+      class="resume-block contact-info"
+      [style.margin-bottom.in]="sectionSpacingHighlight ? '0rem' : sectionSpacing"
+      >
+      <div class="profile-name">
+        <span>
+          {{ summary.first_name }} {{ summary.last_name }}
+        </span>
+      </div>
+      <div
+        [style.width.%]="contactInfoWidth"
+        [ngClass]="contactInfoHighlight ? 'contact-info highlight' : 'contact-info'"
+
+        >
+
+        <ul
+          [style.margin-right.rem]="listBlockSpace"
+          class="list-unstyled">
+          <li *ngIf="summary.location">
+            <span>
+              Location
+            </span>
+            <span>
+              {{ summary.location }}
+            </span>
+          </li>
+          <li *ngIf="summary.email">
+            <span>
+              Email
+            </span>
+            <span>
+              {{ summary.email }}
+            </span>
+          </li>
+          <li *ngIf="summary.phone">
+            <span>
+              Phone
+            </span>
+            <span>
+              {{ summary.phone }}
+            </span>
+          </li>
+          <li *ngIf="summary.url">
+            <span>
+              Website
+            </span>
+            <span>
+              {{ summary.url }}
+            </span>
+          </li>
+        </ul>  
+  
+        <ul class="list-unstyled">
+          <li>
+            <span>Other URL</span>
+            <span>
+              {{ summary.alt_url }}
+            </span>
+          </li>
+          <li>
+            <span>
+              Twitter.com/
+            </span>
+            <span>
+              {{ summary.twitter_handle }}
+            </span>
+          </li>
+          <li>
+            <span>Linkedin.com/in/</span>
+            <span>
+              {{ summary.linkedin_handle }}
+            </span>
+          </li>
+          <li>
+            <span>
+              Github.com/
+            </span>
+            <span>
+              {{ summary.github_handle }}
+            </span>
+          </li>
+        </ul>
+  
+        <div
+          *ngIf="sectionSpacingHighlight"
+          [style.height.in]="sectionSpacing"
+          class="highlight-spacer">
+        </div>
+      </div>
+    </div>
+
+    <!-- ------------------------------ OBJECTIVE ------------------------------ -->
+    <div
+      class="resume-block"
+      [style.padding-bottom.in]="sectionSpacingHighlight ? '0rem' : sectionSpacing"
+      >
+      <div class="block-header">
+        <div class="header-title">
+          <span>
+            Objective
+          </span>
+        </div>
+        <div class="header-divider"></div>
+      </div>
+
+      <div 
+        [ngClass]="summaryContentHighlight ? 'summary-para inner-wrapper highlight' : 'summary-para inner-wrapper'"
+        [style.max-width.%]="summaryContentWidth"
+        [style.margin-left]="'auto'"
+        >
+        <div [innerHTML]="summary.summary_objective"></div>
+      </div>
+      <div
+        *ngIf="sectionSpacingHighlight"
+        [style.height.in]="sectionSpacing"
+        class="highlight-spacer">
+      </div>
+    </div>
+
+
+    <!-- ------------------------------ PROJECTS ------------------------------- -->
+    <div 
+      class="resume-block"
+      [style.margin-bottom.in]="sectionSpacingHighlight ? '0rem' : sectionSpacing"
+      >
+      <div class="block-header">
+        <div class="header-title">
+          <span>
+            Projects
+          </span>
+        </div>
+        <div class="header-divider"></div>
+      </div>
+
+      <div class="block-body projects-body">
+        <table>
+          <tr *ngFor="let project of projects">
+            <td class="project-name">
+              <span>
+                {{ project.name }}
+              </span>
+            </td>
+            <td
+              [style.width.%]="projectDetailsWidth"
+              [ngClass]="projectDetailsHighlight ? 'project highlight' : 'project'"
+              >
+              <div class="inner-wrapper">
+                <div [innerHTML]="project.description"></div>
+              </div>
+
+              <ul *ngIf="project.toolsString" class="projects-ul">
+                <li>
+                  {{ project.toolsString }}
+                </li>
+                <li>
+                  {{ project.url }}
+                </li>
+              </ul>
+            </td>
+          </tr>
+        </table>
+      </div>
+
+      <div
+        *ngIf="sectionSpacingHighlight"
+        [style.height.in]="sectionSpacing"
+        class="highlight-spacer">
+      </div>
+    </div>
+
+
+    <!-- -------------------------- WORKD EXPERIENCE --------------------------- -->
+    <div
+      class="resume-block"
+      [style.padding-bottom.in]="sectionSpacingHighlight ? '0rem' : sectionSpacing"
+      >
+      <div class="block-header">
+        <div class="header-title">
+          <span>
+            Work Experience
+          </span>
+        </div>
+        <div class="header-divider"></div>
+      </div>
+
+      <div class="block-body">
+        <table>
+          <tr *ngFor="let work of workExperience">
+            <td class="work-title-company">
+              <div class="work-title">
+                {{ work.job_title }}
+              </div>
+              <div class="work-company">
+                {{ work.company }}
+              </div>
+              <div class="work-dates">
+                {{ work.start_date }} <span class="hint-grey">></span> {{ work.end_date }}
+              </div>
+            </td>
+
+            <td
+              [ngClass]="expDetailsHighlight ? 'inner-wrapper project-details highlight' : 'inner-wrapper project-details'"
+              [style.width.%]="expDetailsWidth"
+              >
+              <div [innerHTML]="work.dutiesString"></div>
+            </td>
+          </tr>
+        </table>
+      </div>
+
+      <div
+        *ngIf="sectionSpacingHighlight"
+        [style.height.in]="sectionSpacing"
+        class="highlight-spacer">
+      </div>
+    </div>
+
+    <!-- --------------------------- SKILLS / TOOLS ---------------------------- -->
+    <div class="resume-block">
+      <div class="block-header">
+        <div class="header-title">
+          <span>
+            Hard & Soft Skills
+          </span>
+        </div>
+        <div class="header-divider"></div>
+      </div>
+
+      <div
+        class="block-body skills"
+        >
+        <div
+          [style.width.%]="skillBlockWidth"
+          [ngClass]="skillBlockHighlight ? 'skill highlight' : 'skill'"
+          *ngFor="let skill of skills">
+          <div class="skill-name">
+            {{ skill.name }}
+          </div>
+          <div class="skill-description">
+            {{ skill.description }}
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
 </div>
+
+<ng-container *ngIf="!isPrinting">
+  <div class="style-controls">
+    <div class="title">
+      Format Document
+    </div>
+  
+    <div
+      (mouseover)="marginHighlight = true;"
+      (mouseout)="marginHighlight = false;"
+      class="control">
+      <div class="label">
+        <h6>
+          MARGINS
+        </h6>
+      </div>
+      <div class="field">
+        <input
+          name="marginInches"
+          [(ngModel)]="marginInches"
+          (keydown)="topMargin = marginInches"
+          type="number">
+          <div class="unit">
+            inches
+          </div>
+      </div>
+    </div>
+  
+  
+    <div
+      (mouseover)="sectionSpacingHighlight = true"
+      (mouseout)="sectionSpacingHighlight = false"
+      class="control">
+      <div class="label">
+        <h6>
+          Section Spacing
+        </h6>
+      </div>
+      <div class="field">
+        <input
+          name="sectionSpacing"
+          [(ngModel)]="sectionSpacing"
+          type="number">
+          <div class="unit">
+            inches
+          </div>
+      </div>
+    </div>
+  
+    <div
+      (mouseover)="contactInfoHighlight = true"
+      (mouseout)="contactInfoHighlight = false"
+      class="control">
+      <div class="label">
+        <h6>
+          Contact Info Width
+        </h6>
+      </div>
+      <div class="field">
+        <input
+          name="contactInfoWidth"
+          [(ngModel)]="contactInfoWidth"
+          type="number">
+          <div class="unit">
+            % of width
+          </div>
+      </div>
+    </div>
+  
+    <div
+      (mouseover)="summaryContentHighlight = true"
+      (mouseout)="summaryContentHighlight = false"
+      class="control">
+      <div class="label">
+        <h6>
+          Objective Width
+        </h6>
+      </div>
+  
+      <div class="field">
+        <input
+          name="summaryContentWidth"
+          [(ngModel)]="summaryContentWidth"
+          type="number">
+          <div class="unit">
+            % of width
+          </div>
+      </div>
+    </div>
+  
+    <div
+      (mouseover)="projectDetailsHighlight = true"
+      (mouseout)="projectDetailsHighlight = false"
+      class="control">
+      <div class="label">
+        <h6>
+          Project Details Width
+        </h6>
+      </div>
+  
+      <div class="field">
+        <input
+          name="projectDetailsWidth"
+          [(ngModel)]="projectDetailsWidth"
+          type="number">
+          <div class="unit">
+            % of width
+          </div>
+      </div>
+    </div>
+    <div
+      (mouseover)="expDetailsHighlight = true"
+      (mouseout)="expDetailsHighlight = false"
+      class="control">
+      <div class="label">
+        <h6>
+          Experience Details Width
+        </h6>
+      </div>
+  
+      <div class="field">
+        <input
+          name="expDetailsWidth"
+          [(ngModel)]="expDetailsWidth"
+          type="number">
+          <div class="unit">
+            % of width
+          </div>
+      </div>
+    </div>
+  
+    <div
+      (mouseover)="skillBlockHighlight = true"
+      (mouseout)="skillBlockHighlight = false"
+      class="control">
+      <div class="label">
+        <h6>
+          Skill Block Width
+        </h6>
+      </div>
+  
+      <div class="field">
+        <input
+          name="skillBlockWidth"
+          [(ngModel)]="skillBlockWidth"
+          type="number">
+          <div class="unit">
+            % of width
+          </div>
+      </div>
+    </div>
+  
+    <div class="flex-row nowrap align-center justify-end mt-10">
+      <a
+        (click)="navigateBack()"
+        class="print-button secondary mr-1">
+        Go back
+      </a>
+      <a
+        (click)="onPrint()"
+        class="print-button">
+        Download PDF
+      </a>
+    </div>
+  </div>
+</ng-container>

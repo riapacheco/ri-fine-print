@@ -3,9 +3,6 @@
 
 :host {
   position: absolute;
-  // bottom: -5rem;
-  // left: calc($sidebar-width + ($sidebar-padding * 2) + 500px);
-  // right: 5rem;
   right: 0;
 }
 .doc-viewer {
@@ -20,10 +17,12 @@
 
 .instructions-block {
   width: 100%;
+  padding-left: 10px;
+  padding-right: 10px;
   display: flex;
   flex-flow: row nowrap;
   align-items: center;
-  justify-content: flex-end;
+  justify-content: space-between;
   padding-bottom: 0.5rem;
   span {
     

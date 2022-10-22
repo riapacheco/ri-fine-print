@@ -1,7 +1,7 @@
 import { Component, EventEmitter, Input, OnDestroy, OnInit, Output } from '@angular/core';
 import { Router } from '@angular/router';
-import { Observable, Subscription } from 'rxjs';
-import { PrintPreviewService, TScaleType } from 'src/app/services/print-preview.service';
+import { Subscription } from 'rxjs';
+import { PrintPreviewService } from 'src/app/services/print-preview.service';
 import { ToastService } from 'src/app/services/toast.service';
 
 
@@ -43,22 +43,8 @@ export class ActionBarComponent implements OnInit, OnDestroy {
     this.secondaryClick.emit(value);
   }
 
-  onPrintClick(e: any) {
-    if (e) {
-      this.toast.callToast('Feature coming soon!');
-      setTimeout(() => {
-        this.toast.dismissToast();
-      }, 2500);
-    }
+  onPrintPreview() {
+    this.printPrev.onHidePreview();
+    this.router.navigateByUrl('print-preview');
   }
-
-  // onPrintClick(e: any) {
-  //   if (e) {
-  //     this.printPrev.onHidePreview();
-  //     this.router.navigateByUrl('/print-preview');
-  //   }
-  // }
-
-  
-
 }

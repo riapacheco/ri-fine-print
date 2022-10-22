@@ -35,12 +35,12 @@ const routes: Routes = [
     component: EducationComponent
   },
   {
-    path: 'print-preview',
-    component: PrintPreviewComponent
-  },
-  {
     path: 'status',
     component: GuardComponent
+  },
+  {
+    path: 'print-preview',
+    component: PrintPreviewComponent
   }
 ];
 

@@ -11,6 +11,8 @@
 
 html {
   font-size: 10px;
+  // background-color: #F1f1f1;
+
 }
 body {
   font-size: 1.6rem;
@@ -61,10 +63,13 @@ input {
 }
 
 .clear-block {
+  width: $form-width;
+  margin-left: 6rem;
   padding-top: 10rem;
+  padding-bottom: 3rem;
 }
 .form {
-  margin-bottom: -10rem;
+  // margin-bottom: -10rem;
 }
 .cdk-drag-dragging {
   cursor: grabbing;
@@ -72,6 +77,10 @@ input {
 /* -------------------------------------------------------------------------- */
 /*                                    PRINT                                   */
 /* -------------------------------------------------------------------------- */
+@page {
+  size: auto;
+  margin: 1in;
+}
 // @media print {
 //   :not(.canPrint) {
 //     visibility: hidden; 
@@ -97,6 +106,13 @@ input {
   .page-break {
     page-break-after: always;
   }
+  .avoid-page-break {
+    page-break-after: avoid;
+  }
+}
+
+h6 {
+  @include text('h6');
 }
 /* -------------------------------------------------------------------------- */
 /*                                   Z-INDEX                                  */
@@ -120,5 +136,17 @@ app-toast,
 .doc-data,
 app-action-bar,
 .action-bar {
+  z-index: 1500;
+}
+app-pdf-preview,
+.pdf-preview {
   z-index: 2000;
+}
+
+.pdf-viewer {
+  z-index: 3000;
+}
+
+.style-controls {
+  z-index: 4000;
 }

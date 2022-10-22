@@ -6,6 +6,7 @@ import { Observable, Subscription } from 'rxjs';
 import { slideTD } from './constants/animations.constants';
 import { BREAKPOINT_VALUE } from './enums/breakpoints.enums';
 import { PrintPreviewService } from './services/print-preview.service';
+import { ResumeService } from './services/resume.service';
 import { ToastService } from './services/toast.service';
 
 // TODO Create toast as onboarding
@@ -23,6 +24,7 @@ export class AppComponent implements OnInit, OnDestroy {
   @ViewChild('topScroll') topScroll!: ElementRef;
   private sub = new Subscription();
   constructor(
+    public resume: ResumeService,
     public printPrev: PrintPreviewService,
     private observer: BreakpointObserver,
     public router: Router,
@@ -31,6 +33,7 @@ export class AppComponent implements OnInit, OnDestroy {
 
   ngOnInit(): void {
     this.checkDevice();
+    this.resume.loadResume();
   }
 
   ngOnDestroy() {

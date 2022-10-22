@@ -1,19 +1,21 @@
 <app-action-bar
   [button]="button"
   [showsSpinner]="showsSpinner"
-  [title]="viewTitle">
+  [title]="'Summary'">
 </app-action-bar>
 
-<div class="clear-block">
-  <a
-    (click)="ss.onClearSummary()"
-    class="clear-all-btn">
-    <i class="material-icons">clear_all</i>
-    <span>
-      Clear All
-    </span>
-  </a>
-</div>
+<ng-container *ngIf="(resume.summary$ | async)">
+  <div class="clear-block">
+    <a
+      (click)="onClearAll()"
+      class="clear-all-btn">
+      <i class="material-icons">clear_all</i>
+      <span>
+        Clear All
+      </span>
+    </a>
+  </div>
+</ng-container>
 <div class="form">
   <!-- ------------------------- FIRST AND LAST NAME ------------------------- -->
   <div class="double-row">

@@ -5,14 +5,14 @@
 /* -------------------------------------------------------------------------- */
 /*                                   GENERAL                                  */
 /* -------------------------------------------------------------------------- */
+.form-width { width: $form-width; }
 .form {
   // padding-top: $view-padding-top;
   padding-bottom: $view-padding-bottom;
-  width: 90%;
-  max-width: 600px;
+  width: $form-width;
+  min-width: $form-width;
+  max-width: $form-width;
   margin-left: 4rem;
-
-  
 
   .quill-label {
     position: relative;

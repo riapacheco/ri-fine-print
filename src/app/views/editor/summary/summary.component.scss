@@ -7,6 +7,12 @@
   -webkit-font-smoothing: antialiased !important;
   overflow: hidden;
 }
+
+:host {
+  background-color: white;
+  width: 100%;
+  min-height: 100vh;
+}
 .ql-container.ql-snow {
   font-size: 1.3rem !important;
 }

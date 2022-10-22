@@ -7,6 +7,7 @@ export type TScaleType = 'scale(0.7)' | 'scale(0.8)' | 'scale(0.9)' | 'scale(1)'
   providedIn: 'root'
 })
 export class PrintPreviewService {
+  /* ------------------------------- DOC PREVIEW ------------------------------ */
   private _showsPreview$ = new BehaviorSubject<boolean>(false);
   public showsPreview$: Observable<boolean> = this._showsPreview$.asObservable();
 
@@ -14,12 +15,19 @@ export class PrintPreviewService {
   public sizeScale$: Observable<TScaleType> = this._sizeScale$.asObservable();
   sizeScale!: TScaleType;
 
-  constructor(
-  ) { }
+  /* ------------------------------ PRINT PREVIEW ----------------------------- */
+  private _dataUriString$ = new BehaviorSubject<string>('');
+  public dataUriString$: Observable<string> = this._dataUriString$.asObservable();
+  dataUriString!: string;
 
+  private _showsPdf$ = new BehaviorSubject<boolean>(false);
+  public showsPdf$: Observable<boolean> = this._showsPdf$.asObservable();
+
+  constructor() { }
+
+  /* ------------------------------- DOC PREVIEW ------------------------------ */
   onShowPreview() { this._showsPreview$.next(true); }
   onHidePreview() { this._showsPreview$.next(false); }
-
   onBigger() {
     if (!this.sizeScale || this.sizeScale == 'scale(0.7)') { 
       this._sizeScale$.next('scale(0.8)'); 
@@ -50,5 +58,23 @@ export class PrintPreviewService {
       this._sizeScale$.next('scale(0.7)');
       this.sizeScale = 'scale(0.7)';
     }
+  }
+
+  /* ------------------------------ PRINT PREVIEW ----------------------------- */
+  storeDataUriString(uriString: string) {
+    this.dataUriString = uriString;
+    this._dataUriString$.next(uriString);
+    return this.dataUriString;
+  }
+
+  getDataUriString(): string {
+    return this.dataUriString;
+  }
+
+  showPdfViewer() {
+    this._showsPdf$.next(true);
+  }
+  hidePdfViewer() {
+    this._showsPdf$.next(false);
   }
 }

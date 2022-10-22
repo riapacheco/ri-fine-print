@@ -1,5 +1,5 @@
 <app-action-bar
-  [title]="viewTitle"
+  [title]="'Projects'"
   [button]="button"
   [showsSpinner]="showsSpinner"
   (primaryClick)="onAddNew()"
@@ -34,7 +34,7 @@
       </label>
       <input
         name="projectName"
-        (focusout)="onUpdate('name'); showsSpinner = true;"
+        (focusout)="onUpdate(); showsSpinner = true;"
         [(ngModel)]="project.name"
         type="text"
         #projectNameElement>
@@ -46,7 +46,7 @@
       </label>
       <input
         name="url"
-        (focusout)="onUpdate('url'); showsSpinner = true"
+        (focusout)="onUpdate(); showsSpinner = true"
         [(ngModel)]="project.url"
         type="text">
     </div>
@@ -62,7 +62,7 @@
 
     <input
       name="tools"
-      (focusout)="onUpdate('tools'); showsSpinner = true"
+      (focusout)="onUpdate(); showsSpinner = true"
       [(ngModel)]="project.toolsString"
       type="text">
       
@@ -77,7 +77,7 @@
       [modules]="modules"
       [style]="style"
       [(ngModel)]="project.description"
-      (focusout)="onUpdate('description'); showsSpinner = true"
+      (focusout)="onUpdate(); showsSpinner = true"
       [style.width]="'inherit'"
       name="summaryObjective"
       type="text"

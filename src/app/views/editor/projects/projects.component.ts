@@ -1,35 +1,26 @@
-import { AfterViewInit, Component, ElementRef, OnDestroy, OnInit, ViewChild } from '@angular/core';
+import { Component, ElementRef, OnDestroy, OnInit, ViewChild } from '@angular/core';
 import { Subscription } from 'rxjs';
 import { QUILL } from 'src/app/constants/quill.constants';
 import { IProject } from 'src/app/interfaces/project.interface';
-import { ProjectService } from 'src/app/services/project.service';
+import { ResumeService } from 'src/app/services/resume.service';
 
 @Component({
   selector: 'app-projects',
   templateUrl: './projects.component.html',
   styleUrls: ['./projects.component.scss']
 })
-export class ProjectsComponent implements OnInit, AfterViewInit, OnDestroy {
+export class ProjectsComponent implements OnInit, OnDestroy {
   projects!: IProject[];
 
-  blankProject = {
-    name: 'NewProject',
-    description: '',
-    url: '',
-    cover_image: '',
-    tools: [],
-    toolsString: '',
-    spins: false
-  }
-  @ViewChild('projectNameElement') projectNameElement!: ElementRef;
   @ViewChild('scrollBottom') newProject!: ElementRef;
+
   // Action bar
   button = {
     primary: 'Add Project',
     primaryIcon: 'add',
   };
-  showsSpinner = false;
 
+  showsSpinner = false;
   spin = {
     name: false,
     url: false,
@@ -39,68 +30,46 @@ export class ProjectsComponent implements OnInit, AfterViewInit, OnDestroy {
   toolsString!: string;
   modules = QUILL.MODULES;
   style = QUILL.STYLE;
-  viewTitle = 'Projects';
-  @ViewChild('nameFieldElement') nameField!: ElementRef;
+
   private sub = new Subscription();
   constructor(
-    public projService: ProjectService
+    public resume: ResumeService
   ) { }
 
   ngOnInit(): void {
     this.loadProjectData();
   }
-  ngAfterViewInit() {
-    // this.nameField.nativeElement.focus();
-  }
+
   ngOnDestroy() {
     this.sub.unsubscribe();
   }
 
   loadProjectData() {
-    this.sub.add(this.projService.getProjects().subscribe((data: IProject[]) => {
-      data.map((project: IProject) => {
-        project.spins = false;
-      })
-      this.projects = data;
-      console.log(this.projects);
-    }))
+    const projects = this.resume.getProjects();
+    this.projects = projects;
   }
 
-  onClearAll() {
-    this.projects = [];
-    this.projService.onClearProjects();
-
-    setTimeout(() => {
-      this.projectNameElement.nativeElement.focus();
-    }, 100);
-  }
-
-  onRemove(value: any){
-    this.projService.removeProject(value, this.projects);
-  }
-
-  onAddNew() {
-    let lastId = this.projects.length+1;
-    const project = {
-      id: lastId++,
-      name: 'Project ',
-      description: '',
-      url: '',
-      cover_image: '',
-      tools: [],
-      toolsString: '',
-      spins: false
-    }
-    this.projects.push(project);
-    this.projService.updateProjects(this.projects);
+  private scrollToBottom() {
     setTimeout(() => {
       this.newProject.nativeElement.scrollIntoView({ behavior: 'smooth' });
     }, 500);
   }
 
-  onUpdate(field: string) {
+  onRemove(id: any) { this.resume.deleteProject(id, this.projects); }
 
-    this.projService.updateProjects(this.projects);
+  onClearAll() {
+    const projects = this.resume.clearProjects();
+    this.projects = projects;
+  }
+
+  onAddNew() {
+    const projectsList = this.resume.addBlankProject();
+    this.projects = projectsList;
+    this.scrollToBottom();
+  }
+
+  onUpdate() {
+    this.resume.updateProjects(this.projects);
     setTimeout(() => {
       this.showsSpinner = false;
     }, 320);

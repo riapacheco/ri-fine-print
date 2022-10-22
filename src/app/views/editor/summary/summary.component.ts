@@ -6,20 +6,17 @@ import { Subscription } from 'rxjs';
 import { QUILL } from 'src/app/constants/quill.constants';
 import { BREAKPOINT_VALUE } from 'src/app/enums/breakpoints.enums';
 import { ISummary } from 'src/app/interfaces/summary.interface';
-import { PrintPreviewService } from 'src/app/services/print-preview.service';
-import { SummaryService } from 'src/app/services/summary.service';
+import { ResumeService } from 'src/app/services/resume.service';
 
 @Component({
   selector: 'app-summary',
   templateUrl: './summary.component.html',
   styleUrls: ['./summary.component.scss']
 })
-export class SummaryComponent implements OnInit, AfterViewInit, OnDestroy {
-  
+export class SummaryComponent implements OnInit, OnDestroy {
   summary!: ISummary;
 
   /* ------------------------------- ACTION BAR ------------------------------- */
-  viewTitle = '';
   button = {
     primary: '',
     primaryIcon: 'save',
@@ -32,11 +29,10 @@ export class SummaryComponent implements OnInit, AfterViewInit, OnDestroy {
   style = QUILL.STYLE;
 
   isMobile!: boolean;
-  @ViewChild('firstField') firstField!: ElementRef;
+
   private sub = new Subscription();
   constructor(
-    public ss: SummaryService,
-    public printPrev: PrintPreviewService,
+    public resume: ResumeService,
     private router: Router,
     private observer: BreakpointObserver
   ) { }
@@ -46,14 +42,7 @@ export class SummaryComponent implements OnInit, AfterViewInit, OnDestroy {
     this.initSummary();
   }
 
-  ngAfterViewInit() {
-    this.firstField.nativeElement.focus();
-  }
-
-  ngOnDestroy() {
-    this.sub.unsubscribe();
-    this.ss.updateSummary(this.summary);
-  }
+  ngOnDestroy() { this.sub.unsubscribe(); this.resume.updateSummary(this.summary); }
 
   checkDevice() {
     this.sub.add(this.observer.observe([BREAKPOINT_VALUE.mobile]).subscribe((state: BreakpointState) => {
@@ -64,19 +53,18 @@ export class SummaryComponent implements OnInit, AfterViewInit, OnDestroy {
       }
     }))
   }
-
   initSummary() {
-    this.sub.add(this.ss.getSummary().subscribe((res: ISummary) => {
-      this.summary = res;
-    }));
-    this.sub.add(this.ss.getHeading().subscribe((heading: string) => {
-      this.viewTitle = heading;
-    }));
+    const summary = this.resume.getSummary();
+    this.summary = summary;
   }
   onUpdateSummary() {
-    this.ss.updateSummary(this.summary);
+    this.resume.updateSummary(this.summary);
     setTimeout(() => {
       this.showsSpinner = false;
     }, 350);
+  }
+  onClearAll() {
+    const summary = this.resume.clearSummary();
+    this.summary = summary;
   }
 }

@@ -1,56 +1,62 @@
-import { Component, ElementRef, OnDestroy, OnInit, ViewChild } from '@angular/core';
-import { Subscription } from 'rxjs';
+import { Component, ElementRef, OnInit, ViewChild } from '@angular/core';
 import { ISkillTool } from 'src/app/interfaces/skills-tools.interface';
-import { SkillService } from 'src/app/services/skill.service';
+import { ResumeService } from 'src/app/services/resume.service';
 
 @Component({
   selector: 'app-skills',
   templateUrl: './skills.component.html',
   styleUrls: ['./skills.component.scss']
 })
-export class SkillsComponent implements OnInit, OnDestroy {
+export class SkillsComponent implements OnInit {
   skills!: ISkillTool[];
   button = { primary: 'Add Skill', primaryIcon: 'add' }
+
   @ViewChild('bottomScroll') bottomScroll!: ElementRef;
+
   showsSpinner = false;
-  private sub = new Subscription();
+
   constructor(
-    public ss: SkillService
+    public resume: ResumeService,
   ) { }
 
   ngOnInit(): void {
     this.loadData();
   }
 
-  ngOnDestroy() {
-    this.sub.unsubscribe()
+  private scrollToBottom() {
+    setTimeout(() => {
+      this.bottomScroll.nativeElement.scrollIntoView({ behavior: 'smooth' });
+    }, 250);
   }
+
   loadData() {
-    this.sub.add(this.ss.getSkills().subscribe((skills: ISkillTool[]) => {
-      this.skills = skills;
-    }))
+    const skills = this.resume.getSkills();
+    this.skills = skills;
   }
 
   onAddSkill() {
-    let lastId = this.skills.length + 1;
-    const newSkill: ISkillTool = {
-      id: lastId++,
-      name: '',
-      description: ''
-    }
-    this.skills.push(newSkill);
-    setTimeout(() => {
-      this.bottomScroll.nativeElement.scrollIntoView({ behavior: 'smooth' })
-    }, 100)
+    const skills = this.resume.addBlankSkill();
+    this.skills = skills;
+    this.scrollToBottom();
   }
-  onRemoveSkill(skillId: number) {
-    this.ss.onRemoveSkill(skillId, this.skills);
+
+  onRemoveSkill(skillId: number | undefined) {
+    if (skillId) {
+      const skills = this.resume.deleteSkill(skillId, this.skills);
+      this.skills = skills;
+    }
+    this.scrollToBottom();
   }
 
   onUpdate() {
-    this.ss.updateSkills(this.skills);
+    this.resume.updateSkills(this.skills);
     setTimeout(() => {
       this.showsSpinner = false;
     }, 320);
+  }
+
+  onClearAll() {
+    const skills = this.resume.clearSkills();
+    this.skills = skills;
   }
 }

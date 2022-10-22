@@ -1,10 +1,16 @@
+<div style="width: 100%;" class="flex-row nowrap align-center justify-end">
+  <h6 class="mb-1">
+    Drag Me
+  </h6>
+</div>
 <div
   [style.padding]="config.margins"
-  [style.min-height]="config.minHeight"
+  [style.height]="config.minHeight"
   [style.width]="config.width"
   class="doc"
   id="docData"
   #docElement>
+
   <!-- ---------------------------- CONTACT INFO ----------------------------- -->
   <div
     [style.margin-bottom.px]="config.sectionSpacingPx"
@@ -13,39 +19,39 @@
       <!-- ------------------------------ FULL NAME ------------------------------ -->
       <div class="profile-name">
         <span>
-          {{ (profile.summary$ | async)?.first_name }} {{ (profile.summary$ | async)?.last_name }}
+          {{ (resume.summary$ | async)?.first_name }} {{ (resume.summary$ | async)?.last_name }}
         </span>
       </div>
 
       <!-- --------------------- LOCATION, EMAIL, PHONE, URL --------------------- -->
       <ul class="list-unstyled">
         <li>
-          {{ (profile.summary$ | async)?.location }}
+          {{ (resume.summary$ | async)?.location }}
         </li>
         <li>
-          {{ (profile.summary$ | async)?.email }}
+          {{ (resume.summary$ | async)?.email }}
         </li>
         <li>
-          {{ (profile.summary$ | async)?.phone }}
+          {{ (resume.summary$ | async)?.phone }}
         </li>
         <li>
-          {{ (profile.summary$ | async)?.url }}
+          {{ (resume.summary$ | async)?.url }}
         </li>
       </ul>
 
       <!-- ----------------- ALT URL, TWITTER, LINKEDIN, GITHUB ------------------ -->
       <ul class="list-unstyled">
         <li>
-          {{ (profile.summary$ | async)?.alt_url }}
+          {{ (resume.summary$ | async)?.alt_url }}
         </li>
         <li>
-          twitter.com/{{ (profile.summary$ | async)?.twitter_handle }}
+          twitter.com/{{ (resume.summary$ | async)?.twitter_handle }}
         </li>
         <li>
-          linkedin.com/in/{{ (profile.summary$ | async)?.linkedin_handle }}
+          linkedin.com/in/{{ (resume.summary$ | async)?.linkedin_handle }}
         </li>
         <li>
-          github.com/{{ (profile.summary$ | async)?.github_handle }}
+          github.com/{{ (resume.summary$ | async)?.github_handle }}
         </li>
       </ul>
     </div>
@@ -71,7 +77,7 @@
         [style.margin-left]="'auto'"
         [style.width.%]="85"
         >
-        <div [innerHTML]="(profile.summary$ | async)?.summary_objective"></div>
+        <div [innerHTML]="(resume.summary$ | async)?.summary_objective"></div>
       </div>
     </div>
   </div>
@@ -95,7 +101,7 @@
         [style.margin-left]="'auto'"
         class="doc-body">
         <table>
-          <tr *ngFor="let project of (project.projects$ | async)" class="projects-body">
+          <tr *ngFor="let project of (resume.projects$ | async)" class="projects-body">
             <td class="project-name">
               <span>
                 {{ project.name }}
@@ -107,10 +113,10 @@
               </div>
 
               <ul class="projects-ul">
-                <li>
+                <li *ngIf="project.toolsString">
                   {{ project.toolsString }}
                 </li>
-                <li>
+                <li *ngIf="project.url">
                   {{ project.url }}
                 </li>
               </ul>
@@ -127,7 +133,7 @@
     [style.margin-bottom.px]="config.sectionSpacingPx"
     >
     <div class="doc-content">
-      <div class="doc-header">
+      <div class="doc-header avoid-page-break">
         <div class="header-title">
           <span>
             Work Experience
@@ -141,7 +147,7 @@
         [style.margin-left]="'auto'"
         >
         <table>
-          <tr *ngFor="let work of (works.works$ | async)" class="projects-body">
+          <tr *ngFor="let work of (resume.workExperience$ | async)" class="projects-body">
             <td class="project-name work">
               <div class="work-title">
                 {{ work.job_title }}
@@ -163,3 +169,4 @@
     </div>
   </div>
 </div>
+
