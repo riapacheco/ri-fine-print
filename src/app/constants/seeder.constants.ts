@@ -44,7 +44,7 @@ export const RESUME_SEEDER_PROJECTS: IProject[] = [
     tools: [
     ],
     cover_image: '',
-    toolsString: 'Typescript, Angular, TesseractJS (OCR), Capacitor (iOS/Android), @riapacheco/yutes, Supabase, Postgres, RxJS',
+    toolsString: 'Typescript / JavaScript, Angular, TesseractJS (OCR), Capacitor (iOS/Android), @riapacheco/yutes, Supabase, Postgres, RxJS Observables',
     spins: false
   },
   {
@@ -55,7 +55,7 @@ export const RESUME_SEEDER_PROJECTS: IProject[] = [
     url: 'https://fine-print.app',
     tools: [],
     cover_image: '',
-    toolsString: 'TypeScript, JavaScript, Angular, jsPDF, @riapacheco/yutes, RxJS',
+    toolsString: 'TypeScript / JavaScript, Angular, jsPDF, @riapacheco/yutes, RxJS',
   },
   {
     id: 3,
@@ -103,10 +103,10 @@ export const RESUME_SEEDER_WORK: IWork[] = [
                       Owned and executed full enterprise product portfolio re-launch, re-positioning flagship offering (SmartPAD) to include all sensor-to-cloud capabilities
                     </li>
                     <li>
-                      Strategically introduced four (4) under-utilized data products in branded product line (ColdEDGE Web Services)
+                      Strategically introduced 4 under-utilized data products in branded product line (ColdEDGE Web Services)
                     </li>
                     <li>
-                      Scoped and developed the frontend of an internal hardware tracking tool (Asset Tracker) to help MFG / M&R teams in managing all processes related to manufacturing / repair [Angular/TypeScript, Compodoc, Amazon RDS]
+                      Scoped and developed the frontend of an internal hardware tracking tool (Asset Tracker) to help MFG / M&R teams in managing all processes related to MFG / repair [Angular/TypeScript, Amazon RDS]
                     </li>
                     <li>
                       Isolated the MFG value chain to enable UX design sessions with the VP Technology and Director of Hardware [Adobe XD, Confluence]

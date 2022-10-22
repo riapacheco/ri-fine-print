@@ -1,4 +1,4 @@
-import { AfterViewInit, Component, OnInit } from '@angular/core';
+import { AfterViewInit, Component, ElementRef, OnInit, ViewChild } from '@angular/core';
 import { IProject } from 'src/app/interfaces/project.interface';
 import { ISkillTool } from 'src/app/interfaces/skills-tools.interface';
 import { ISummary } from 'src/app/interfaces/summary.interface';
@@ -22,6 +22,7 @@ export class PrintPreviewComponent implements OnInit, AfterViewInit {
   skills!: ISkillTool[];
   pdfDoc!: object;
 
+  pdfFileName = '';
 
   // Preview
   previewClass!: string[];
@@ -32,11 +33,11 @@ export class PrintPreviewComponent implements OnInit, AfterViewInit {
   isPrinting = false;
 
   // Guides
-  marginInches = 0.15;
-  topMargin = 0.15;
+  marginInches = 0.25;
+  topMargin = 0.25;
   marginHighlight = false;
 
-  contactInfoWidth = 70;
+  contactInfoWidth = 65;
   contactInfoHighlight = false;
   listBlockSpace = 4;
 
@@ -46,7 +47,7 @@ export class PrintPreviewComponent implements OnInit, AfterViewInit {
   summaryContentWidth = 90;
   summaryContentHighlight = false;
 
-  projectDetailsWidth = 80;
+  projectDetailsWidth = 75;
   projectDetailsHighlight = false;
 
   expDetailsWidth = 80;
@@ -55,6 +56,35 @@ export class PrintPreviewComponent implements OnInit, AfterViewInit {
   skillBlockWidth = 40;
   skillBlockHighlight = false;
 
+  pageBreakSpace = {
+    contactInfo: {
+      label: 'Contact Information',
+      selected: false,
+      afterBreakHeight: 0,
+    },
+    objective: {
+      label: 'Objective',
+      selected: false,
+      afterBreakHeight: 0,
+    },
+    projects: {
+      label: 'Projects',
+      selected: false,
+      afterBreakHeight: 0,
+    },
+    workExperience: {
+      label: 'Work Experience',
+      selected: false,
+      afterBreakHeight: 0,
+    },
+    skills: {
+      label: 'Hard & Soft Skills',
+      selected: false,
+      afterBreakHeight: 0
+    }
+  }
+
+  @ViewChild('sectionSelector') sectionSelector!: ElementRef;
   constructor(
     public res: ResumeService,
     private router: Router
@@ -103,11 +133,46 @@ export class PrintPreviewComponent implements OnInit, AfterViewInit {
     }
   }
 
+  private deselectAllOptions() {
+    this.pageBreakSpace.contactInfo.selected = false;
+    this.pageBreakSpace.objective.selected = false;
+    this.pageBreakSpace.projects.selected = false;
+    this.pageBreakSpace.workExperience.selected = false;
+    this.pageBreakSpace.skills.selected = false;
+  }
+
+  onSectionSelect() {
+    const section = this.sectionSelector.nativeElement.value;
+    switch (section) {
+      case 'contactInfo':
+        this.deselectAllOptions();
+        this.pageBreakSpace.contactInfo.selected = true;
+        break;
+      case 'objective':
+        this.deselectAllOptions();
+        this.pageBreakSpace.objective.selected = true;
+        break;
+      case 'projects':
+        this.deselectAllOptions();
+        this.pageBreakSpace.projects.selected = true;
+        break;
+      case 'workExperience':
+        this.deselectAllOptions();
+        this.pageBreakSpace.workExperience.selected = true;
+        break;
+      case 'skills':
+        this.deselectAllOptions();
+        this.pageBreakSpace.skills.selected = true;
+        break;
+      default:
+        this.deselectAllOptions();
+    }
+  }
   onPrint() {
     this.startPrint();
     let data: any = document.getElementById('docData');
     setTimeout(() => {
-      html2canvas(data, {scale: 2.1 }).then((canvas) => {
+      html2canvas(data, { scale: 2 }).then((canvas) => {
         var convertedMargin = this.marginInches * 25.4;
         var imgData = canvas.toDataURL('image/png');
         var imgWidth = 210;
@@ -127,15 +192,12 @@ export class PrintPreviewComponent implements OnInit, AfterViewInit {
           heightLeft -= pageHeight;
         }
 
-        const firstName = this.summary.first_name?.toUpperCase();
-        const lastName = this.summary.last_name?.toUpperCase();
-        const fileName = `${firstName}${lastName}.pdf`;
-        doc.save(fileName);
+        if (!this.pdfFileName) {
+          doc.save(`${this.summary.first_name}-${this.summary.last_name}_resume.pdf`);
+        } else {
+          doc.save(`${this.pdfFileName}.pdf`);
+        }
         this.endPrint();
-
-        setTimeout(() => {
-          this.navigateBack();
-        }, 200);
       })
     }, 500);
   }

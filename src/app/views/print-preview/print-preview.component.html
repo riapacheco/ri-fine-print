@@ -45,7 +45,6 @@
       <div
         [style.width.%]="contactInfoWidth"
         [ngClass]="contactInfoHighlight ? 'contact-info highlight' : 'contact-info'"
-
         >
 
         <ul
@@ -123,6 +122,9 @@
         </div>
       </div>
     </div>
+    <ng-container *ngIf="pageBreakSpace.contactInfo.selected">
+      <div [style.height.rem]="pageBreakSpace.contactInfo.afterBreakHeight"></div>
+    </ng-container>
 
     <!-- ------------------------------ OBJECTIVE ------------------------------ -->
     <div
@@ -151,7 +153,9 @@
         class="highlight-spacer">
       </div>
     </div>
-
+    <ng-container *ngIf="pageBreakSpace.objective.selected">
+      <div [style.height.rem]="pageBreakSpace.objective.afterBreakHeight"></div>
+    </ng-container>
 
     <!-- ------------------------------ PROJECTS ------------------------------- -->
     <div 
@@ -202,7 +206,9 @@
         class="highlight-spacer">
       </div>
     </div>
-
+    <ng-container *ngIf="pageBreakSpace.projects.selected">
+      <div [style.height.rem]="pageBreakSpace.projects.afterBreakHeight"></div>
+    </ng-container>
 
     <!-- -------------------------- WORKD EXPERIENCE --------------------------- -->
     <div
@@ -218,7 +224,7 @@
         <div class="header-divider"></div>
       </div>
 
-      <div class="block-body">
+      <div class="block-body work-experience">
         <table>
           <tr *ngFor="let work of workExperience">
             <td class="work-title-company">
@@ -234,7 +240,7 @@
             </td>
 
             <td
-              [ngClass]="expDetailsHighlight ? 'inner-wrapper project-details highlight' : 'inner-wrapper project-details'"
+              [ngClass]="expDetailsHighlight ? 'inner-wrapper work-body highlight' : 'inner-wrapper work-body'"
               [style.width.%]="expDetailsWidth"
               >
               <div [innerHTML]="work.dutiesString"></div>
@@ -249,6 +255,9 @@
         class="highlight-spacer">
       </div>
     </div>
+    <ng-container *ngIf="pageBreakSpace.workExperience.selected">
+      <div [style.height.rem]="pageBreakSpace.workExperience.afterBreakHeight"></div>
+    </ng-container>
 
     <!-- --------------------------- SKILLS / TOOLS ---------------------------- -->
     <div class="resume-block">
@@ -277,13 +286,16 @@
         </div>
       </div>
     </div>
+    <ng-container *ngIf="pageBreakSpace.skills.selected">
+      <div [style.height.rem]="pageBreakSpace.skills.afterBreakHeight"></div>
+    </ng-container>
   </div>
 </div>
 
 <ng-container *ngIf="!isPrinting">
   <div class="style-controls">
     <div class="title">
-      Format Document
+      Document Formatting
     </div>
   
     <div
@@ -430,6 +442,83 @@
           </div>
       </div>
     </div>
+
+    <div [style.height.rem]="4"></div>
+    <div class="title">
+      Optional Adjustments
+    </div>
+    <div class="control">
+      <div class="label">
+        <h6>
+          File name
+        </h6>
+      </div>
+
+      <div class="field">
+        <input
+          name="pdfFileName"
+          [(ngModel)]="pdfFileName"
+          type="text">
+        <div class="unit">
+          .pdf
+        </div>
+      </div>
+    </div>
+    <div class="control">
+      <div class="label">
+        <h6>
+          Add Break Space After
+        </h6>
+        <select
+          (change)="onSectionSelect()"
+          #sectionSelector>
+          <option [ngValue]="null">Select Section</option>
+          <option value="contactInfo">Contact Information</option>
+          <option value="objective">Objective Summary</option>
+          <option value="projects">Projects</option>
+          <option value="workExperience">Work Experience</option>
+          <option value="skills">Hard & Soft Skills</option>
+        </select>
+      </div>
+
+      <div class="field">
+
+        <ng-container *ngIf="pageBreakSpace.contactInfo.selected">
+          <input
+            name="contactInfoAfterBreak"
+            [(ngModel)]="pageBreakSpace.contactInfo.afterBreakHeight"
+            type="number">
+        </ng-container>
+        <ng-container *ngIf="pageBreakSpace.objective.selected">
+          <input
+            name="objective"
+            [(ngModel)]="pageBreakSpace.objective.afterBreakHeight"
+            type="number">
+        </ng-container>
+        <ng-container *ngIf="pageBreakSpace.projects.selected">
+          <input
+            name="projects"
+            [(ngModel)]="pageBreakSpace.projects.afterBreakHeight"
+            type="number">
+        </ng-container>
+        <ng-container *ngIf="pageBreakSpace.workExperience.selected">
+          <input
+            name="workExperience"
+            [(ngModel)]="pageBreakSpace.workExperience.afterBreakHeight"
+            type="number">
+        </ng-container>
+        <ng-container *ngIf="pageBreakSpace.skills.selected">
+          <input
+            name="skills"
+            [(ngModel)]="pageBreakSpace.skills.afterBreakHeight"
+            type="number">
+        </ng-container>
+        <div class="unit">
+          x 10px
+        </div>
+      </div>
+    </div>
+
   
     <div class="flex-row nowrap align-center justify-end mt-10">
       <a
