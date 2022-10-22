@@ -176,12 +176,12 @@ export const RESUME_SEEDER_SKILLS: ISkillTool[] = [
   {
     id: 1,
     name: 'TypeScript / JavaScript',
-    description: 'Proficient experience with TS classes, modules, models, interfaces, generics, and optional static types for scalable products',
+    description: 'Proficient with TS classes, modules, models, interfaces, generics, and optional static types for scalable products',
   },
   {
     id: 2,
     name: 'Angular',
-    description: 'Proficient experience with MVVM pattern architecture, Routing, Forms, HTTP client calls, Service Workers & PWA, Template Binding, RxJS'
+    description: 'Proficient with MVVM pattern architecture, Routing, Forms, HTTP Services, Service Workers & PWA, Template Binding, RxJS'
   },
   {
     id: 3,
@@ -191,12 +191,12 @@ export const RESUME_SEEDER_SKILLS: ISkillTool[] = [
   {
     id: 4,
     name: 'iOS / Android Design',
-    description: `Highly proficient design experience with mobile-first user interfaces (Adobe XD) for implementation through iOS and Android environments`
+    description: `High design proficiency in web and mobile user interfaces (Adobe XD) with considerations towards both iOS and Android native requirements`
   },
   {
     id: 5,
     name: 'Firebase / Supabase',
-    description: `Proficient implementation of SQL-based database services, storage services, and realtime DBs`
+    description: `Strong experience managing SQL-based database services, storage services, and realtime DBs`
   },
   {
     id: 6,
