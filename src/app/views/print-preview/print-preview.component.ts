@@ -107,7 +107,7 @@ export class PrintPreviewComponent implements OnInit, AfterViewInit {
     this.startPrint();
     let data: any = document.getElementById('docData');
     setTimeout(() => {
-      html2canvas(data, {scale: 2.5 }).then((canvas) => {
+      html2canvas(data, {scale: 2.1 }).then((canvas) => {
         var convertedMargin = this.marginInches * 25.4;
         var imgData = canvas.toDataURL('image/png');
         var imgWidth = 210;
