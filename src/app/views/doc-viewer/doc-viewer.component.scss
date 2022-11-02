@@ -1,32 +1,66 @@
 
 @import '../../../scss/variables.scss';
+@import 'node_modules/@riapacheco/yutes/season/two.scss';
 
 :host {
   position: absolute;
-  right: 0;
+  right: -10rem;
+  top: 0;
 }
 .doc-viewer {
   cursor: grab;
+  box-shadow: 0px 0px 22px #00000020;
+  max-height: 120vh;
+  overflow-y: scroll;
   &:active {
     cursor: grabbing;
+  }
+
+  .drag-handle {
+    position: absolute;
+    top: 1.5rem;
+    left: 1.5rem;
+    font-size: 1.5rem;
+    color: $ish-grey;
+    display: flex;
+    flex-flow: row nowrap;
+    align-items: center;
+    transition: 200ms ease-in-out;
+    small {
+      padding-left: 0.5rem;
+      font-weight: 700;
+      text-transform: uppercase;
+      letter-spacing: 0.03rem;
+      transition: 200ms ease-in-out;
+      opacity: 0;
+    }
+  }
+
+  &:hover {
+    .drag-handle {
+      color: $ish-black;
+      small {
+        opacity: 1;
+      }
+    }
   }
 }
 .cdk-drag-dragging {
   cursor: grabbing;
 }
 
-.instructions-block {
-  width: 100%;
-  padding-left: 10px;
-  padding-right: 10px;
-  display: flex;
-  flex-flow: row nowrap;
-  align-items: center;
-  justify-content: space-between;
-  padding-bottom: 0.5rem;
-  span {
-    
-    font-weight: 500;
-    color: $ish-black;
-  }
-}
+// .instructions-block {
+//   width: 100%;
+//   padding-left: 10px;
+//   padding-right: 10px;
+//   display: flex;
+//   flex-flow: row nowrap;
+//   align-items: center;
+//   justify-content: space-between;
+//   padding-bottom: 0.5rem;
+//   span {
+
+//     font-weight: 500;
+//     color: $ish-black;
+//   }
+// }

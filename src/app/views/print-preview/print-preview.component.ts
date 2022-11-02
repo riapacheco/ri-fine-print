@@ -1,4 +1,4 @@
-import { AfterViewInit, Component, ElementRef, OnInit, ViewChild } from '@angular/core';
+import { AfterViewInit, Component, ElementRef, Input, OnInit, ViewChild } from '@angular/core';
 import { IProject } from 'src/app/interfaces/project.interface';
 import { ISkillTool } from 'src/app/interfaces/skills-tools.interface';
 import { ISummary } from 'src/app/interfaces/summary.interface';
@@ -25,12 +25,13 @@ export class PrintPreviewComponent implements OnInit, AfterViewInit {
   pdfFileName = '';
 
   // Preview
-  previewClass!: string[];
+  @Input() previewClass!: string[]; // removes outline and things
   uriString!: string;
   page: number = 1;
   totalPages!: number;
   isLoaded = false;
-  isPrinting = false;
+  @Input() isPrinting = false; // shows controls or not
+  @Input() inPreview = false; // for the draggable preview component (parent)
 
   // Guides
   marginInches = 0.25;
@@ -91,11 +92,22 @@ export class PrintPreviewComponent implements OnInit, AfterViewInit {
   ) { }
 
   ngOnInit(): void {
-    this.previewClass = ['print-preview'];
+    this.getView();
     this.getData();
   }
   ngAfterViewInit() {
-    
+
+  }
+
+  getView() {
+    if (this.inPreview) {
+      this.previewClass = ['print-preview', 'print-ready', 'in-preview'];
+      this.isPrinting = true;
+    } else if (!this.inPreview && !this.isPrinting) {
+      this.previewClass = ['print-preview'];
+    } else {
+      this.previewClass = ['print-preview', 'print-ready'];
+    }
   }
 
   getData() {
@@ -115,7 +127,7 @@ export class PrintPreviewComponent implements OnInit, AfterViewInit {
 
   startPrint() {
     this.isPrinting = true;
-    this.previewClass = ['print-preview', 'print-ready']; 
+    this.previewClass = ['print-preview', 'print-ready'];
   }
   endPrint() {
     this.previewClass = ['print-preview'];
@@ -212,7 +224,7 @@ export class PrintPreviewComponent implements OnInit, AfterViewInit {
   //       let position = 0;
   //       let fileURI = canvas.toDataURL('image/png');
   //       let PDF = new jsPDF('p', 'mm', 'letter');
-  //       PDF.addImage(fileURI, 'SVG', 0, position, width, height);      
+  //       PDF.addImage(fileURI, 'SVG', 0, position, width, height);
   //       this.uriString = PDF.output('datauristring');
   //       while (heightLeft >= 0) {
   //         position = heightLeft - height;
@@ -220,7 +232,7 @@ export class PrintPreviewComponent implements OnInit, AfterViewInit {
   //         PDF.addImage(fileURI, 'SVG', 0, position, width, height);
   //         heightLeft -= height;
   //       }
-  
+
   //       PDF.save(`${this.summary.first_name}_${this.summary.last_name}_resume.pdf`);
   //       this.endPrint();
   //       this.navigateBack();

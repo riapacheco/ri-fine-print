@@ -1,10 +1,13 @@
+
+<!-- ----------------------------------------------------------------------- -->
+<!--                           STYLED DOC PREVIEW                            -->
+<!-- ----------------------------------------------------------------------- -->
 <div
   [class]="previewClass"
   [style.width.in]="8.5">
   <div
     id="docData"
-    
-    [style.padding-top.in]="isPrinting ? 0 : marginInches"
+    [style.padding-top.in]="isPrinting && !inPreview ? 0 : marginInches"
     [style.padding-left.in]="marginInches"
     [style.padding-bottom.in]="marginInches"
     [style.padding-right.in]="marginInches"
@@ -82,8 +85,8 @@
               {{ summary.url }}
             </span>
           </li>
-        </ul>  
-  
+        </ul>
+
         <ul class="list-unstyled">
           <li>
             <span>Other URL</span>
@@ -114,7 +117,7 @@
             </span>
           </li>
         </ul>
-  
+
         <div
           *ngIf="sectionSpacingHighlight"
           [style.height.in]="sectionSpacing"
@@ -140,7 +143,7 @@
         <div class="header-divider"></div>
       </div>
 
-      <div 
+      <div
         [ngClass]="summaryContentHighlight ? 'summary-para inner-wrapper highlight' : 'summary-para inner-wrapper'"
         [style.max-width.%]="summaryContentWidth"
         [style.margin-left]="'auto'"
@@ -158,7 +161,7 @@
     </ng-container>
 
     <!-- ------------------------------ PROJECTS ------------------------------- -->
-    <div 
+    <div
       class="resume-block"
       [style.margin-bottom.in]="sectionSpacingHighlight ? '0rem' : sectionSpacing"
       >
@@ -292,12 +295,15 @@
   </div>
 </div>
 
+<!-- ----------------------------------------------------------------------- -->
+<!--                                CONTROLS                                 -->
+<!-- ----------------------------------------------------------------------- -->
 <ng-container *ngIf="!isPrinting">
   <div class="style-controls">
     <div class="title">
       Document Formatting
     </div>
-  
+
     <div
       (mouseover)="marginHighlight = true;"
       (mouseout)="marginHighlight = false;"
@@ -318,8 +324,8 @@
           </div>
       </div>
     </div>
-  
-  
+
+
     <div
       (mouseover)="sectionSpacingHighlight = true"
       (mouseout)="sectionSpacingHighlight = false"
@@ -339,7 +345,7 @@
           </div>
       </div>
     </div>
-  
+
     <div
       (mouseover)="contactInfoHighlight = true"
       (mouseout)="contactInfoHighlight = false"
@@ -359,7 +365,7 @@
           </div>
       </div>
     </div>
-  
+
     <div
       (mouseover)="summaryContentHighlight = true"
       (mouseout)="summaryContentHighlight = false"
@@ -369,7 +375,7 @@
           Objective Width
         </h6>
       </div>
-  
+
       <div class="field">
         <input
           name="summaryContentWidth"
@@ -380,7 +386,7 @@
           </div>
       </div>
     </div>
-  
+
     <div
       (mouseover)="projectDetailsHighlight = true"
       (mouseout)="projectDetailsHighlight = false"
@@ -390,7 +396,7 @@
           Project Details Width
         </h6>
       </div>
-  
+
       <div class="field">
         <input
           name="projectDetailsWidth"
@@ -410,7 +416,7 @@
           Experience Details Width
         </h6>
       </div>
-  
+
       <div class="field">
         <input
           name="expDetailsWidth"
@@ -421,7 +427,7 @@
           </div>
       </div>
     </div>
-  
+
     <div
       (mouseover)="skillBlockHighlight = true"
       (mouseout)="skillBlockHighlight = false"
@@ -431,7 +437,7 @@
           Skill Block Width
         </h6>
       </div>
-  
+
       <div class="field">
         <input
           name="skillBlockWidth"
@@ -519,7 +525,7 @@
       </div>
     </div>
 
-  
+
     <div class="flex-row nowrap align-center justify-end mt-10">
       <a
         (click)="navigateBack()"

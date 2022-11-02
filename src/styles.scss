@@ -30,7 +30,7 @@ p {
 }
 .ql-container.ql-snow {
   line-height: 1.6 !important;
-  
+
 }
 
 .hint-grey { color: $hint-grey; }
@@ -87,7 +87,7 @@ input {
 }
 // @media print {
 //   :not(.canPrint) {
-//     visibility: hidden; 
+//     visibility: hidden;
 //   }
 // }
 // @media print {
@@ -151,6 +151,7 @@ app-pdf-preview,
   z-index: 3000;
 }
 
-.style-controls {
+.style-controls,
+.drag-handle {
   z-index: 4000;
 }

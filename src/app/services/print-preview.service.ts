@@ -1,7 +1,7 @@
 import { Injectable } from '@angular/core';
 import { BehaviorSubject, Observable } from 'rxjs';
 
-export type TScaleType = 'scale(0.7)' | 'scale(0.8)' | 'scale(0.9)' | 'scale(1)';
+export type TScaleType = 'scale(0.6)' | 'scale(0.7)' | 'scale(0.8)' | 'scale(0.9)' | 'scale(1)';
 
 @Injectable({
   providedIn: 'root'
@@ -29,8 +29,8 @@ export class PrintPreviewService {
   onShowPreview() { this._showsPreview$.next(true); }
   onHidePreview() { this._showsPreview$.next(false); }
   onBigger() {
-    if (!this.sizeScale || this.sizeScale == 'scale(0.7)') { 
-      this._sizeScale$.next('scale(0.8)'); 
+    if (!this.sizeScale || this.sizeScale == 'scale(0.7)') {
+      this._sizeScale$.next('scale(0.8)');
       this.sizeScale = 'scale(0.8)';
     }
     else if (this.sizeScale == 'scale(0.8)') {
