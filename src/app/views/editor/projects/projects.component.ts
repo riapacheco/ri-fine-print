@@ -1,6 +1,7 @@
 import { Component, ElementRef, OnDestroy, OnInit, ViewChild } from '@angular/core';
 import { Subscription } from 'rxjs';
 import { QUILL } from 'src/app/constants/quill.constants';
+import { RESUME_BLANK_PROJECT } from 'src/app/constants/seeder.constants';
 import { IProject } from 'src/app/interfaces/project.interface';
 import { ResumeService } from 'src/app/services/resume.service';
 
@@ -63,8 +64,19 @@ export class ProjectsComponent implements OnInit, OnDestroy {
   }
 
   onAddNew() {
-    const projectsList = this.resume.addBlankProject();
-    this.projects = projectsList;
+    let lastProjectId = this.projects.length + 1;
+    let newProject = {
+      id: lastProjectId++,
+      name: '',
+      description: '',
+      url: '',
+      tools: [],
+      cover_image: '',
+      toolsString: '',
+      spins: false
+    };
+    this.projects.push(newProject);
+    this.resume.updateProjects(this.projects);
     this.scrollToBottom();
   }
 

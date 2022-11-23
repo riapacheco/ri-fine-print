@@ -176,20 +176,30 @@
 
       <div class="block-body projects-body">
         <table>
-          <tr *ngFor="let project of projects">
+          <tr
+            *ngFor="let project of projects"
+            [style.display]="'flex'"
+            [style.justify-content]="'space-between'"
+            [style.margin-bottom.rem]="projectVerticalSpacing"
+            >
+            <!-- Project Name -->
             <td class="project-name">
               <span>
                 {{ project.name }}
               </span>
             </td>
+
+            <!-- Project Details -->
             <td
               [style.width.%]="projectDetailsWidth"
               [ngClass]="projectDetailsHighlight ? 'project highlight' : 'project'"
               >
+              <!-- Description -->
               <div class="inner-wrapper">
                 <div [innerHTML]="project.description"></div>
               </div>
 
+              <!-- Tools and URL -->
               <ul *ngIf="project.toolsString" class="projects-ul">
                 <li>
                   {{ project.toolsString }}
@@ -229,7 +239,13 @@
 
       <div class="block-body work-experience">
         <table>
-          <tr *ngFor="let work of workExperience">
+          <tr
+            *ngFor="let work of workExperience"
+            [style.display]="'flex'"
+            [style.align-items]="'center'"
+            [style.justify-content]="'space-between'"
+            [style.padding-bottom.rem]="expVerticalSpacing"
+            >
             <td class="work-title-company">
               <div class="work-title">
                 {{ work.job_title }}
@@ -245,6 +261,7 @@
             <td
               [ngClass]="expDetailsHighlight ? 'inner-wrapper work-body highlight' : 'inner-wrapper work-body'"
               [style.width.%]="expDetailsWidth"
+              [style.min-width.%]="expDetailsWidth"
               >
               <div [innerHTML]="work.dutiesString"></div>
             </td>
@@ -278,6 +295,7 @@
         >
         <div
           [style.width.%]="skillBlockWidth"
+          [style.margin-bottom.rem]="skillBlockVerticalSpacing"
           [ngClass]="skillBlockHighlight ? 'skill highlight' : 'skill'"
           *ngFor="let skill of skills">
           <div class="skill-name">
@@ -292,6 +310,15 @@
     <ng-container *ngIf="pageBreakSpace.skills.selected">
       <div [style.height.rem]="pageBreakSpace.skills.afterBreakHeight"></div>
     </ng-container>
+
+
+    <ng-container *ngIf="hasWatermark">
+      <div class="watermark-area">
+        <div class="watermark">
+          Generated w/ <strong>Fine-Print.app</strong> ❤️
+        </div>
+      </div>
+    </ng-container>
   </div>
 </div>
 
@@ -300,243 +327,374 @@
 <!-- ----------------------------------------------------------------------- -->
 <ng-container *ngIf="!isPrinting">
   <div class="style-controls">
-    <div class="title">
-      Document Formatting
-    </div>
+    <div class="control-content-area">
 
-    <div
-      (mouseover)="marginHighlight = true;"
-      (mouseout)="marginHighlight = false;"
-      class="control">
-      <div class="label">
-        <h6>
-          MARGINS
-        </h6>
-      </div>
-      <div class="field">
-        <input
-          name="marginInches"
-          [(ngModel)]="marginInches"
-          (keydown)="topMargin = marginInches"
-          type="number">
-          <div class="unit">
-            inches
-          </div>
-      </div>
-    </div>
-
-
-    <div
-      (mouseover)="sectionSpacingHighlight = true"
-      (mouseout)="sectionSpacingHighlight = false"
-      class="control">
-      <div class="label">
-        <h6>
-          Section Spacing
-        </h6>
-      </div>
-      <div class="field">
-        <input
-          name="sectionSpacing"
-          [(ngModel)]="sectionSpacing"
-          type="number">
-          <div class="unit">
-            inches
-          </div>
-      </div>
-    </div>
-
-    <div
-      (mouseover)="contactInfoHighlight = true"
-      (mouseout)="contactInfoHighlight = false"
-      class="control">
-      <div class="label">
-        <h6>
-          Contact Info Width
-        </h6>
-      </div>
-      <div class="field">
-        <input
-          name="contactInfoWidth"
-          [(ngModel)]="contactInfoWidth"
-          type="number">
-          <div class="unit">
-            % of width
-          </div>
-      </div>
-    </div>
-
-    <div
-      (mouseover)="summaryContentHighlight = true"
-      (mouseout)="summaryContentHighlight = false"
-      class="control">
-      <div class="label">
-        <h6>
-          Objective Width
-        </h6>
+      <!-- ----------------------------------------------------------------------- -->
+      <!--                             GENERAL OPTIONS                             -->
+      <!-- ----------------------------------------------------------------------- -->
+      <div class="title">
+        General Formatting
       </div>
 
-      <div class="field">
-        <input
-          name="summaryContentWidth"
-          [(ngModel)]="summaryContentWidth"
-          type="number">
-          <div class="unit">
-            % of width
-          </div>
-      </div>
-    </div>
-
-    <div
-      (mouseover)="projectDetailsHighlight = true"
-      (mouseout)="projectDetailsHighlight = false"
-      class="control">
-      <div class="label">
-        <h6>
-          Project Details Width
-        </h6>
-      </div>
-
-      <div class="field">
-        <input
-          name="projectDetailsWidth"
-          [(ngModel)]="projectDetailsWidth"
-          type="number">
-          <div class="unit">
-            % of width
-          </div>
-      </div>
-    </div>
-    <div
-      (mouseover)="expDetailsHighlight = true"
-      (mouseout)="expDetailsHighlight = false"
-      class="control">
-      <div class="label">
-        <h6>
-          Experience Details Width
-        </h6>
-      </div>
-
-      <div class="field">
-        <input
-          name="expDetailsWidth"
-          [(ngModel)]="expDetailsWidth"
-          type="number">
-          <div class="unit">
-            % of width
-          </div>
-      </div>
-    </div>
-
-    <div
-      (mouseover)="skillBlockHighlight = true"
-      (mouseout)="skillBlockHighlight = false"
-      class="control">
-      <div class="label">
-        <h6>
-          Skill Block Width
-        </h6>
-      </div>
-
-      <div class="field">
-        <input
-          name="skillBlockWidth"
-          [(ngModel)]="skillBlockWidth"
-          type="number">
-          <div class="unit">
-            % of width
-          </div>
-      </div>
-    </div>
-
-    <div [style.height.rem]="4"></div>
-    <div class="title">
-      Optional Adjustments
-    </div>
-    <div class="control">
-      <div class="label">
-        <h6>
-          File name
-        </h6>
-      </div>
-
-      <div class="field">
-        <input
-          name="pdfFileName"
-          [(ngModel)]="pdfFileName"
-          type="text">
-        <div class="unit">
-          .pdf
+      <!-- ------------------------------- MARGINS ------------------------------- -->
+      <div
+        (mouseover)="marginHighlight = true;"
+        (mouseout)="marginHighlight = false;"
+        class="control">
+        <div class="label">
+          <h6>
+            Margins
+          </h6>
+        </div>
+        <div class="field">
+          <input
+            name="marginInches"
+            [(ngModel)]="marginInches"
+            (keydown)="topMargin = marginInches"
+            step="0.01"
+            type="number">
+            <div class="unit">
+              <code>inches</code>
+            </div>
         </div>
       </div>
-    </div>
-    <div class="control">
-      <div class="label">
-        <h6>
-          Add Break Space After
-        </h6>
-        <select
-          (change)="onSectionSelect()"
-          #sectionSelector>
-          <option [ngValue]="null">Select Section</option>
-          <option value="contactInfo">Contact Information</option>
-          <option value="objective">Objective Summary</option>
-          <option value="projects">Projects</option>
-          <option value="workExperience">Work Experience</option>
-          <option value="skills">Hard & Soft Skills</option>
-        </select>
-      </div>
 
-      <div class="field">
-
-        <ng-container *ngIf="pageBreakSpace.contactInfo.selected">
+      <!-- --------------------------- SECTION SPACING --------------------------- -->
+      <div
+        (mouseover)="sectionSpacingHighlight = true"
+        (mouseout)="sectionSpacingHighlight = false"
+        class="control">
+        <div class="label">
+          <h6>
+            Spacing
+          </h6>
+        </div>
+        <div class="field">
           <input
-            name="contactInfoAfterBreak"
-            [(ngModel)]="pageBreakSpace.contactInfo.afterBreakHeight"
+            name="sectionSpacing"
+            [(ngModel)]="sectionSpacing"
+            step="0.01"
             type="number">
-        </ng-container>
-        <ng-container *ngIf="pageBreakSpace.objective.selected">
-          <input
-            name="objective"
-            [(ngModel)]="pageBreakSpace.objective.afterBreakHeight"
-            type="number">
-        </ng-container>
-        <ng-container *ngIf="pageBreakSpace.projects.selected">
-          <input
-            name="projects"
-            [(ngModel)]="pageBreakSpace.projects.afterBreakHeight"
-            type="number">
-        </ng-container>
-        <ng-container *ngIf="pageBreakSpace.workExperience.selected">
-          <input
-            name="workExperience"
-            [(ngModel)]="pageBreakSpace.workExperience.afterBreakHeight"
-            type="number">
-        </ng-container>
-        <ng-container *ngIf="pageBreakSpace.skills.selected">
-          <input
-            name="skills"
-            [(ngModel)]="pageBreakSpace.skills.afterBreakHeight"
-            type="number">
-        </ng-container>
-        <div class="unit">
-          x 10px
+            <div class="unit">
+              inches
+            </div>
         </div>
       </div>
-    </div>
+
+      <div [style.height.rem]="2.5"></div>
+      <div class="title">
+        Section Adjustments
+      </div>
+      <!-- ------------------------- CONTACT INFO WIDTH -------------------------- -->
+      <div
+        (mouseover)="contactInfoHighlight = true"
+        (mouseout)="contactInfoHighlight = false"
+        class="control">
+        <div class="label">
+          <h6>
+            Contact Info Width
+          </h6>
+        </div>
+        <div class="field">
+          <input
+            name="contactInfoWidth"
+            [(ngModel)]="contactInfoWidth"
+            type="number">
+            <div class="unit">
+              <code>%</code> of width
+            </div>
+        </div>
+      </div>
+
+      <!-- --------------------------- OBJECTIVE WIDTH --------------------------- -->
+      <div
+        (mouseover)="summaryContentHighlight = true"
+        (mouseout)="summaryContentHighlight = false"
+        class="control">
+        <div class="label">
+          <h6>
+            Objective Width
+          </h6>
+        </div>
+
+        <div class="field">
+          <input
+            name="summaryContentWidth"
+            [(ngModel)]="summaryContentWidth"
+            type="number">
+            <div class="unit">
+              <code>%</code> of width
+            </div>
+        </div>
+      </div>
+
+      <!-- ------------------------ PROJECT DETAILS WIDTH ------------------------ -->
+      <div
+        (mouseover)="projectDetailsHighlight = true"
+        (mouseout)="projectDetailsHighlight = false"
+        class="control">
+        <div class="label">
+          <h6>
+            Projects Width
+          </h6>
+        </div>
+
+        <div class="field">
+          <input
+            name="projectDetailsWidth"
+            [(ngModel)]="projectDetailsWidth"
+            type="number">
+            <div class="unit">
+              <code>%</code> of width
+            </div>
+        </div>
+      </div>
+
+      <!-- ---------------------- PROJECT VERTICAL SPACING ----------------------- -->
+      <div
+        (mouseover)="projectDetailsHighlight = true"
+        (mouseout)="projectDetailsHighlight = false"
+        class="control">
+        <div class="label">
+          <h6>
+            Projects Spacing
+          </h6>
+        </div>
+
+        <div class="field">
+          <input
+            [(ngModel)]="projectVerticalSpacing"
+            step="0.1"
+            type="number">
+            <div class="unit">
+              <code>* 10px</code>
+            </div>
+        </div>
+      </div>
+
+      <!-- ---------------------- EXPERIENCE DETAILS WIDTH ----------------------- -->
+      <div
+        (mouseover)="expDetailsHighlight = true"
+        (mouseout)="expDetailsHighlight = false"
+        class="control">
+        <div class="label">
+          <h6>
+            Work Experience Width
+          </h6>
+        </div>
+
+        <div class="field">
+          <input
+            name="expDetailsWidth"
+            [(ngModel)]="expDetailsWidth"
+            type="number">
+            <div class="unit">
+              <code>%</code> of width
+            </div>
+        </div>
+      </div>
+
+      <!-- --------------------- EXPERIENCE VERTICAL SPACING --------------------- -->
+      <div
+        (mouseover)="expDetailsHighlight = true"
+        (mouseout)="expDetailsHighlight = false"
+        class="control">
+        <div class="label">
+          <h6>
+            Work Experience Spacing
+          </h6>
+        </div>
+
+        <div class="field">
+          <input
+            name="expVerticalSpacing"
+            [(ngModel)]="expVerticalSpacing"
+            step="0.1"
+            type="number">
+            <div class="unit">
+              <code>* 10px</code>
+            </div>
+        </div>
+      </div>
+
+      <!-- -------------------------- SKILL BLOCK WIDTH -------------------------- -->
+      <div
+        (mouseover)="skillBlockHighlight = true"
+        (mouseout)="skillBlockHighlight = false"
+        class="control">
+        <div class="label">
+          <h6>
+            Skills Width
+          </h6>
+        </div>
+
+        <div class="field">
+          <input
+            name="skillBlockWidth"
+            [(ngModel)]="skillBlockWidth"
+            type="number">
+            <div class="unit">
+              <code>%</code> of width
+            </div>
+        </div>
+      </div>
+      <!-- -------------------- SKILL BLOCK VERTICAL SPACING --------------------- -->
+      <div
+        (mouseover)="skillBlockHighlight = true"
+        (mouseout)="skillBlockHighlight = false"
+        class="control">
+        <div class="label">
+          <h6>
+            Skills Spacing
+          </h6>
+        </div>
+
+        <div class="field">
+          <input
+            name="skillBlockVerticalSpacing"
+            [(ngModel)]="skillBlockVerticalSpacing"
+
+            type="number">
+            <div class="unit">
+              <code>* 10px</code>
+            </div>
+        </div>
+      </div>
+
+      <!-- ----------------------------------------------------------------------- -->
+      <!--                           ADDITIONAL OPTIONS                            -->
+      <!-- ----------------------------------------------------------------------- -->
+      <div [style.height.rem]="2.5"></div>
+      <div class="title">
+        Additional Options
+      </div>
+
+      <!-- --------------------------- SHOW WATERMARK ---------------------------- -->
+      <div class="control">
+        <div class="label">
+          <h6>
+            Watermark
+          </h6>
+        </div>
+
+        <div class="field">
+          <a
+            (click)="hasWatermark = !hasWatermark"
+            class="placeholder-field">
+            <ng-container *ngIf="hasWatermark">
+              <i [style.color]="'#343a41'" class="material-icons">check_box</i>
+            </ng-container>
+            <ng-container *ngIf="!hasWatermark">
+              <i [style.color]="'#b8bdc3'" class="material-icons">check_box_outline_blank</i>
+            </ng-container>
+          </a >
+        </div>
+      </div>
 
 
-    <div class="flex-row nowrap align-center justify-end mt-10">
-      <a
-        (click)="navigateBack()"
-        class="print-button secondary mr-1">
-        Go back
-      </a>
-      <a
-        (click)="onPrint()"
-        class="print-button">
-        Download PDF
-      </a>
+      <!-- ------------------------------ FILE NAME ------------------------------ -->
+      <div class="control">
+        <div class="label">
+          <h6>
+            File name
+          </h6>
+        </div>
+
+        <div class="field">
+          <input
+            name="pdfFileName"
+            [(ngModel)]="pdfFileName"
+            type="text">
+          <div class="unit">
+            <code>.pdf</code>
+          </div>
+        </div>
+      </div>
+
+      <!-- --------------------------- ADD BREAK AFTER --------------------------- -->
+      <div class="control">
+        <div class="label">
+          <h6 class="page-break-after-label">
+            Add Break Space After
+          </h6>
+          <select
+            [style.font-size.px]="11"
+            (change)="onSectionSelect()"
+            #sectionSelector>
+            <option [ngValue]="null">Select Section</option>
+            <option value="contactInfo">Contact Information</option>
+            <option value="objective">Objective Summary</option>
+            <option value="projects">Projects</option>
+            <option value="workExperience">Work Experience</option>
+            <option value="skills">Hard & Soft Skills</option>
+          </select>
+        </div>
+
+        <div class="field">
+          <ng-container *ngIf="pageBreakSpace.contactInfo.selected">
+            <input
+              name="contactInfoAfterBreak"
+              [(ngModel)]="pageBreakSpace.contactInfo.afterBreakHeight"
+              type="number">
+              <div class="unit">
+                <code>* 10px</code>
+              </div>
+          </ng-container>
+          <ng-container *ngIf="pageBreakSpace.objective.selected">
+            <input
+              name="objective"
+              [(ngModel)]="pageBreakSpace.objective.afterBreakHeight"
+              type="number">
+              <div class="unit">
+                <code>* 10px</code>
+              </div>
+
+          </ng-container>
+          <ng-container *ngIf="pageBreakSpace.projects.selected">
+            <input
+              name="projects"
+              [(ngModel)]="pageBreakSpace.projects.afterBreakHeight"
+              type="number">
+              <div class="unit">
+                <code>* 10px</code>
+              </div>
+          </ng-container>
+          <ng-container *ngIf="pageBreakSpace.workExperience.selected">
+            <input
+              name="workExperience"
+              [(ngModel)]="pageBreakSpace.workExperience.afterBreakHeight"
+              type="number">
+              <div class="unit">
+                <code>* 10px</code>
+              </div>
+          </ng-container>
+          <ng-container *ngIf="pageBreakSpace.skills.selected">
+            <input
+              name="skills"
+              [(ngModel)]="pageBreakSpace.skills.afterBreakHeight"
+              type="number">
+              <div class="unit">
+                <code>* 10px</code>
+              </div>
+          </ng-container>
+
+        </div>
+      </div>
+
+      <div [style.height.rem]="4"></div>
+
+      <div class="action-buttons">
+        <a
+          (click)="navigateBack()"
+          class="print-button secondary mr-1">
+          Go back
+        </a>
+        <a
+          (click)="onPrint()"
+          class="print-button">
+          Download PDF
+        </a>
+      </div>
     </div>
   </div>
 </ng-container>

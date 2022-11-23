@@ -35,8 +35,15 @@ export class SkillsComponent implements OnInit {
   }
 
   onAddSkill() {
-    const skills = this.resume.addBlankSkill();
-    this.skills = skills;
+    let skillsId = this.skills.length + 1;
+    let newSkill = {
+      id: skillsId++,
+      name: '',
+      description: '',
+      details: ['']
+    };
+    this.skills.push(newSkill);
+    this.resume.updateSkills(this.skills);
     this.scrollToBottom();
   }
 

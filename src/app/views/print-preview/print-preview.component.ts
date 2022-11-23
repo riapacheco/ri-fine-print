@@ -33,7 +33,11 @@ export class PrintPreviewComponent implements OnInit, AfterViewInit {
   @Input() isPrinting = false; // shows controls or not
   @Input() inPreview = false; // for the draggable preview component (parent)
 
+
+  hasWatermark = true;
   // Guides
+  mainFontSize = 1.1;
+
   marginInches = 0.25;
   topMargin = 0.25;
   marginHighlight = false;
@@ -42,20 +46,24 @@ export class PrintPreviewComponent implements OnInit, AfterViewInit {
   contactInfoHighlight = false;
   listBlockSpace = 4;
 
-  sectionSpacing = 0.15;
+  sectionSpacing = 0;
   sectionSpacingHighlight = false;
 
-  summaryContentWidth = 90;
+  summaryContentWidth = 75;
   summaryContentHighlight = false;
 
   projectDetailsWidth = 75;
   projectDetailsHighlight = false;
+  projectVerticalSpacing = 0.5;
+  projectVerticalHighlight = false;
 
   expDetailsWidth = 80;
   expDetailsHighlight = false;
+  expVerticalSpacing = 1.5;
 
   skillBlockWidth = 40;
   skillBlockHighlight = false;
+  skillBlockVerticalSpacing = 1;
 
   pageBreakSpace = {
     contactInfo: {

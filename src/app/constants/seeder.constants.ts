@@ -38,8 +38,19 @@ export const RESUME_CLEAR_SUMMARY: ISummary = {
 export const RESUME_SEEDER_PROJECTS: IProject[] = [
   {
     id: 1,
+    name: 'Yutes',
+    description: `With over 9k downloads since 2020, <strong>Yutes</strong> is an SCSS package that provides utilities commonly found in libraries like Bootstrap, without the rigidness that limits fluid design. [ Stats: <u>https://yutes.report</u> ]`,
+    url: 'https://www.npmjs.com/package/@riapacheco/yutes',
+    tools: [
+    ],
+    cover_image: '',
+    toolsString: 'SCSS expressions, functions, variables, at-rules, etc.',
+    spins: false
+  },
+  {
+    id: 2,
     name: 'RiReader',
-    description: 'RiReader is an application offered on Web, iOS, and Android, which enables a user to both consume and retain data they\'ve read from a physical book.',
+    description: 'RiReader is an application [in current development] offered on Web, iOS, and Android, which enables a user to both consume and retain data they\'ve read from a physical book.',
     url: 'https://rireader.app',
     tools: [
     ],
@@ -48,7 +59,7 @@ export const RESUME_SEEDER_PROJECTS: IProject[] = [
     spins: false
   },
   {
-    id: 2,
+    id: 3,
     name: 'FinePrint',
     spins: false,
     description: `FinePrint is a free web application for building print- and download-friendly docs with responsive templates that adjust themselves as they're populated.`,
@@ -58,7 +69,17 @@ export const RESUME_SEEDER_PROJECTS: IProject[] = [
     toolsString: 'TypeScript / JavaScript, Angular, jsPDF, @riapacheco/yutes, RxJS',
   },
   {
-    id: 3,
+    id: 4,
+    name: 'Designs',
+    spins: false,
+    description: `Resources designed for practical use-cases incl. DAW piano roll and beat sequence tablatures.`,
+    url: `https://riapacheco.design`,
+    tools: [],
+    cover_image: ``,
+    toolsString: `Adobe Creative Cloud Suite`
+  },
+  {
+    id: 5,
     name: 'Asset Tracker',
     spins: false,
     description: `AssetTracker is an internal equipment tracking tool that enables the manufacturing team to track all sensor and had compute technology equipment by location and MFG/M&R process`,
@@ -181,7 +202,7 @@ export const RESUME_SEEDER_SKILLS: ISkillTool[] = [
   {
     id: 2,
     name: 'Angular',
-    description: 'Proficient with MVVM pattern architecture, Routing, Forms, HTTP Services, Service Workers & PWA, Template Binding, RxJS'
+    description: 'Proficient with MVVM pattern architecture, Routing, Forms, HTTP Services, Service Workers & PWA, Template Binding'
   },
   {
     id: 3,

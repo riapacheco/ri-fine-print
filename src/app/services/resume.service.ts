@@ -1,17 +1,17 @@
 import { Injectable } from '@angular/core';
 import { BehaviorSubject, Observable } from 'rxjs';
 import {
-  RESUME_BLANK_PROJECT, 
-  RESUME_BLANK_SKILL, 
-  RESUME_BLANK_WORK, 
-  RESUME_CLEAR_PROJECTS, 
-  RESUME_CLEAR_SKILLS, 
-  RESUME_CLEAR_SUMMARY, 
-  RESUME_CLEAR_WORK, 
-  RESUME_SEEDER_PROJECTS, 
-  RESUME_SEEDER_SKILLS, 
-  RESUME_SEEDER_SUMMARY, 
-  RESUME_SEEDER_WORK 
+  RESUME_BLANK_PROJECT,
+  RESUME_BLANK_SKILL,
+  RESUME_BLANK_WORK,
+  RESUME_CLEAR_PROJECTS,
+  RESUME_CLEAR_SKILLS,
+  RESUME_CLEAR_SUMMARY,
+  RESUME_CLEAR_WORK,
+  RESUME_SEEDER_PROJECTS,
+  RESUME_SEEDER_SKILLS,
+  RESUME_SEEDER_SUMMARY,
+  RESUME_SEEDER_WORK
 } from '../constants/seeder.constants';
 import { IProject } from '../interfaces/project.interface';
 import { ISkillTool } from '../interfaces/skills-tools.interface';
@@ -70,16 +70,6 @@ export class ResumeService {
   public getProjects(): IProject[] {
     return this.projects;
   }
-  public addBlankProject(): IProject[] {
-    let lastProjectId = this.projects.length + 1;
-    let blankProject = RESUME_BLANK_PROJECT;
-    blankProject.id = lastProjectId++;
-
-    this.projects.push(blankProject);
-    this._projects$.next(this.projects);
-
-    return this.projects;
-  }
   public updateProjects(projects: IProject[]): IProject[] {
     this.projects = projects;
     this._projects$.next(projects);
@@ -100,16 +90,7 @@ export class ResumeService {
 
   /* ----------------------------- WORK EXPERIENCE ---------------------------- */
   public getExperience() { return this.works; }
-  public addBlankExperience() {
-    let lastExperience = this.works.length + 1;
-    let blankWork = RESUME_BLANK_WORK;
-    blankWork.id = lastExperience++;
 
-    this.works.push(blankWork);
-    this._workExperience$.next(this.works);
-
-    return this.works;
-  }
 
   public updateExperience(workData: IWork[]) {
     this.works = workData;
@@ -136,16 +117,6 @@ export class ResumeService {
     return this.skills;
   }
 
-  public addBlankSkill() {
-    let lastSkillId = this.skills.length + 1;
-    let blankSkill = RESUME_BLANK_SKILL;
-    blankSkill.id = lastSkillId;
-
-    this.skills.push(blankSkill);
-    this._skills$.next(this.skills);
-
-    return this.skills;
-  }
 
   public deleteSkill(skillId: number, skills: ISkillTool[]) {
     this.skills = skills;

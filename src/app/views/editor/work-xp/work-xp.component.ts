@@ -35,8 +35,16 @@ export class WorkXpComponent implements OnInit {
   }
 
   onAddWork() {
-    const works = this.resume.addBlankExperience();
-    this.works = works;
+    let workId = this.works.length + 1;
+    let newWork = {
+      id: workId++,
+      company: '',
+      job_title: '',
+      duties: '',
+      dutiesString: ''
+    };
+    this.works.push(newWork);
+    this.resume.updateExperience(this.works);
     this.scrollToBottom();
   }
 
