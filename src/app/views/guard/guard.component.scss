@@ -31,7 +31,7 @@
 
   .guard-content {
     @extend %guard-content;
-    
+
     .title {
       width: 100%;
       display: flex;
@@ -60,7 +60,7 @@
 
     .body {
       color: $ish-black;
-      
+
       width: 80%;
       margin: auto;
 
@@ -85,11 +85,32 @@
       @include mobile-text('body');
       font-family: "Fira Code", monospace;
       // border: 1px solid blue;
-      
+
     }
   }
 }
 
+.download-button {
+  background-color: $ish-black;
+  color: $steel-light;
+  padding: 0.7rem 1.5rem;
+  border-radius: 5px;
+  font-weight: 500;
+  font-size: 1.35rem;
+  letter-spacing: 0rem;
+
+  display: flex;
+  flex-flow: row nowrap;
+  align-items: center;
+  justify-content: space-between;
+  .material-icons {
+    height: inherit;
+    display: inline-flex;
+    height: 100%;
+    font-size: 1.8rem;
+    line-height: 1.8rem;
+  }
+}
 .ria-run-link {
   opacity: 0.5;
   height: 5rem !important;
@@ -101,7 +122,7 @@
   top: 0;
   right: 0;
   font-size: 1.2rem;
-  
+
   font-weight: 500;
   // background-color: $ish-black;
   // background-color: $bondi-medium ;
@@ -120,7 +141,7 @@
   align-items: center;
   justify-content: center;
   .material-icons {
-    
+
     font-size: 1.4rem;
     margin-right: 0.5rem;
   }
@@ -135,9 +156,9 @@
     @extend %guard-content;
     padding-top: 3rem;
     padding-bottom: 3rem;
-    
+
     .form-content {
-      width: 85%; 
+      width: 85%;
       margin: auto;
       h1 {
         // line-height: 1.25;
@@ -184,5 +205,5 @@
   letter-spacing: 0rem;
   // font-size: 1.5rem;
 
-  
+
 }
