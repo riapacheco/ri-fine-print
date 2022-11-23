@@ -352,9 +352,10 @@
             [(ngModel)]="marginInches"
             (keydown)="topMargin = marginInches"
             step="0.01"
+            min="0"
             type="number">
             <div class="unit">
-              <code>inches</code>
+              inches
             </div>
         </div>
       </div>
@@ -374,6 +375,7 @@
             name="sectionSpacing"
             [(ngModel)]="sectionSpacing"
             step="0.01"
+            min="0"
             type="number">
             <div class="unit">
               inches
@@ -399,6 +401,7 @@
           <input
             name="contactInfoWidth"
             [(ngModel)]="contactInfoWidth"
+            min="0"
             type="number">
             <div class="unit">
               <code>%</code> of width
@@ -421,6 +424,7 @@
           <input
             name="summaryContentWidth"
             [(ngModel)]="summaryContentWidth"
+            min="0"
             type="number">
             <div class="unit">
               <code>%</code> of width
@@ -443,6 +447,7 @@
           <input
             name="projectDetailsWidth"
             [(ngModel)]="projectDetailsWidth"
+            min="0"
             type="number">
             <div class="unit">
               <code>%</code> of width
@@ -465,9 +470,13 @@
           <input
             [(ngModel)]="projectVerticalSpacing"
             step="0.1"
+            min="0"
             type="number">
             <div class="unit">
-              <code>* 10px</code>
+              <code *ngIf="projectVerticalSpacing > 0;else projectPx">*10px</code>
+              <ng-template #projectPx>
+                <code>px</code>
+              </ng-template>
             </div>
         </div>
       </div>
@@ -487,6 +496,7 @@
           <input
             name="expDetailsWidth"
             [(ngModel)]="expDetailsWidth"
+            min="0"
             type="number">
             <div class="unit">
               <code>%</code> of width
@@ -510,9 +520,14 @@
             name="expVerticalSpacing"
             [(ngModel)]="expVerticalSpacing"
             step="0.1"
+            min="0"
             type="number">
+
             <div class="unit">
-              <code>* 10px</code>
+              <code *ngIf="expVerticalSpacing > 0;else workXpSpacing">*10px</code>
+              <ng-template #workXpSpacing>
+                <code>px</code>
+              </ng-template>
             </div>
         </div>
       </div>
@@ -532,6 +547,7 @@
           <input
             name="skillBlockWidth"
             [(ngModel)]="skillBlockWidth"
+            min="0"
             type="number">
             <div class="unit">
               <code>%</code> of width
@@ -553,10 +569,13 @@
           <input
             name="skillBlockVerticalSpacing"
             [(ngModel)]="skillBlockVerticalSpacing"
-
+            min="0"
             type="number">
             <div class="unit">
-              <code>* 10px</code>
+              <code *ngIf="skillBlockVerticalSpacing > 0; else skillSpacingXp">*10px</code>
+              <ng-template #skillSpacingXp>
+                <code>px</code>
+              </ng-template>
             </div>
         </div>
       </div>
@@ -631,53 +650,92 @@
         </div>
 
         <div class="field">
+          <!-- ---------------------------- Contact Info ----------------------------- -->
           <ng-container *ngIf="pageBreakSpace.contactInfo.selected">
             <input
               name="contactInfoAfterBreak"
               [(ngModel)]="pageBreakSpace.contactInfo.afterBreakHeight"
+              min="0"
               type="number">
               <div class="unit">
-                <code>* 10px</code>
+                <code *ngIf="pageBreakSpace.contactInfo.afterBreakHeight > 0;else contactInfoPX">*10px</code>
+                <ng-template #contactInfoPX>
+                  <code>px</code>
+                </ng-template>
               </div>
           </ng-container>
+
+          <!-- --------------------------- Objective Break --------------------------- -->
           <ng-container *ngIf="pageBreakSpace.objective.selected">
             <input
               name="objective"
               [(ngModel)]="pageBreakSpace.objective.afterBreakHeight"
+              min="0"
               type="number">
               <div class="unit">
-                <code>* 10px</code>
+                <code *ngIf="pageBreakSpace.objective.afterBreakHeight > 0;else objectivePX">*10px</code>
+                <ng-template #objectivePX>
+                  <code>px</code>
+                </ng-template>
               </div>
 
           </ng-container>
+
+          <!-- --------------------------- PROJECTS BREAK ---------------------------- -->
           <ng-container *ngIf="pageBreakSpace.projects.selected">
             <input
               name="projects"
               [(ngModel)]="pageBreakSpace.projects.afterBreakHeight"
+              min="0"
               type="number">
               <div class="unit">
-                <code>* 10px</code>
+                <code
+                  *ngIf="pageBreakSpace.projects.afterBreakHeight > 0;else projectsBreakPX"
+                  >
+                  *10px
+                </code>
+                <ng-template #projectsBreakPX>
+                  <code>px</code>
+                </ng-template>
               </div>
           </ng-container>
+
+          <!-- -------------------------- Experience Break --------------------------- -->
           <ng-container *ngIf="pageBreakSpace.workExperience.selected">
             <input
               name="workExperience"
               [(ngModel)]="pageBreakSpace.workExperience.afterBreakHeight"
+              min="0"
               type="number">
               <div class="unit">
-                <code>* 10px</code>
+                <code
+                  *ngIf="pageBreakSpace.workExperience.afterBreakHeight > 0;else workExperiencePX"
+                  >
+                  *10px
+                </code>
+                <ng-template #workExperiencePX>
+                  <code>px</code>
+                </ng-template>
               </div>
           </ng-container>
+
+          <!-- ------------------------------- Skills -------------------------------- -->
           <ng-container *ngIf="pageBreakSpace.skills.selected">
             <input
               name="skills"
               [(ngModel)]="pageBreakSpace.skills.afterBreakHeight"
+              min="0"
               type="number">
               <div class="unit">
-                <code>* 10px</code>
+                <code
+                  *ngIf="pageBreakSpace.skills.afterBreakHeight > 0;else skillsPX">
+                  *10px
+                </code>
+                <ng-template #skillsPX>
+                  <code>px</code>
+                </ng-template>
               </div>
           </ng-container>
-
         </div>
       </div>
 

@@ -102,6 +102,7 @@ export class PrintPreviewComponent implements OnInit, AfterViewInit {
   ngOnInit(): void {
     this.getView();
     this.getData();
+    this.pdfFileName = `${this.summary.first_name}-${this.summary.last_name}_resume.pdf`;
   }
   ngAfterViewInit() {
 
