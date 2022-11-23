@@ -72,7 +72,7 @@ export const RESUME_SEEDER_PROJECTS: IProject[] = [
     id: 4,
     name: 'Designs',
     spins: false,
-    description: `Resources designed for practical use-cases incl. DAW piano roll and beat sequence tablatures.`,
+    description: `Resources designed for practical use-cases including DAW piano roll and beat sequence tablatures.`,
     url: `https://riapacheco.design`,
     tools: [],
     cover_image: ``,
