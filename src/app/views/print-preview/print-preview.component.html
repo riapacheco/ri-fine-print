@@ -168,7 +168,7 @@
       <div class="block-header">
         <div class="header-title">
           <span>
-            Projects
+            {{ (res.devState$ | async) ? 'Projects' : 'Major Projects' }}
           </span>
         </div>
         <div class="header-divider"></div>
@@ -231,7 +231,7 @@
       <div class="block-header">
         <div class="header-title">
           <span>
-            Work Experience
+            {{ (res.devState$ | async) ? 'Work Experience' : 'General Work Experience' }}
           </span>
         </div>
         <div class="header-divider"></div>

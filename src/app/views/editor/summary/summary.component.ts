@@ -13,7 +13,7 @@ import { ResumeService } from 'src/app/services/resume.service';
   templateUrl: './summary.component.html',
   styleUrls: ['./summary.component.scss']
 })
-export class SummaryComponent implements OnInit, OnDestroy {
+export class SummaryComponent implements OnInit, AfterViewInit, OnDestroy {
   summary!: ISummary;
 
   /* ------------------------------- ACTION BAR ------------------------------- */
@@ -39,9 +39,12 @@ export class SummaryComponent implements OnInit, OnDestroy {
 
   ngOnInit(): void {
     this.checkDevice();
-    this.initSummary();
+    this.summary = this.resume.getSummary();
   }
 
+  ngAfterViewInit(): void {
+    this.summary = this.resume.getSummary();
+  }
   ngOnDestroy() { this.sub.unsubscribe(); this.resume.updateSummary(this.summary); }
 
   checkDevice() {
@@ -53,10 +56,7 @@ export class SummaryComponent implements OnInit, OnDestroy {
       }
     }))
   }
-  initSummary() {
-    const summary = this.resume.getSummary();
-    this.summary = summary;
-  }
+
   onUpdateSummary() {
     this.resume.updateSummary(this.summary);
     setTimeout(() => {

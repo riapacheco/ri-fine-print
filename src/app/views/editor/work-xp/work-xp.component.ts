@@ -22,16 +22,11 @@ export class WorkXpComponent implements OnInit {
   ) { }
 
   ngOnInit(): void {
-    this.loadData();
+    this.works = this.resume.getExperience();
   }
 
   private scrollToBottom() {
     setTimeout(() => { this.bottomDiv.nativeElement.scrollIntoView({ behavior: 'smooth'}); }, 400);
-  }
-
-  loadData() {
-    const works = this.resume.getExperience();
-    this.works = works;
   }
 
   onAddWork() {

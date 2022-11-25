@@ -1,5 +1,6 @@
 import { NgModule } from '@angular/core';
 import { RouterModule, Routes } from '@angular/router';
+import { DialogComponent } from './components/dialog/dialog.component';
 import { EducationComponent } from './views/editor/education/education.component';
 import { ProjectsComponent } from './views/editor/projects/projects.component';
 import { SkillsComponent } from './views/editor/skills/skills.component';
@@ -41,6 +42,10 @@ const routes: Routes = [
   {
     path: 'print-preview',
     component: PrintPreviewComponent
+  },
+  {
+    path: 'user-confirm',
+    component: DialogComponent
   }
 ];
 

@@ -1,0 +1,96 @@
+
+@import '../../../scss/mixins.scss';
+@import '../../../scss/variables.scss';
+
+$dialog-padding: 20px;
+.dialog {
+  position: absolute;
+  top: 0;
+  right: 0;
+  bottom: 0;
+  left: 0;
+
+  background-color: $black-fade;
+  backdrop-filter: blur(2px);
+
+  display: flex;
+  flex-flow: row nowrap;
+  align-items: center;
+  justify-content: center;
+
+  .dialog-window {
+    width: 320px;
+    min-height: 100px;
+    background-color: white;
+    border-radius: 4px;
+    box-shadow: 6px 6px 22px #00000030;
+    margin-top: -15rem;
+    padding: $dialog-padding;
+
+    display: flex;
+    flex-flow: column nowrap;
+    align-items: center;
+    justify-content: space-between;
+    text-align: center;
+    .window-title {
+      margin-bottom: $dialog-padding;
+      // width: 100%;
+      // border: 1px solid red;
+      text-align: center;
+      h2 {
+        margin: unset;
+        span {
+          text-decoration: underline;
+        }
+      }
+
+    }
+    .dialog-body {
+      font-size: 1.4rem;
+      margin-bottom: 2.5rem;
+    }
+
+    .dialog-buttons {
+      display: flex;
+      flex-flow: row nowrap;
+      align-items: flex-end;
+      justify-content: space-between;
+      width: 100%;
+
+      color: $black-ish;
+      a {
+        width: 100%;
+        font-size: 1.2rem;
+        line-height: 1.2rem;
+        letter-spacing: 0rem;
+        padding: 0.8rem;
+        font-weight: 600;
+        white-space: nowrap;
+
+        &:nth-child(1) {
+          border: 1px solid $black-ish;
+          border-radius: 5px 0px 0px 5px;
+          background-color: white;
+          &:hover {
+            border-radius: 5px;
+          }
+        }
+
+        &:nth-child(2) {
+          background-color: $black-ish;
+          border: 1px solid $black-ish;
+          border-radius: 0px 5px 5px 0px;
+          color: $steel-light;
+          &:hover {
+            border-radius: 5px;
+          }
+        }
+
+        transition: 200ms ease-in-out;
+        &:hover {
+          transform: scale(1.1);
+        }
+      }
+    }
+  }
+}

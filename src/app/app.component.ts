@@ -33,7 +33,7 @@ export class AppComponent implements OnInit, OnDestroy {
 
   ngOnInit(): void {
     this.checkDevice();
-    this.resume.loadResume();
+    this.checkState();
   }
 
   ngOnDestroy() {
@@ -55,5 +55,13 @@ export class AppComponent implements OnInit, OnDestroy {
         this.isMobile = false;
       }
     }))
+  }
+
+  checkState() {
+    const devState = this.resume.getDevState();
+
+    if (devState == undefined) {
+      this.resume.seedState();
+    }
   }
 }

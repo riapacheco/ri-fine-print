@@ -1,7 +1,6 @@
 import { Component, ElementRef, OnDestroy, OnInit, ViewChild } from '@angular/core';
 import { Subscription } from 'rxjs';
 import { QUILL } from 'src/app/constants/quill.constants';
-import { RESUME_BLANK_PROJECT } from 'src/app/constants/seeder.constants';
 import { IProject } from 'src/app/interfaces/project.interface';
 import { ResumeService } from 'src/app/services/resume.service';
 
@@ -38,17 +37,13 @@ export class ProjectsComponent implements OnInit, OnDestroy {
   ) { }
 
   ngOnInit(): void {
-    this.loadProjectData();
+    this.projects = this.resume.getProjects();
   }
 
   ngOnDestroy() {
     this.sub.unsubscribe();
   }
 
-  loadProjectData() {
-    const projects = this.resume.getProjects();
-    this.projects = projects;
-  }
 
   private scrollToBottom() {
     setTimeout(() => {

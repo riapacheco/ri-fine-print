@@ -1,74 +1,187 @@
 import { Injectable } from '@angular/core';
 import { BehaviorSubject, Observable } from 'rxjs';
-import {
-  RESUME_BLANK_PROJECT,
-  RESUME_BLANK_SKILL,
-  RESUME_BLANK_WORK,
-  RESUME_CLEAR_PROJECTS,
-  RESUME_CLEAR_SKILLS,
-  RESUME_CLEAR_SUMMARY,
-  RESUME_CLEAR_WORK,
-  RESUME_SEEDER_PROJECTS,
-  RESUME_SEEDER_SKILLS,
-  RESUME_SEEDER_SUMMARY,
-  RESUME_SEEDER_WORK
-} from '../constants/seeder.constants';
+import { PROJECTS_CLEARED, PROJECTS_DEVELOPER, PROJECTS_PRODUCT, SKILLS_CLEARED, SKILLS_DEVELOPER, SKILLS_PRODUCT, SUMMARY_CLEARED, SUMMARY_DEVELOPER, SUMMARY_PRODUCT, WORKS_CLEARED, WORKS_DEVELOPER, WORKS_PRODUCT } from '../constants/resume.constants';
+
 import { IProject } from '../interfaces/project.interface';
 import { ISkillTool } from '../interfaces/skills-tools.interface';
 import { ISummary } from '../interfaces/summary.interface';
 import { IWork } from '../interfaces/work.interface';
 
+export type TSeedData = 'developer' | 'product manager';
+
 @Injectable({
   providedIn: 'root'
 })
 export class ResumeService {
+
+  /* -------------------------------------------------------------------------- */
+  /*                               DEVELOPER STATE                              */
+  /* -------------------------------------------------------------------------- */
+  private _devState$ = new BehaviorSubject<boolean>(true);
+  public devState$: Observable<boolean> = this._devState$.asObservable();
+  devState!: boolean;
+
+  /* -------------------------------------------------------------------------- */
+  /*                                   SUMMARY                                  */
+  /* -------------------------------------------------------------------------- */
+  /* -------------------------------- DEVELOPER ------------------------------- */
+  private _summaryDeveloper$ = new BehaviorSubject<ISummary>(SUMMARY_DEVELOPER);
+  public summaryDeveloper$: Observable<ISummary> = this._summaryDeveloper$.asObservable();
+  summaryDeveloper!: ISummary;
+  /* ----------------------------- PRODUCT MANAGER ---------------------------- */
+  private _summaryProductManager$ = new BehaviorSubject<ISummary>(SUMMARY_PRODUCT);
+  public summaryProductManager$: Observable<ISummary> = this._summaryProductManager$.asObservable();
+  summaryProductManager!: ISummary;
+
+  /* -------------------------------------------------------------------------- */
+  /*                                  PROJECTS                                  */
+  /* -------------------------------------------------------------------------- */
+  /* -------------------------------- DEVELOPER ------------------------------- */
+  private _projectsDeveloper$ = new BehaviorSubject<IProject[]>(PROJECTS_DEVELOPER);
+  public projectsDeveloper$: Observable<IProject[]> = this._projectsDeveloper$.asObservable();
+  projectsDeveloper!: IProject[];
+  /* ----------------------------- PRODUCT MANAGER ---------------------------- */
+  private _projectsProductManager$ = new BehaviorSubject<IProject[]>(PROJECTS_PRODUCT);
+  public projectsProductManager$: Observable<IProject[]> = this._projectsProductManager$.asObservable();
+  projectsProductManager!: IProject[];
+
+  /* -------------------------------------------------------------------------- */
+  /*                               WORK EXPERIENCE                              */
+  /* -------------------------------------------------------------------------- */
+  /* -------------------------------- DEVELOPER ------------------------------- */
+  private _worksDeveloper$ = new BehaviorSubject<IWork[]>(WORKS_DEVELOPER);
+  public worksDeveloper$: Observable<IWork[]> = this._worksDeveloper$.asObservable();
+  worksDeveloper!: IWork[];
+  /* ----------------------------- PRODUCT MANAGER ---------------------------- */
+  private _worksProductManager$ = new BehaviorSubject<IWork[]>(WORKS_PRODUCT);
+  public worksProductManager$: Observable<IWork[]> = this._worksProductManager$.asObservable();
+  worksProductManager!: IWork[];
+
+  /* -------------------------------------------------------------------------- */
+  /*                                   SKILLS                                   */
+  /* -------------------------------------------------------------------------- */
+  /* -------------------------------- DEVELOPER ------------------------------- */
+  private _skillsDeveloper$ = new BehaviorSubject<ISkillTool[]>(SKILLS_DEVELOPER);
+  public skillsDeveloper$: Observable<ISkillTool[]> = this._skillsDeveloper$.asObservable();
+  skillsDeveloper!: ISkillTool[];
+  /* ----------------------------- PRODUCT MANAGER ---------------------------- */
+  private _skillsProductManager$ = new BehaviorSubject<ISkillTool[]>(SKILLS_PRODUCT);
+  public skillsProductManager$: Observable<ISkillTool[]> = this._skillsProductManager$.asObservable();
+  skillsProductManager!: ISkillTool[];
+
+
+  /* -------------------------------------------------------------------------- */
+  /*                                     OLD                                    */
+  /* -------------------------------------------------------------------------- */
   /* ------------------------------ SUMMARY STORE ----------------------------- */
-  private _summary$ = new BehaviorSubject<ISummary>(RESUME_SEEDER_SUMMARY);
+  private _summary$ = new BehaviorSubject<ISummary>(SUMMARY_DEVELOPER);
   public summary$: Observable<ISummary> = this._summary$.asObservable();
   summary!: ISummary;
 
   /* ----------------------------- PROJECTS STORE ----------------------------- */
-  private _projects$ = new BehaviorSubject<IProject[]>(RESUME_SEEDER_PROJECTS);
+  private _projects$ = new BehaviorSubject<IProject[]>(PROJECTS_DEVELOPER);
   public projects$: Observable<IProject[]> = this._projects$.asObservable();
   projects!: IProject[];
 
   /* -------------------------- WORK EXPERIENCE STORE ------------------------- */
-  private _workExperience$ = new BehaviorSubject<IWork[]>(RESUME_SEEDER_WORK);
+  private _workExperience$ = new BehaviorSubject<IWork[]>(WORKS_DEVELOPER);
   public workExperience$: Observable<IWork[]> = this._workExperience$.asObservable();
   works!: IWork[];
 
   /* --------------------------------- SKILLS --------------------------------- */
-  private _skills$ = new BehaviorSubject<ISkillTool[]>(RESUME_SEEDER_SKILLS);
+  private _skills$ = new BehaviorSubject<ISkillTool[]>(SKILLS_DEVELOPER);
   public skills$: Observable<ISkillTool[]> = this._skills$.asObservable();
   skills!: ISkillTool[];
 
   constructor() { }
 
-  /* --------------------------------- GENERAL -------------------------------- */
-  public loadResume() {
-    this.summary = RESUME_SEEDER_SUMMARY;
-    this.projects = RESUME_SEEDER_PROJECTS;
-    this.works = RESUME_SEEDER_WORK;
-    this.skills = RESUME_SEEDER_SKILLS;
+  /* ---------------------------------- STATE --------------------------------- */
+  public getDevState() {
+    return this.devState;
   }
 
-  /* --------------------------------- SUMMARY -------------------------------- */
-  public getSummary(): ISummary {
-    return this.summary;
+  public seedState() {
+    if (!this.summaryDeveloper) {
+      this.seedData('developer');
+    }
+    if (!this.summaryProductManager$) {
+      this.seedData('product manager');
+    }
   }
-  public updateSummary(summaryData: ISummary) {
-    this.summary = summaryData;
-    this._summary$.next(summaryData);
+
+  public updateState(stateType: TSeedData) {
+    if (stateType == 'developer') {
+      this.devState = true;
+      this._devState$.next(true);
+    }
+    if (stateType == 'product manager') {
+      this.devState = false;
+      this._devState$.next(false);
+    }
+  }
+
+  private seedData(dataType: TSeedData) {
+    this._summaryDeveloper$.next(SUMMARY_DEVELOPER);
+    this.summaryDeveloper = SUMMARY_DEVELOPER;
+    this._projectsDeveloper$.next(PROJECTS_DEVELOPER);
+    this.projectsDeveloper = PROJECTS_DEVELOPER;
+    this._worksDeveloper$.next(WORKS_DEVELOPER);
+    this.worksDeveloper = WORKS_DEVELOPER;
+    this._skillsDeveloper$.next(SKILLS_DEVELOPER);
+    this.skillsDeveloper = SKILLS_DEVELOPER;
+    this._summaryProductManager$.next(SUMMARY_PRODUCT);
+    this.summaryProductManager = SUMMARY_PRODUCT;
+    this._projectsProductManager$.next(PROJECTS_PRODUCT);
+    this.projectsProductManager = PROJECTS_PRODUCT;
+    this._worksProductManager$.next(WORKS_PRODUCT);
+    this.worksProductManager = WORKS_PRODUCT;
+    this._skillsProductManager$.next(SKILLS_PRODUCT);
+    this.skillsProductManager = SKILLS_PRODUCT;
+
+    if (dataType == 'developer') {
+      this.updateState('developer');
+    }
+
+    if (dataType == 'product manager') {
+      this.updateState('product manager');
+    }
+  }
+
+
+  /* --------------------------------- SUMMARY -------------------------------- */
+  public getSummary(): any {
+    if (this.devState) { return this.summaryDeveloper; }
+    else { return this.summaryProductManager; }
+  }
+  public updateSummary(summaryData: ISummary): ISummary {
+    if (this.devState) {
+      this.summaryDeveloper = summaryData;
+      this._summaryDeveloper$.next(summaryData);
+      return this.summaryDeveloper;
+    }
+    else {
+      this.summaryProductManager = summaryData;
+      this._summaryProductManager$.next(summaryData);
+      return this.summaryProductManager;
+    }
   }
   public clearSummary() {
-    this.summary = RESUME_CLEAR_SUMMARY;
-    this._summary$.next(RESUME_CLEAR_SUMMARY);
-    return this.summary;
+    if (this.devState) {
+      this.summaryDeveloper = SUMMARY_CLEARED;
+      this._summaryDeveloper$.next(SUMMARY_CLEARED);
+      return this.summaryDeveloper;
+    }
+    else {
+      this.summaryProductManager = SUMMARY_CLEARED;
+      this._summaryProductManager$.next(SUMMARY_CLEARED);
+      return this.summaryProductManager;
+    }
   }
 
   /* -------------------------------- PROJECTS -------------------------------- */
   public getProjects(): IProject[] {
-    return this.projects;
+    if (this.devState) { return this.projectsDeveloper; }
+    else { return this.projectsProductManager; }
   }
   public updateProjects(projects: IProject[]): IProject[] {
     this.projects = projects;
@@ -82,15 +195,24 @@ export class ResumeService {
     this._projects$.next(this.projects);
     return this.projects;
   }
-  public clearProjects() {
-    this.projects = RESUME_CLEAR_PROJECTS;
-    this._projects$.next(RESUME_CLEAR_PROJECTS);
-    return this.projects;
+  public clearProjects(): IProject[] {
+    if (this.devState) {
+      this.projectsDeveloper = PROJECTS_CLEARED;
+      this._projectsDeveloper$.next(PROJECTS_CLEARED);
+      return this.projectsDeveloper;
+    }
+    else {
+      this.projectsProductManager = PROJECTS_CLEARED;
+      this._projectsProductManager$.next(PROJECTS_CLEARED);
+      return this.projectsProductManager;
+    }
   }
 
   /* ----------------------------- WORK EXPERIENCE ---------------------------- */
-  public getExperience() { return this.works; }
-
+  public getExperience() {
+    if (this.devState) { return this.worksDeveloper; }
+    else { return this.worksProductManager; }
+  }
 
   public updateExperience(workData: IWork[]) {
     this.works = workData;
@@ -106,15 +228,23 @@ export class ResumeService {
     return this.works;
   }
 
-  public clearExperiences() {
-    this.works = RESUME_CLEAR_WORK;
-    this._workExperience$.next(RESUME_CLEAR_WORK);
-    return this.works;
+  public clearExperiences(): IWork[] {
+    if (this.devState) {
+      this.worksDeveloper = WORKS_CLEARED;
+      this._worksDeveloper$.next(WORKS_CLEARED);
+      return this.worksDeveloper;
+    }
+    else {
+      this.worksProductManager = WORKS_CLEARED;
+      this._worksProductManager$.next(WORKS_CLEARED);
+      return this.worksProductManager;
+    }
   }
 
   /* --------------------------------- SKILLS --------------------------------- */
   public getSkills() {
-    return this.skills;
+    if (this.devState) { return this.skillsDeveloper; }
+    else { return this.skillsProductManager; }
   }
 
 
@@ -133,8 +263,16 @@ export class ResumeService {
   }
 
   public clearSkills() {
-    this.skills = RESUME_CLEAR_SKILLS;
-    this._skills$.next(RESUME_CLEAR_SKILLS);
-    return this.skills;
+    if (this.devState) {
+      this.skillsDeveloper = SKILLS_CLEARED;
+      this._skillsDeveloper$.next(SKILLS_CLEARED);
+      return this.skillsDeveloper;
+    }
+
+    else {
+      this.skillsProductManager = SKILLS_CLEARED;
+      this._skillsProductManager$.next(SKILLS_CLEARED);
+      return this.skillsProductManager;
+    }
   }
 }

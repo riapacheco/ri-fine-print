@@ -32,6 +32,7 @@ import { DocComponent } from './views/doc-viewer/doc/doc.component';
 import { GeneratePdfService } from './services/generate-pdf.service';
 import { ResumeService } from './services/resume.service';
 import { PrintPreviewComponent } from './views/print-preview/print-preview.component';
+import { DialogComponent } from './components/dialog/dialog.component';
 
 
 
@@ -53,6 +54,7 @@ import { PrintPreviewComponent } from './views/print-preview/print-preview.compo
     ResizeLRDirective,
     DocComponent,
     PrintPreviewComponent,
+    DialogComponent,
   ],
   imports: [
     BrowserModule,

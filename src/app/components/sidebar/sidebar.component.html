@@ -87,8 +87,19 @@
       </div>
 
       <div class="bottom-content">
-        <a href="https://ria.run" target="_blank">
-          <i class="material-icons">directions_run</i>
+        <a
+          routerLink="/user-confirm"
+          class="toggle-group">
+          <i
+            [style.color]="(resume.devState$ | async) ? '#232a31' : '#d2dadf'"
+            class="material-icons">
+            {{ (resume.devState$ | async) ? 'toggle_on' : 'toggle_off' }}
+          </i>
+          <span
+            [style.color]="(resume.devState$ | async) ? '' : '#aeb3ba'"
+            >
+            Developer CV
+          </span>
         </a>
       </div>
     </div>

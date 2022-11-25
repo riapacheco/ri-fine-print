@@ -20,18 +20,13 @@ export class SkillsComponent implements OnInit {
   ) { }
 
   ngOnInit(): void {
-    this.loadData();
+    this.skills = this.resume.getSkills();
   }
 
   private scrollToBottom() {
     setTimeout(() => {
       this.bottomScroll.nativeElement.scrollIntoView({ behavior: 'smooth' });
     }, 250);
-  }
-
-  loadData() {
-    const skills = this.resume.getSkills();
-    this.skills = skills;
   }
 
   onAddSkill() {

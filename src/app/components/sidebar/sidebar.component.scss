@@ -7,6 +7,7 @@ $title-height: 10rem;
 $bottom-height: 5rem;
 $routerlink-height: 5rem;
 $button-width: calc($slim-width - 35px);
+$toggle-text-size: 1.15rem;
 .sidebar {
   // position: sticky;
   position: fixed;
@@ -18,7 +19,7 @@ $button-width: calc($slim-width - 35px);
   width: $sidebar-width;
   background-image: linear-gradient(to bottom, #f9f9f9, white);
   background-attachment: fixed;
-  
+
   .sidebar-content {
     height: $view-height;
     display: flex;
@@ -39,7 +40,7 @@ $button-width: calc($slim-width - 35px);
         flex-flow: row nowrap;
         align-items: flex-end;
         justify-content: center;
-        
+
         span {
           @include text('h2');
           font-weight: 800;
@@ -64,7 +65,7 @@ $button-width: calc($slim-width - 35px);
         justify-content: flex-start;
         padding-top: 4rem;
         height: calc($view-height - ($title-height + $bottom-height));
-        
+
         a {
           width: calc($sidebar-width - ($sidebar-padding * 2));
           height: $routerlink-height;
@@ -127,21 +128,29 @@ $button-width: calc($slim-width - 35px);
       flex-flow: row nowrap;
       align-items: center;
       justify-content: flex-start;
-      
-      a {
-        margin-right: 1rem;
-        &:last-child {
-          margin-right: 0rem;
+
+
+      .toggle-group {
+        display: flex;
+        flex-flow: row nowrap;
+        align-items: center;
+        justify-content: flex-end;
+        span {
+          font-size: $toggle-text-size;
+          line-height: $toggle-text-size;
+          white-space: nowrap;
+          font-weight: 500;
+          letter-spacing: 0.01rem;
         }
         .material-icons {
-          font-size: 2.4rem;
-          color: $hint-grey;
+          margin-right: 0.4rem;
+          transition: 200ms ease-in-out;
         }
 
+
+        transition: 200ms ease-in-out;
         &:hover {
-          .material-icons {
-            color: $blood-orange-regular;
-          }
+          transform: scale(1.1);
         }
       }
     }
@@ -198,19 +207,17 @@ $button-width: calc($slim-width - 35px);
       align-items: center;
       justify-content: center;
       a {
-        // width: inherit;
         width: $button-width;
         height: $button-width;
         border-radius: 5px;
         margin-bottom: 1rem;
         margin-top: 1.5rem;
-        // border: 1px solid blue;
         display: flex;
         flex-flow: row nowrap;
         align-items: center;
         justify-content: center;
         background-image: linear-gradient(to bottom right, white, #f1f1f1);
-        
+
         box-shadow: -4px -4px 10px #FFFFFF,
         4px 3px 10px #00000030;
         border: 1px solid $steel-light;
@@ -223,7 +230,7 @@ $button-width: calc($slim-width - 35px);
         }
       }
 
-      
+
     }
   }
 }

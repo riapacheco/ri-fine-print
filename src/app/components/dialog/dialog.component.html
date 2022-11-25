@@ -1,0 +1,24 @@
+<div class="dialog">
+  <div class="dialog-window">
+    <div class="window-title">
+      <h2>
+        Switch to <span>{{ (resume.devState$ | async) ? 'Product Manager' : 'Developer' }}</span> CV?
+      </h2>
+    </div>
+
+    <div class="dialog-body">
+      Note: any changes applied to content during this session will be lost.
+    </div>
+
+    <div class="dialog-buttons">
+      <a (click)="goBack()">
+        Cancel
+      </a>
+
+      <a
+        (click)="onStateToggle()">
+        Confirm
+      </a>
+    </div>
+  </div>
+</div>

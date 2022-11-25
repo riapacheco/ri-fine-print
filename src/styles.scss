@@ -159,3 +159,8 @@ app-pdf-preview,
 .drag-handle {
   z-index: 4000;
 }
+
+app-dialog,
+.dialog {
+  z-index: 50000;
+}
