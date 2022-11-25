@@ -28,14 +28,14 @@ export const SUMMARY_DEVELOPER: ISummary = {
   first_name: 'Ria',
   last_name: 'Pacheco',
   email: 'me@riapacheco.com',
-  phone: '',
+  phone: '+1 (403) 471 - 7356',
   location: 'Calgary, Alberta',
   url: 'ria.run',
   alt_url: 'riapacheco.codes',
   twitter_handle: 'realriapacheco',
   linkedin_handle: 'riapacheco',
   github_handle: 'riapacheco',
-  summary_objective: `<p>Ambitious and curious former Product Manager turned <strong>Front End Developer</strong> &amp; UX / UI designer, searching for an opportunity to complete the transition to full stack development under the mentorship of an innovative team.</p>`,
+  summary_objective: `<p>Ambitious and curious former Product Manager turned <strong>Front End Developer</strong> and <strong>UX / UI designer</strong>, searching for a creative and innovative team to build, learn, and grow with.</p>`,
 };
 
 // Product Manager
@@ -43,7 +43,7 @@ export const SUMMARY_PRODUCT: ISummary = {
   first_name: 'Ria',
   last_name: 'Pacheco',
   email: 'me@riapacheco.com',
-  phone: '',
+  phone: '+1 (403) 471 - 7356',
   location: 'Calgary, Alberta',
   url: 'ria.run',
   alt_url: 'riapacheco.codes',
@@ -88,7 +88,7 @@ export const PROJECTS_DEVELOPER: IProject[] = [
   {
     id: 2,
     name: 'RiReader',
-    description: 'RiReader is an application [in current development] offered on Web, iOS, and Android, which enables a user to both consume and retain data they\'ve read from a physical book.',
+    description: '<strong>RiReader</strong> is an application [in current development] offered on Web, iOS, and Android, which enables a user to both consume and retain data they\'ve read from a physical book.',
     url: 'https://rireader.app',
     tools: [
     ],
@@ -100,7 +100,7 @@ export const PROJECTS_DEVELOPER: IProject[] = [
     id: 3,
     name: 'FinePrint',
     spins: false,
-    description: `FinePrint is a free web application for building print- and download-friendly docs with responsive templates that adjust themselves as they're populated.`,
+    description: `<strong>FinePrint</strong> is a free web application for building print- and download-friendly docs with responsive templates that adjust themselves as they're populated.`,
     url: 'https://fine-print.app',
     tools: [],
     cover_image: '',
@@ -110,7 +110,7 @@ export const PROJECTS_DEVELOPER: IProject[] = [
     id: 4,
     name: 'Designs',
     spins: false,
-    description: `Resources designed for practical use-cases including DAW piano roll and beat sequence tablatures.`,
+    description: `Resources designed for practical use-cases including <strong>DAW tablatures</strong> (piano roll and beat sequencing)`,
     url: `https://riapacheco.design`,
     tools: [],
     cover_image: ``,
@@ -120,7 +120,7 @@ export const PROJECTS_DEVELOPER: IProject[] = [
     id: 5,
     name: 'Asset Tracker',
     spins: false,
-    description: `AssetTracker is an internal equipment tracking tool that enables the manufacturing team to track all sensor and had compute technology equipment by location and MFG/M&R process`,
+    description: `<strong>AssetTracker</strong> is an internal equipment tracking tool that enables the manufacturing team to track all sensor and had compute technology equipment by location and MFG/M&R process`,
     toolsString: '',
     url: ''
   }
@@ -329,17 +329,17 @@ export const SKILLS_CLEARED: ISkillTool[] = [
 export const SKILLS_DEVELOPER: ISkillTool[] = [
   {
     id: 1,
-    name: 'TypeScript / JavaScript',
-    description: 'Proficient with TS classes, modules, models, interfaces, generics, and optional static types for scalable products',
+    name: 'TypeScript / JavaScript / Angular',
+    description: 'Proficient with MVVM pattern architecture, TS classes, modules, models, interfaces, routing, PWA, and template binding for scalable applications',
   },
   {
     id: 2,
-    name: 'Angular',
-    description: 'Proficient with MVVM pattern architecture, Routing, Forms, HTTP Services, Service Workers & PWA, Template Binding'
+    name: 'UX / UI Design and Implementation',
+    description: 'Highly proficient in UX-focused view/component design through UX/UI exercises, prototyping design tools (Adobe XD, Figma) and user testing tools (UseBerry)'
   },
   {
     id: 3,
-    name: 'Data Modelling, Postgres',
+    name: 'Data Modelling / Relational DBs',
     description: `Strong experience with data schemas, entity planning (PKs, Joins, etc), and planned interactions between client services and middleware`
   },
   {
