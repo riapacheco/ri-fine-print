@@ -5,7 +5,7 @@
   left: 0;
   background-color: white;
   height: 50px;
-  width: 200px;
+  min-width: 200px;
   display: flex;
   flex-flow: row nowrap;
   align-items: center;
@@ -15,4 +15,42 @@
   margin: 1.5rem;
   font-size: 1.4rem;
   font-weight: black;
+  padding: 20px;
+
+  .toast-content {
+    width: inherit;
+    height: inherit;
+
+    .inner-wrapper {
+      width: 100%;
+      height: 100%;
+      display: flex;
+      flex-flow: row nowrap;
+      align-items: center;
+      justify-content: space-between;
+
+      a {
+        display: flex;
+        flex-flow: row nowrap;
+        align-items: center;
+        .material-icons {
+          font-size: 1.7rem;
+          width: 1.7rem;
+          height: 1.7rem;
+          display: inline-flex;
+          flex-flow: column nowrap;
+          align-items: center;
+          justify-content: center;
+          margin-left: 2.5rem;
+          transition: 170ms ease-in-out;
+        }
+
+        &:hover {
+          .material-icons {
+            transform: scale(1.3);
+          }
+        }
+      }
+    }
+  }
 }

@@ -452,3 +452,28 @@ h6 {
 
   }
 }
+
+.projects-ul {
+  li {
+    display: flex;
+    flex-flow: row nowrap;
+    align-items: baseline;
+
+    .projects-label {
+      text-transform: uppercase;
+      letter-spacing: 0.06rem;
+      font-size: 0.88rem;
+      min-width: 6rem;
+      display: inline-flex;
+      flex-flow: row nowrap;
+      justify-content: flex-end;
+      strong {
+        font-weight: 600;
+      }
+    }
+
+    .projects-details {
+      padding-left: 1rem;
+    }
+  }
+}

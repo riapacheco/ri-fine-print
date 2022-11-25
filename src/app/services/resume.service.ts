@@ -6,6 +6,7 @@ import { IProject } from '../interfaces/project.interface';
 import { ISkillTool } from '../interfaces/skills-tools.interface';
 import { ISummary } from '../interfaces/summary.interface';
 import { IWork } from '../interfaces/work.interface';
+import { ToastService } from './toast.service';
 
 export type TSeedData = 'developer' | 'product manager';
 
@@ -93,7 +94,9 @@ export class ResumeService {
   public skills$: Observable<ISkillTool[]> = this._skills$.asObservable();
   skills!: ISkillTool[];
 
-  constructor() { }
+  constructor(
+    private toast: ToastService
+  ) { }
 
   /* ---------------------------------- STATE --------------------------------- */
   public getDevState() {
@@ -113,10 +116,19 @@ export class ResumeService {
     if (stateType == 'developer') {
       this.devState = true;
       this._devState$.next(true);
+      this.toast.callToast(`App is in <strong>Developer CV Mode</strong>`);
+
+      setTimeout(() => {
+        this.toast.dismissToast();
+      }, 2000);
     }
     if (stateType == 'product manager') {
       this.devState = false;
       this._devState$.next(false);
+      this.toast.callToast(`App is in <strong>Product Manager CV Mode</strong>`);
+      setTimeout(() => {
+        this.toast.dismissToast();
+      }, 2000);
     }
   }
 

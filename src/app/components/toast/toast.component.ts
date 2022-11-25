@@ -9,12 +9,16 @@ import { ToastService } from 'src/app/services/toast.service';
   animations: [ slideTD ]
 })
 export class ToastComponent implements OnInit {
-  
+
   constructor(
     public toast: ToastService
   ) { }
 
   ngOnInit(): void {
+  }
+
+  dismiss() {
+    this.toast.dismissToast();
   }
 
 }

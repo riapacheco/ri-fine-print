@@ -139,8 +139,7 @@ app-doc-viewer {
   z-index: 1000;
 }
 
-app-toast,
-.toast,
+
 .doc-data,
 app-action-bar,
 .action-bar {
@@ -160,6 +159,8 @@ app-pdf-preview,
   z-index: 4000;
 }
 
+app-toast,
+.toast,
 app-dialog,
 .dialog {
   z-index: 50000;

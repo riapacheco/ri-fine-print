@@ -200,12 +200,23 @@
               </div>
 
               <!-- Tools and URL -->
-              <ul *ngIf="project.toolsString" class="projects-ul">
+              <ul *ngIf="project.toolsString || project.url" class="projects-ul list-unstyled" style="margin-left: 1rem; padding-top: 1rem;">
                 <li>
-                  {{ project.toolsString }}
+                  <div class="projects-label">
+                    <strong class="details-label" *ngIf="!(res.devState$ | async)">Keywords</strong>
+                    <strong class="details-label" *ngIf="(res.devState$ | async)">Tools</strong>
+                  </div>
+                  <div class="projects-details">
+                    {{ project.toolsString }}
+                  </div>
                 </li>
                 <li>
-                  {{ project.url }}
+                  <div class="projects-label">
+                    <strong class="details-label">URL</strong>
+                  </div>
+                  <div class="projects-details">
+                    {{ project.url }}
+                  </div>
                 </li>
               </ul>
             </td>

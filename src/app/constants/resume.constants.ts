@@ -50,7 +50,7 @@ export const SUMMARY_PRODUCT: ISummary = {
   twitter_handle: 'realriapacheco',
   linkedin_handle: 'riapacheco',
   github_handle: 'riapacheco',
-  summary_objective: `<p>Driven, versatile, and solution-focused <strong>Senior Product Manager</strong> offering 8 years of experience driving customer-focused products, managing the product lifecycle and optimizing user experiences for established and emerging tech companies</p>`
+  summary_objective: `<p>Driven, versatile, and solution-focused <strong>Senior Product Manager</strong> with 8 years of experience driving customer-focused products, managing the product lifecycle, and optimizing user experiences for established and emerging tech companies</p>`
 };
 
 
@@ -130,7 +130,7 @@ export const PROJECTS_DEVELOPER: IProject[] = [
 export const PROJECTS_PRODUCT: IProject[] = [
   {
     id: 1,
-    name: 'Portfolio Launch',
+    name: 'Enterprise Launch',
     description: 'Developed end-to-end GTM strategy executing modules for strategic implementation, market & solution intelligence, analysis for product/solution fit, and sales enablement tactics',
     url: 'https://ria.management/#coldboretechnology',
     tools: [],
@@ -140,7 +140,7 @@ export const PROJECTS_PRODUCT: IProject[] = [
   },
   {
     id: 2,
-    name: 'Scrum Conversion',
+    name: 'Scrum Implementation',
     description: `Pitched and transitioned a development team entirely to scrum methodologies, resulting in a 400% development cycle output increase`,
     url: `https://ria.management/#mydomastudio`,
     tools: [],
@@ -150,7 +150,7 @@ export const PROJECTS_PRODUCT: IProject[] = [
   },
   {
     id: 3,
-    name: `Pilot Case Study`,
+    name: `Startup Pilot`,
     description: `After integrating the Steer development team with Sol Press as an Innovation Partner, we were able to boost their productivity by over 300% which more than doubled their revenue`,
     url: `https://ria.management/#steer`,
     tools: [],
