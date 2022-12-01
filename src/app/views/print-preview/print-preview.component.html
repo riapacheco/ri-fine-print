@@ -168,7 +168,7 @@
       <div class="block-header">
         <div class="header-title">
           <span>
-            {{ (res.devState$ | async) ? 'Projects' : 'Major Projects' }}
+            {{ (res.devState$ | async) ? 'Projects' : 'Key Highlights' }}
           </span>
         </div>
         <div class="header-divider"></div>
@@ -302,7 +302,8 @@
       </div>
 
       <div
-        class="block-body skills"
+        [ngClass]="(res.devState$ | async) ? 'block-body skills' : 'block-body skills skills-pm'"
+
         >
         <div
           [style.width.%]="skillBlockWidth"
@@ -312,9 +313,18 @@
           <div class="skill-name">
             {{ skill.name }}
           </div>
-          <div class="skill-description">
-            {{ skill.description }}
-          </div>
+
+          <ng-container *ngIf="(res.devState$ | async);else pmSkills">
+            <div class="skill-description">
+              {{ skill.description }}
+            </div>
+          </ng-container>
+          <ng-template #pmSkills>
+            <div class="skill-description inner-wrapper skills" [style.text-align]="'left'" [style.margin-top.rem]="-0.5">
+              <div [innerHTML]="skill.description"></div>
+            </div>
+          </ng-template>
+
         </div>
       </div>
     </div>

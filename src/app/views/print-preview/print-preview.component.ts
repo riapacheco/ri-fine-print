@@ -61,7 +61,7 @@ export class PrintPreviewComponent implements OnInit, AfterViewInit {
   expDetailsHighlight = false;
   expVerticalSpacing = 1.5;
 
-  skillBlockWidth = 40;
+  skillBlockWidth = 30;
   skillBlockHighlight = false;
   skillBlockVerticalSpacing = 1;
 

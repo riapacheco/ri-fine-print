@@ -55,6 +55,15 @@ strong {
   li {
     margin-bottom: 1rem;
   }
+
+  &.skills {
+    ul {
+      padding-left: 1rem;
+    }
+    li {
+      margin-bottom: 0.5rem;
+    }
+  }
 }
 
 input {

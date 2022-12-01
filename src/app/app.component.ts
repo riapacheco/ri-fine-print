@@ -62,6 +62,7 @@ export class AppComponent implements OnInit, OnDestroy {
 
     if (devState == undefined) {
       this.resume.seedState();
+      // this.resume.updateState('product manager');
     }
   }
 }

@@ -50,7 +50,7 @@ export const SUMMARY_PRODUCT: ISummary = {
   twitter_handle: 'realriapacheco',
   linkedin_handle: 'riapacheco',
   github_handle: 'riapacheco',
-  summary_objective: `<p>Driven, versatile, and solution-focused <strong>Senior Product Manager</strong> with 8 years of experience driving customer-focused products, managing the product lifecycle, and optimizing user experiences for established and emerging tech companies</p>`
+  summary_objective: `<p>Driven, versatile, and solution-focused <strong>Senior Product Manager</strong> with 8 years of experience driving customer-focused products, managing product lifecycles, and optimizing UX for established and emerging tech companies</p>`
 };
 
 
@@ -130,8 +130,17 @@ export const PROJECTS_DEVELOPER: IProject[] = [
 export const PROJECTS_PRODUCT: IProject[] = [
   {
     id: 1,
+    name: `PM Systems`,
+    spins: false,
+    description: `Generally developed <strong>owned repeatable frameworks</strong> for critical Product Management activities including: Roadmap Building, Customer and Market Discovery, and PMM`,
+    toolsString: `Product Discovery, Discovery Activities, Objectives, Operational Spaces, Problem Spaces, Value Propositions, Competitive Intelligence`,
+    cover_image: ``,
+    url: `https://riapacheco.systems`
+  },
+  {
+    id: 2,
     name: 'Enterprise Launch',
-    description: 'Developed end-to-end GTM strategy executing modules for strategic implementation, market & solution intelligence, analysis for product/solution fit, and sales enablement tactics',
+    description: 'As <strong>Senior Technical PM</strong> at <strong>Cold Bore Technology</strong>, developed end-to-end GTM strategy executing modules for strategic implementation, market & solution intelligence, analysis for product/solution fit, and sales enablement tactics',
     url: 'https://ria.management/#coldboretechnology',
     tools: [],
     cover_image: '',
@@ -139,9 +148,9 @@ export const PROJECTS_PRODUCT: IProject[] = [
     spins: false
   },
   {
-    id: 2,
+    id: 3,
     name: 'Scrum Implementation',
-    description: `Pitched and transitioned a development team entirely to scrum methodologies, resulting in a 400% development cycle output increase`,
+    description: `As <strong>Director of Product Management</strong> at <strong>MyDoma Studio</strong>, pitched and transitioned a development team entirely to scrum methodologies, resulting in a 400% development cycle output increase`,
     url: `https://ria.management/#mydomastudio`,
     tools: [],
     cover_image: ``,
@@ -149,25 +158,15 @@ export const PROJECTS_PRODUCT: IProject[] = [
     spins: false,
   },
   {
-    id: 3,
+    id: 4,
     name: `Startup Pilot`,
-    description: `After integrating the Steer development team with Sol Press as an Innovation Partner, we were able to boost their productivity by over 300% which more than doubled their revenue`,
+    description: `As <strong>Founder & CEO</strong> at <strong>Steer</strong>, boosted productivity for first co-innovation pilot customer by over 300%`,
     url: `https://ria.management/#steer`,
     tools: [],
     cover_image: ``,
     toolsString: `First-time founder, pilot B2B customer, capital raises, team recruitment and management`,
     spins: false,
   },
-  {
-    id: 4,
-    spins: false,
-    name: 'Platform Strategy',
-    description: `Developed both a product and organizational strategy by breaking down product features, customer segments, sales velocity / efforts, and the customer's ecosystem`,
-    url: 'https://ria.management/#showpass',
-    tools: [],
-    cover_image: '',
-    toolsString: `Feature categories, software complexity brackets, customer ecosystem mapping`
-  }
 ];
 
 /* -------------------------------------------------------------------------- */
@@ -204,10 +203,19 @@ export const WORKS_DEVELOPER: IWork[] = [
                       Strategically introduced 4 under-utilized data products in branded product line (ColdEDGE Web Services)
                     </li>
                     <li>
-                      Scoped and developed the frontend of an internal hardware tracking tool (Asset Tracker) to help MFG / M&R teams in managing all processes related to MFG / repair [Angular/TypeScript, Amazon RDS]
+                      Instituted a new product marketing insights database driving customer value through relational value propositions, feature descriptions, customer needs, market insights, and client use-cases
                     </li>
                     <li>
-                      Isolated the MFG value chain to enable UX design sessions with the VP Technology and Director of Hardware [Adobe XD, Confluence]
+                      Partnered with hardware engineering and manufacturing teams to build equipment intake procedures, warehouse supply-chain efficiencies, and maintenance & repair SLAs
+                    </li>
+                    <li>
+                      Isolated the MFG value chain to enable UX design sessions with the VP Technology and Director of Hardware
+                    </li>
+                    <li>
+                      Implemented ongoing discovery activities for market product & intelligence to standardize a product portfolio
+                    </li>
+                    <li>
+                      Scoped and developed the frontend of an internal hardware tracking tool (Asset Tracker) to help MFG / M&R teams in managing all processes related to MFG / repair [Angular/TypeScript, Amazon RDS]
                     </li>
                   </ul>`
   },
@@ -219,7 +227,13 @@ export const WORKS_DEVELOPER: IWork[] = [
     end_date: '2021-09-01',
     dutiesString: `<ul>
                     <li>
-                    Boosted dev cycle output by 400% with user story estimations, sprint management, HCM planning, and an overall transition to scrum
+                      Boosted dev cycle output by 400% with user story estimations, sprint management, HCM planning, and an overall transition to scrum
+                    </li>
+                    <li>
+                      Performed job costing and gap analysis to appraise team efficiency and isolate areas in need of improvement
+                    </li>
+                    <li>
+                      Developed and implemented customer prototype testing campaigns, client surveys, contextual inquiries, and usability studies to understand user behaviors and opinions
                     </li>
                     <li>
                     Evaluated and re-designed all UX and UI resulting in a solution-focused application
@@ -237,13 +251,76 @@ export const WORKS_DEVELOPER: IWork[] = [
     end_date: '2021-04-01',
     dutiesString: `<ul>
                     <li>
-                      Delivered MVP product, from prototype testing to pilot customer release, directly resulting in pilot customer's 200% boost in revenue
+                      Founded and fronted a tech startup that specialized in distributed team management
                     </li>
                     <li>
-                      Raised capital for product research, marketing, and development of 4-person dev team
+                      Acquired prominent publishing company pilot customer with teams located across the world
                     </li>
                     <li>
-                      Built and refactored frontend views in first heavy exposure to code
+                      Seamlessly delivered the minimum viable product (MVP) that boosted client revenues by over 200%
+                    </li>
+                    <li>
+                      Managed and coached a team of software developers in building customer-centered software
+                    </li>
+                  </ul>`
+  },
+  {
+    id: 4,
+    company: `Showpass`,
+    job_title: `Head of Strategy`,
+    start_date: `2017-10-01`,
+    end_date: `2017-04-01`,
+    dutiesString: `<ul>
+                    <li>
+                      Mandated with optimizing day-to-day operations for the ticketing and event management software company
+                    </li>
+                    <li>
+                      Analyzed team activities, unearthed performance gaps, and rectified recurring issues
+                    </li>
+                    <li>
+                      Forged and facilitated training to educate team members on new models, processes, and best practices
+                    </li>
+                    <li>
+                      Instituted customer support ticket tagging system to uncover user segments and issue type categories
+                    </li>
+                  </ul>`
+  },
+  {
+    id: 5,
+    company: `Intriga Mobility [acquired]`,
+    job_title: `Director of Sales Enablement`,
+    start_date: `2016-03-01`,
+    end_date: `2017-05-01`,
+    dutiesString: `<ul>
+                    <li>
+                      Led team in designing and deploying the sales enablement program to 8 distribution partners across the country and over 200 sales representatives for the industry leading provider of managed mobility services
+                    </li>
+                    <li>
+                      Contributed to company’s acquisition by expanding annual sales revenues by over 36% through empowering entire distribution channel and interviewing stakeholders to reveal and overcome sales barriers
+                    </li>
+                    <li>
+                      Engaged sales reps in discovery activities to uncover concerns, address challenges, and shape programming
+                    </li>
+                    <li>
+                      Authored a wide range of enablement content for workshops, on-site training sessions, and sales tool guides
+                    </li>
+                  </ul>`
+  },
+  {
+    id: 6,
+    company: `Passportal [acquired]`,
+    job_title: `Director of Marketing`,
+    start_date: `2015-09-01`,
+    end_date: `2016-03-01`,
+    dutiesString: `<ul>
+                    <li>
+                      Built and nurtured channel partnerships with 3 US-based value-add resellers (VARs) for software company that offered password and identity management for managed service providers (MSPs)
+                    </li>
+                    <li>
+                      Produced sales enablement materials for large distribution partner (ConnectWise) with over 200 sales staff
+                    </li>
+                    <li>
+                      Designed and implemented customer support incident processes and trained development staff in support
                     </li>
                   </ul>`
   }
@@ -266,10 +343,19 @@ export const WORKS_PRODUCT: IWork[] = [
                       Strategically introduced 4 under-utilized data products in branded product line (ColdEDGE Web Services)
                     </li>
                     <li>
-                      Scoped and developed the frontend of an internal hardware tracking tool (Asset Tracker) to help MFG / M&R teams in managing all processes related to MFG / repair [Angular/TypeScript, Amazon RDS]
+                      Instituted a new product marketing insights database driving customer value through relational value propositions, feature descriptions, customer needs, market insights, and client use-cases
                     </li>
                     <li>
-                      Isolated the MFG value chain to enable UX design sessions with the VP Technology and Director of Hardware [Adobe XD, Confluence]
+                      Partnered with hardware engineering and manufacturing teams to build equipment intake procedures, warehouse supply-chain efficiencies, and maintenance & repair SLAs
+                    </li>
+                    <li>
+                      Isolated the MFG value chain to enable UX design sessions with the VP Technology and Director of Hardware
+                    </li>
+                    <li>
+                      Implemented ongoing discovery activities for market product & intelligence to standardize a product portfolio
+                    </li>
+                    <li>
+                      Scoped and developed the frontend of an internal hardware tracking tool (Asset Tracker) to help MFG / M&R teams in managing all processes related to MFG / repair [Angular/TypeScript, Amazon RDS]
                     </li>
                   </ul>`
   },
@@ -281,7 +367,13 @@ export const WORKS_PRODUCT: IWork[] = [
     end_date: '2021-09-01',
     dutiesString: `<ul>
                     <li>
-                    Boosted dev cycle output by 400% with user story estimations, sprint management, HCM planning, and an overall transition to scrum
+                      Boosted dev cycle output by 400% with user story estimations, sprint management, HCM planning, and an overall transition to scrum
+                    </li>
+                    <li>
+                      Performed job costing and gap analysis to appraise team efficiency and isolate areas in need of improvement
+                    </li>
+                    <li>
+                      Developed and implemented customer prototype testing campaigns, client surveys, contextual inquiries, and usability studies to understand user behaviors and opinions
                     </li>
                     <li>
                     Evaluated and re-designed all UX and UI resulting in a solution-focused application
@@ -299,13 +391,76 @@ export const WORKS_PRODUCT: IWork[] = [
     end_date: '2021-04-01',
     dutiesString: `<ul>
                     <li>
-                      Delivered MVP product, from prototype testing to pilot customer release, directly resulting in pilot customer's 200% boost in revenue
+                      Founded and fronted a tech startup that specialized in distributed team management
                     </li>
                     <li>
-                      Raised capital for product research, marketing, and development of 4-person dev team
+                      Acquired prominent publishing company pilot customer with teams located across the world
                     </li>
                     <li>
-                      Built and refactored frontend views in first heavy exposure to code
+                      Seamlessly delivered the minimum viable product (MVP) that boosted client revenues by over 200%
+                    </li>
+                    <li>
+                      Managed and coached a team of software developers in building customer-centered software
+                    </li>
+                  </ul>`
+  },
+  {
+    id: 4,
+    company: `Showpass`,
+    job_title: `Head of Strategy`,
+    start_date: `2017-10-01`,
+    end_date: `2017-04-01`,
+    dutiesString: `<ul>
+                    <li>
+                      Mandated with optimizing day-to-day operations for the ticketing and event management software company
+                    </li>
+                    <li>
+                      Analyzed team activities, unearthed performance gaps, and rectified recurring issues
+                    </li>
+                    <li>
+                      Forged and facilitated training to educate team members on new models, processes, and best practices
+                    </li>
+                    <li>
+                      Instituted customer support ticket tagging system to uncover user segments and issue type categories
+                    </li>
+                  </ul>`
+  },
+  {
+    id: 5,
+    company: `Intriga Mobility [acquired]`,
+    job_title: `Director of Sales Enablement`,
+    start_date: `2016-03-01`,
+    end_date: `2017-05-01`,
+    dutiesString: `<ul>
+                    <li>
+                      Led team in designing and deploying the sales enablement program to 8 distribution partners across the country and over 200 sales representatives for the industry leading provider of managed mobility services
+                    </li>
+                    <li>
+                      Contributed to company’s acquisition by expanding annual sales revenues by over 36% through empowering entire distribution channel and interviewing stakeholders to reveal and overcome sales barriers
+                    </li>
+                    <li>
+                      Engaged sales reps in discovery activities to uncover concerns, address challenges, and shape programming
+                    </li>
+                    <li>
+                      Authored a wide range of enablement content for workshops, on-site training sessions, and sales tool guides
+                    </li>
+                  </ul>`
+  },
+  {
+    id: 6,
+    company: `Passportal [acquired]`,
+    job_title: `Director of Marketing`,
+    start_date: `2015-09-01`,
+    end_date: `2016-03-01`,
+    dutiesString: `<ul>
+                    <li>
+                      Built and nurtured channel partnerships with 3 US-based value-add resellers (VARs) for software company that offered password and identity management for managed service providers (MSPs)
+                    </li>
+                    <li>
+                      Produced sales enablement materials for large distribution partner (ConnectWise) with over 200 sales staff
+                    </li>
+                    <li>
+                      Designed and implemented customer support incident processes and trained development staff in support
                     </li>
                   </ul>`
   }
@@ -366,46 +521,83 @@ export const SKILLS_DEVELOPER: ISkillTool[] = [
     id: 8,
     name: 'Python / Django',
     description: 'Enabled understanding of basic Python workflows and concepts for REST API development'
-  }
+  },
 ];
 
 // Product Manager
 export const SKILLS_PRODUCT: ISkillTool[] = [
   {
     id: 1,
-    name: 'Market & User Research',
-    description: 'Achieved through analysis of operational space, problem space, and solution space; against backdrop of product/solution requirements',
-    details: ['']
+    name: `User / Market Analysis`,
+    description: `<ul>
+                    <li>
+                      Customer Problem Analysis
+                    </li>
+                    <li>
+                      Customer / Stakeholder Interviews
+                    </li>
+                    <li>
+                      Capability Classification
+                    </li>
+                    <li>
+                      Market Position Research
+                    </li>
+                    <li>
+                      User Ecosystem Analysis
+                    </li>
+                    <li>
+                      IxD Prototype Tests
+                    </li>
+
+                  </ul>`
   },
   {
     id: 2,
-    name: 'Product Roadmap Planning',
-    description: 'Achieved by understanding first roadmap building blocks (objectives, target groups, product incentives) and synthesizing this data with roadmap priorities',
-    details: ['']
+    name: `Roadmap Development`,
+    description: `<ul>
+                    <li>
+                      Value Chain Mapping
+                    </li>
+                    <li>
+                      Business Workflow Mapping
+                    </li>
+                    <li>
+                      User / Task Mapping
+                    </li>
+                    <li>
+                      Problem/Root Cause Analysis
+                    </li>
+                    <li>
+                      User-Focused Epics
+                    </li>
+                    <li>
+                      Product Vertical Planning
+                    </li>
+                  </ul>`
   },
   {
-    id: 4,
-    name: 'Requirements Gathering',
-    description: 'Requirements and insights are typically gathered through customer interviews, prototype testing activities, on-site shadowing, and trace user behavioral data',
-    details: ['']
-  },
-  {
-    id: 5,
-    name: 'Agile-Focused Sprints',
-    description: 'Development cycles are efficiently enabled by selecting only the relevant / useful parts of the agile framework which best serve each team member',
-    details: ['']
-  },
-  {
-    id: 6,
-    name: 'UX / UI Prototyping',
-    description: 'A series of UX/UI exercises is implemented to extract data that enables the simplification of user needs per each module and view',
-    details: ['']
-  },
-  {
-    id: 7,
-    name: 'Go-to-Market Planning',
-    description: 'Implementation of high- to mid-level corporate strategy, market & solution intelligence activities, comprehensive product marketing development, and effective sales enablement tactics',
-    details: ['']
+    id: 3,
+    name: `Software / Hardware Cycles`,
+    description: `<ul>
+                    <li>
+                      Backlog and PRD Management
+                    </li>
+                    <li>
+                      Sprint Capacity Planning
+                    </li>
+                    <li>
+                      Story Point Estimates
+                    </li>
+                    <li>
+                      M&R Value Chain Mapping
+                    </li>
+                    <li>
+                      Sprint Kickoff Facilitation
+                    </li>
+                    <li>
+                      Daily Sprint Facilitation
+                    </li>
+                  </ul>`
   },
 
 ];

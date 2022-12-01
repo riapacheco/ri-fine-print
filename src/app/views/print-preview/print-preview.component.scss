@@ -134,18 +134,25 @@ td {
         }
 
         &.skills {
+          width: 100%;
           display: flex;
           flex-flow: row wrap;
           align-items: flex-start;
           justify-content: space-around;
+          margin: 1.5rem;
+
+          &.skills-pm {
+            justify-content: space-between;
+          }
 
           .skill {
             display: inline-flex;
-            flex-flow: column nowrap;
+            flex-flow: column wrap;
             align-items: flex-start;
             justify-content: flex-start;
+            width: fit-content;
             // border: 1px solid red;
-            margin: 1rem;
+            // margin: 1rem;
 
             .skill-name {
               @include text('h6');
@@ -158,6 +165,8 @@ td {
               margin-bottom: 1rem;
               line-height: $main-line-height;
               margin-top: 5px;
+
+
             }
           }
         }
