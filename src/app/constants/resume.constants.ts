@@ -485,22 +485,22 @@ export const SKILLS_DEVELOPER: ISkillTool[] = [
   {
     id: 1,
     name: 'TypeScript / JavaScript / Angular',
-    description: 'Proficient with MVVM pattern architecture, TS classes, modules, models, interfaces, routing, PWA, and template binding for scalable applications',
+    description: 'Proficient with MVVM pattern architecture, TS classes, modules, models, interfaces, routing, PWA, and template binding'
   },
   {
     id: 2,
     name: 'UX / UI Design and Implementation',
-    description: 'Highly proficient in UX-focused view/component design through UX/UI exercises, prototyping design tools (Adobe XD, Figma) and user testing tools (UseBerry)'
+    description: 'Highly proficient in UX-focused design through UX/UI exercises, prototyping design / testing tools (Adobe XD, Figma, UseBerry)'
   },
   {
     id: 3,
     name: 'Data Modelling / Relational DBs',
-    description: `Strong experience with data schemas, entity planning (PKs, Joins, etc), and planned interactions between client services and middleware`
+    description: `Strong experience with data schemas, entity planning, and planned DB interactions through middleware`
   },
   {
     id: 4,
     name: 'iOS / Android Design',
-    description: `High design proficiency in web and mobile user interfaces (Adobe XD) with considerations towards both iOS and Android native requirements`
+    description: `High design proficiency in web and mobile user interfaces that considers native device requirements`
   },
   {
     id: 5,
@@ -509,18 +509,8 @@ export const SKILLS_DEVELOPER: ISkillTool[] = [
   },
   {
     id: 6,
-    name: 'Capacitor',
-    description: `Strong implementation of multi-OS codebase, enabling the delivery of a web, iOS, and Android application from a single codebase`
-  },
-  {
-    id: 7,
     name: 'NodeJS / Express',
     description: `Applied experience building NodeJS/Express applications with middleware and routing`
-  },
-  {
-    id: 8,
-    name: 'Python / Django',
-    description: 'Enabled understanding of basic Python workflows and concepts for REST API development'
   },
 ];
 
