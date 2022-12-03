@@ -136,8 +136,11 @@
       >
       <div class="block-header">
         <div class="header-title">
-          <span>
+          <span *ngIf="(res.devState$ | async)">
             Objective
+          </span>
+          <span *ngIf="!(res.devState$ | async)">
+            Summary
           </span>
         </div>
         <div class="header-divider"></div>
