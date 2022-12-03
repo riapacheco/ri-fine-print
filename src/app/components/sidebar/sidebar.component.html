@@ -20,10 +20,7 @@
             <span>
               Summary
             </span>
-  <!--
-            <i class="material-icons drag">
-              drag_indicator
-            </i> -->
+
           </a>
 
           <a
@@ -91,14 +88,14 @@
           routerLink="/user-confirm"
           class="toggle-group">
           <i
-            [style.color]="(resume.devState$ | async) ? '#232a31' : '#d2dadf'"
+            [style.color]="(resume.devState$ | async) ?  '#d2dadf' : '#232a31'"
             class="material-icons">
-            {{ (resume.devState$ | async) ? 'toggle_on' : 'toggle_off' }}
+            {{ (resume.devState$ | async) ? 'toggle_off' : 'toggle_on' }}
           </i>
           <span
-            [style.color]="(resume.devState$ | async) ? '' : '#aeb3ba'"
+            [style.color]="(resume.devState$ | async) ? '#aeb3ba' : ''"
             >
-            Developer CV
+            Product Manager Data
           </span>
         </a>
       </div>

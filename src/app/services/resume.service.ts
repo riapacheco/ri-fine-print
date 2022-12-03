@@ -18,7 +18,7 @@ export class ResumeService {
   /* -------------------------------------------------------------------------- */
   /*                               DEVELOPER STATE                              */
   /* -------------------------------------------------------------------------- */
-  private _devState$ = new BehaviorSubject<boolean>(true);
+  private _devState$ = new BehaviorSubject<boolean>(false);
   public devState$: Observable<boolean> = this._devState$.asObservable();
   devState!: boolean;
 
