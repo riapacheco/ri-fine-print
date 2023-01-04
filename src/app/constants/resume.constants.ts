@@ -46,11 +46,11 @@ export const SUMMARY_PRODUCT: ISummary = {
   phone: '+1 (403) 471 - 7356',
   location: 'Calgary, Alberta',
   url: 'ria.run',
-  alt_url: 'riapacheco.codes',
+  alt_url: 'riapacheco.systems',
   twitter_handle: 'realriapacheco',
   linkedin_handle: 'riapacheco',
   github_handle: 'riapacheco',
-  summary_objective: `<p>Driven, versatile, and solution-focused <strong>Senior Product Manager</strong> with 8 years of experience driving customer-focused products, managing product lifecycles, and optimizing UX for established and emerging tech companies</p>`
+  summary_objective: `<p>Driven, versatile, and metrics-focused B2B <strong>Senior Product Manager</strong> with 8 yrs of experience driving buyer-focused products, managing technically complex lifecycles, and optimizing end-to-end customer UX; excited to join an innovative and engineer-focused team after returning from creatively curious sabbatical.</p>`
 };
 
 
@@ -132,16 +132,16 @@ export const PROJECTS_PRODUCT: IProject[] = [
     id: 1,
     name: `PM Systems`,
     spins: false,
-    description: `Generally developed <strong>owned repeatable frameworks</strong> for critical Product Management activities including: Roadmap Building, Customer and Market Discovery, and PMM`,
+    description: `Generally developed <strong>repeatable frameworks</strong> for critical Product Management activities including: Roadmap Building, Cross-Functional PRDs, Customer and Market Discovery, and PMM`,
     toolsString: `Product Discovery, Discovery Activities, Objectives, Operational Spaces, Problem Spaces, Value Propositions, Competitive Intelligence`,
     cover_image: ``,
-    url: `https://riapacheco.systems`
+    url: `riapacheco.systems`
   },
   {
     id: 2,
     name: 'Enterprise Launch',
-    description: 'As <strong>Senior Technical PM</strong> at <strong>Cold Bore Technology</strong>, developed end-to-end GTM strategy executing modules for strategic implementation, market & solution intelligence, analysis for product/solution fit, and sales enablement tactics',
-    url: 'https://ria.management/#coldboretechnology',
+    description: 'As <strong>Senior Technical PM</strong> at <strong>Cold Bore Technology</strong>, developed end-to-end GTM strategy executing modules for strategic implementation, market & solution intelligence, analysis for product/solution fit, sales enablement tactics, and industrial equipment manufacturing / maintenance',
+    url: 'ria.management/#coldboretechnology',
     tools: [],
     cover_image: '',
     toolsString: 'Team composition planning, phase-gate planning, target group segmentation, product lines / bundling, sales enablement / intelligence repositories',
@@ -149,22 +149,23 @@ export const PROJECTS_PRODUCT: IProject[] = [
   },
   {
     id: 3,
-    name: 'Scrum Implementation',
-    description: `As <strong>Director of Product Management</strong> at <strong>MyDoma Studio</strong>, pitched and transitioned a development team entirely to scrum methodologies, resulting in a 400% development cycle output increase`,
-    url: `https://ria.management/#mydomastudio`,
+
+    name: `Startup Pilot`,
+    description: `As <strong>Founder & CEO</strong> at <strong>Steer</strong>, boosted productivity for first co-innovation pilot customer by over 300%`,
+    url: `steer.direct  &nbsp;  <small style="letter-spacing:0.5px; opacity: 0.5;">[ Original website copy ]</small>`,
     tools: [],
     cover_image: ``,
-    toolsString: `User stories, sprint activities / planning, UX exercises, sprint benchmarking, definition of done`,
+    toolsString: `First-time founder, pilot B2B customer, capital raises, team recruitment and management`,
     spins: false,
   },
   {
     id: 4,
-    name: `Startup Pilot`,
-    description: `As <strong>Founder & CEO</strong> at <strong>Steer</strong>, boosted productivity for first co-innovation pilot customer by over 300%`,
-    url: `https://ria.management/#steer`,
+    name: 'Agile Management',
+    description: `As <strong>Director of Product Management</strong> at <strong>MyDoma Studio</strong>, pitched and transitioned a development team entirely to scrum methodologies, resulting in a 400% development cycle output increase`,
+    url: `ria.management/#mydomastudio`,
     tools: [],
     cover_image: ``,
-    toolsString: `First-time founder, pilot B2B customer, capital raises, team recruitment and management`,
+    toolsString: `User stories, sprint activities / planning, UX exercises, sprint benchmarking, definition of done`,
     spins: false,
   },
 ];
@@ -197,7 +198,7 @@ export const WORKS_DEVELOPER: IWork[] = [
     url: 'https://ria-run-site.carrd.co/#cold-bore-technology',
     dutiesString: `<ul>
                     <li>
-                      Owned and executed full enterprise product portfolio re-launch, re-positioning flagship offering (SmartPAD) to include all sensor-to-cloud capabilities
+                      Owned and executed full enterprise product portfolio re-launch, re-positioning flagship offering (SmartPAD) to include all sensor-to-cloud capabilities, generating $30 million revenue for June 2022
                     </li>
                     <li>
                       Strategically introduced 4 under-utilized data products in branded product line (ColdEDGE Web Services)
@@ -337,7 +338,7 @@ export const WORKS_PRODUCT: IWork[] = [
     url: 'https://ria-run-site.carrd.co/#cold-bore-technology',
     dutiesString: `<ul>
                     <li>
-                      Owned and executed full enterprise product portfolio re-launch, re-positioning flagship offering (SmartPAD) to include all sensor-to-cloud capabilities
+                      Owned and executed full enterprise product portfolio re-launch, re-positioning flagship offering (SmartPAD) to include all sensor-to-cloud capabilities, generating $30 million revenue for June 2022
                     </li>
                     <li>
                       Strategically introduced 4 under-utilized data products in branded product line (ColdEDGE Web Services)
@@ -367,7 +368,7 @@ export const WORKS_PRODUCT: IWork[] = [
     end_date: '2021-09-01',
     dutiesString: `<ul>
                     <li>
-                      Boosted dev cycle output by 400% with user story estimations, sprint management, HCM planning, and an overall transition to scrum
+                      Boosted dev cycle output by 400% with user story estimations, sprint management, and HCM planning
                     </li>
                     <li>
                       Performed job costing and gap analysis to appraise team efficiency and isolate areas in need of improvement
