@@ -50,7 +50,7 @@ export const SUMMARY_PRODUCT: ISummary = {
   twitter_handle: 'realriapacheco',
   linkedin_handle: 'riapacheco',
   github_handle: 'riapacheco',
-  summary_objective: `<p>Driven, versatile, and metrics-focused B2B <strong>Senior Product Manager</strong> with 8 yrs of experience driving buyer-focused products, managing technically complex lifecycles, and optimizing end-to-end customer UX; excited to join an innovative and engineer-focused team after returning from creatively curious sabbatical.</p>`
+  summary_objective: `<p>Driven, versatile, and metrics-focused B2B <strong>Senior Product Manager</strong> with 8 yrs of experience driving buyer-focused products, managing technically complex lifecycles, and optimizing end-to-end customer UX; excited to join an innovative and engineer-focused team after returning from a creatively curious sabbatical.</p>`
 };
 
 
@@ -149,7 +149,6 @@ export const PROJECTS_PRODUCT: IProject[] = [
   },
   {
     id: 3,
-
     name: `Startup Pilot`,
     description: `As <strong>Founder & CEO</strong> at <strong>Steer</strong>, boosted productivity for first co-innovation pilot customer by over 300%`,
     url: `steer.direct  &nbsp;  <small style="letter-spacing:0.5px; opacity: 0.5;">[ Original website copy ]</small>`,
@@ -213,7 +212,7 @@ export const WORKS_DEVELOPER: IWork[] = [
                       Isolated the MFG value chain to enable UX design sessions with the VP Technology and Director of Hardware
                     </li>
                     <li>
-                      Implemented ongoing discovery activities for market product & intelligence to standardize a product portfolio
+                      Implemented ongoing discovery activities for market & product intelligence to standardize a portfolio
                     </li>
                     <li>
                       Scoped and developed the frontend of an internal hardware tracking tool (Asset Tracker) to help MFG / M&R teams in managing all processes related to MFG / repair [Angular/TypeScript, Amazon RDS]
@@ -228,7 +227,7 @@ export const WORKS_DEVELOPER: IWork[] = [
     end_date: '2021-09-01',
     dutiesString: `<ul>
                     <li>
-                      Boosted dev cycle output by 400% with user story estimations, sprint management, HCM planning, and an overall transition to scrum
+                      Boosted dev cycle output by 400% with user story estimations, sprint management, and HCM planning
                     </li>
                     <li>
                       Performed job costing and gap analysis to appraise team efficiency and isolate areas in need of improvement
@@ -270,7 +269,7 @@ export const WORKS_DEVELOPER: IWork[] = [
     company: `Showpass`,
     job_title: `Head of Strategy`,
     start_date: `2017-10-01`,
-    end_date: `2017-04-01`,
+    end_date: `20189-04-01`,
     dutiesString: `<ul>
                     <li>
                       Mandated with optimizing day-to-day operations for the ticketing and event management software company
@@ -353,7 +352,7 @@ export const WORKS_PRODUCT: IWork[] = [
                       Isolated the MFG value chain to enable UX design sessions with the VP Technology and Director of Hardware
                     </li>
                     <li>
-                      Implemented ongoing discovery activities for market product & intelligence to standardize a product portfolio
+                    Implemented ongoing discovery activities for market & product intelligence to standardize a portfolio
                     </li>
                     <li>
                       Scoped and developed the frontend of an internal hardware tracking tool (Asset Tracker) to help MFG / M&R teams in managing all processes related to MFG / repair [Angular/TypeScript, Amazon RDS]
@@ -410,7 +409,7 @@ export const WORKS_PRODUCT: IWork[] = [
     company: `Showpass`,
     job_title: `Head of Strategy`,
     start_date: `2017-10-01`,
-    end_date: `2017-04-01`,
+    end_date: `20189-04-01`,
     dutiesString: `<ul>
                     <li>
                       Mandated with optimizing day-to-day operations for the ticketing and event management software company
