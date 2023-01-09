@@ -77,7 +77,7 @@ export const PROJECTS_DEVELOPER: IProject[] = [
   {
     id: 1,
     name: 'Yutes',
-    description: `With over 9k downloads since 2020, <strong>Yutes</strong> is an SCSS package that provides utilities commonly found in libraries like Bootstrap, without the rigidness that limits fluid design. [ Stats: <u>https://yutes.report</u> ]`,
+    description: `With over 10k downloads since 2020, <strong>Yutes</strong> is an SCSS package that provides utilities commonly found in libraries like Bootstrap, without the rigidness that limits fluid design. [ Stats: <u>https://yutes-stats.riapacheco.link</u> ]`,
     url: 'https://www.npmjs.com/package/@riapacheco/yutes',
     tools: [
     ],
@@ -133,7 +133,7 @@ export const PROJECTS_PRODUCT: IProject[] = [
     name: `PM Systems`,
     spins: false,
     description: `Generally developed <strong>repeatable frameworks</strong> for critical Product Management activities including: Roadmap Building, Cross-Functional PRDs, Customer and Market Discovery, and PMM`,
-    toolsString: `Product Discovery, Discovery Activities, Objectives, Operational Spaces, Problem Spaces, Value Propositions, Competitive Intelligence`,
+    toolsString: `Product Discovery, Discovery Activities, Value Propositions, Competitive Intelligence`,
     cover_image: ``,
     url: `riapacheco.systems`
   },
@@ -151,7 +151,7 @@ export const PROJECTS_PRODUCT: IProject[] = [
     id: 3,
     name: `Startup Pilot`,
     description: `As <strong>Founder & CEO</strong> at <strong>Steer</strong>, boosted productivity for first co-innovation pilot customer by over 300%`,
-    url: `steer.direct  &nbsp;  <small style="letter-spacing:0.5px; opacity: 0.5;">[ Original website copy ]</small>`,
+    url: `steer.riapacheco.link  &nbsp;  <small style="letter-spacing:0.5px; opacity: 0.5;">[ Original website copy ]</small>`,
     tools: [],
     cover_image: ``,
     toolsString: `First-time founder, pilot B2B customer, capital raises, team recruitment and management`,
@@ -166,6 +166,16 @@ export const PROJECTS_PRODUCT: IProject[] = [
     cover_image: ``,
     toolsString: `User stories, sprint activities / planning, UX exercises, sprint benchmarking, definition of done`,
     spins: false,
+  },
+  {
+    id: 5,
+    name: '@riapacheco/yutes',
+    description: `With over 10k downloads since 2020, <strong>Yutes</strong> is an SCSS package that provides utilities commonly found in libraries like Bootstrap, without the rigidness that limits fluid design.`,
+    url: `yutes-stats.riapacheco.link`,
+    tools: [],
+    cover_image: ``,
+    toolsString: ``,
+    spins: false
   },
 ];
 
@@ -350,9 +360,6 @@ export const WORKS_PRODUCT: IWork[] = [
                     </li>
                     <li>
                       Isolated the MFG value chain to enable UX design sessions with the VP Technology and Director of Hardware
-                    </li>
-                    <li>
-                    Implemented ongoing discovery activities for market & product intelligence to standardize a portfolio
                     </li>
                     <li>
                       Scoped and developed the frontend of an internal hardware tracking tool (Asset Tracker) to help MFG / M&R teams in managing all processes related to MFG / repair [Angular/TypeScript, Amazon RDS]

@@ -206,8 +206,8 @@
               <ul *ngIf="project.toolsString || project.url" class="projects-ul list-unstyled" style="margin-left: 1rem; padding-top: 1rem;">
                 <li>
                   <div class="projects-label">
-                    <strong class="details-label" *ngIf="!(res.devState$ | async)">Keywords</strong>
-                    <strong class="details-label" *ngIf="(res.devState$ | async)">Tools</strong>
+                    <strong class="details-label" *ngIf="!(res.devState$ | async) && project.toolsString">Keywords</strong>
+                    <strong class="details-label" *ngIf="(res.devState$ | async) && project.toolsString">Tools</strong>
                   </div>
                   <div class="projects-details">
                     {{ project.toolsString }}

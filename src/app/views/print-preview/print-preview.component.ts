@@ -46,7 +46,7 @@ export class PrintPreviewComponent implements OnInit, AfterViewInit {
   contactInfoHighlight = false;
   listBlockSpace = 4;
 
-  sectionSpacing = 0.1;
+  sectionSpacing = 0;
   sectionSpacingHighlight = false;
 
   summaryContentWidth = 75;
@@ -54,12 +54,12 @@ export class PrintPreviewComponent implements OnInit, AfterViewInit {
 
   projectDetailsWidth = 75;
   projectDetailsHighlight = false;
-  projectVerticalSpacing = 1.5;
+  projectVerticalSpacing = 1;
   projectVerticalHighlight = false;
 
   expDetailsWidth = 80;
   expDetailsHighlight = false;
-  expVerticalSpacing = 1.5;
+  expVerticalSpacing = 0;
 
   skillBlockWidth = 30;
   skillBlockHighlight = false;
