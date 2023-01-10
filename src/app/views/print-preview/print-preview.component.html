@@ -203,7 +203,11 @@
               </div>
 
               <!-- Tools and URL -->
-              <ul *ngIf="project.toolsString || project.url" class="projects-ul list-unstyled" style="margin-left: 1rem; padding-top: 1rem;">
+              <ul *ngIf="project.toolsString || project.url"
+                  class="projects-ul list-unstyled"
+                  style="margin-left: 1rem; padding-top: 1rem;"
+                  [ngStyle]="(res.devState$ | async) ? {'margin-left': '1rem', 'padding-top': '1rem'} : { 'margin-left': '1rem', 'padding-top': '0rem'} "
+                  >
                 <li>
                   <div class="projects-label">
                     <strong class="details-label" *ngIf="!(res.devState$ | async) && project.toolsString">Keywords</strong>
@@ -215,7 +219,15 @@
                 </li>
                 <li>
                   <div class="projects-label">
-                    <strong class="details-label">URL</strong>
+                    <strong
+                      class="details-label">
+                      <ng-container *ngIf="!(res.devState$ | async);else urlLabel">
+                        🔗
+                      </ng-container>
+                      <ng-template #urlLabel>
+                        URL
+                      </ng-template>
+                    </strong>
                   </div>
                   <div class="projects-details">
                     <div [innerHTML]="project.url"></div>
@@ -298,7 +310,7 @@
       <div class="block-header">
         <div class="header-title">
           <span>
-            Hard & Soft Skills
+            Skills
           </span>
         </div>
         <div class="header-divider"></div>

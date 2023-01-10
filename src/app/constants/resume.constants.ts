@@ -28,7 +28,7 @@ export const SUMMARY_DEVELOPER: ISummary = {
   first_name: 'Ria',
   last_name: 'Pacheco',
   email: 'me@riapacheco.com',
-  phone: '+1 (403) 471 - 7356',
+  phone: '',
   location: 'Calgary, Alberta',
   url: 'ria.run',
   alt_url: 'riapacheco.codes',
@@ -43,10 +43,10 @@ export const SUMMARY_PRODUCT: ISummary = {
   first_name: 'Ria',
   last_name: 'Pacheco',
   email: 'me@riapacheco.com',
-  phone: '+1 (403) 471 - 7356',
+  phone: '',
   location: 'Calgary, Alberta',
   url: 'ria.run',
-  alt_url: 'riapacheco.systems',
+  alt_url: 'portfolio.riapacheco.link',
   twitter_handle: 'realriapacheco',
   linkedin_handle: 'riapacheco',
   github_handle: 'riapacheco',
@@ -130,47 +130,72 @@ export const PROJECTS_DEVELOPER: IProject[] = [
 
 // Product Manager
 export const PROJECTS_PRODUCT: IProject[] = [
+
   {
     id: 1,
-    name: `PM Systems`,
-    spins: false,
-    description: `Generally developed <strong>repeatable frameworks</strong> for critical Product Management activities including: Roadmap Building, Cross-Functional PRDs, Customer and Market Discovery, and PMM`,
-    toolsString: `Product Discovery, Discovery Activities, Value Propositions, Competitive Intelligence`,
-    cover_image: ``,
-    url: `riapacheco.systems`
-  },
-  {
-    id: 2,
     name: 'Enterprise Launch',
-    description: 'As <strong>Senior Technical PM</strong> at <strong>Cold Bore Technology</strong>, developed end-to-end GTM strategy executing modules for strategic implementation, market & solution intelligence, analysis for product/solution fit, sales enablement tactics, and industrial equipment manufacturing / maintenance',
-    url: 'ria.management/#coldboretechnology',
+    // description: 'As <strong>Senior Technical PM</strong> at <strong>Cold Bore Technology</strong>, developed end-to-end GTM strategy executing modules for strategic implementation, market & solution intelligence, analysis for product/solution fit, sales enablement tactics, and industrial equipment manufacturing / maintenance',
+    description: `As <strong>Senior Technical PM</strong> at <strong>Cold Bore Technology</strong>, owned and executed enterprise portfolio re-launch through end-to-end GTM planning, execution of modules for strategic implementation (given market & solution intelligence), established product/solution fit, and fulfilled sales enablement requirements`,
+    url: 'coldboretechnology.riapacheco.link',
     tools: [],
     cover_image: '',
-    toolsString: 'Team composition planning, phase-gate planning, target group segmentation, product lines / bundling, sales enablement / intelligence repositories',
+    // toolsString: 'Team composition planning, phase-gate planning, target group segmentation, product lines / bundling, sales enablement / intelligence repositories',
+    toolsString: ``,
     spins: false
   },
   {
+    id: 2,
+    spins: false,
+
+    name: `Mid-Market Strategy`,
+    description: `As <strong>Director of Product Management</strong> at <strong>Mydoma Studio</strong>, built product vision & roadmap with defined deployment criteria (platform v3) while re-engineering over 90% of IxD flows / UX visual design based on conducted user testing feedback`,
+    toolsString: ``,
+    url: `mydomastudio.riapacheco.link`
+  },
+  {
     id: 3,
-    name: `Startup Pilot`,
-    description: `As <strong>Founder & CEO</strong> at <strong>Steer</strong>, boosted productivity for first co-innovation pilot customer by over 300%`,
-    url: `steer.riapacheco.link  &nbsp;  <small style="letter-spacing:0.5px; opacity: 0.5;">[ Original website copy ]</small>`,
+    name: `Founder Pilot`,
+    description: `As <strong>Founder & CEO</strong> at <strong>Steer</strong>, managed all startup executive functions from raising capital to team recruitment; and boosted productivity for first co-innovation pilot customer by over 300%`,
+    url: `steer.riapacheco.link  &nbsp;  <small style="letter-spacing:0.5px; opacity: 0.5;">[ Private copy of original website ]</small>`,
     tools: [],
     cover_image: ``,
-    toolsString: `First-time founder, pilot B2B customer, capital raises, team recruitment and management`,
+    // toolsString: `First-time founder, pilot B2B customer, capital raises, team recruitment and management`,
+    toolsString: ``,
     spins: false,
   },
   {
     id: 4,
     name: 'Agile Management',
     description: `As <strong>Director of Product Management</strong> at <strong>MyDoma Studio</strong>, pitched and transitioned a development team entirely to scrum methodologies, resulting in a 400% development cycle output increase`,
-    url: `ria.management/#mydomastudio`,
+    url: `mydomastudio.riapacheco.link`,
     tools: [],
     cover_image: ``,
-    toolsString: `User stories, sprint activities / planning, UX exercises, sprint benchmarking, definition of done`,
+    // toolsString: `User stories, sprint activities / planning, UX exercises, sprint benchmarking, definition of done`,
+    toolsString: ``,
     spins: false,
   },
   {
     id: 5,
+    spins: false,
+    name: `Sales Enablement`,
+    description: `Led team in designing and deploying the sales (and product) enablement activities to 8 distribution partners (comprised of ~200 reps) resulting in quadrupled revenue as <strong>Director of Sales Enablement</strong> at <strong>Intriga Mobility</strong>`,
+    toolsString: ``,
+    url: `intrigamobility.riapacheco.link`
+
+  },
+  {
+    id: 6,
+    name: `Roadmap Systems`,
+    spins: false,
+    description: `Generally developed <strong>repeatable frameworks</strong> for critical Product Management activities to enable expedited efforts still maintained by the flexibility of my experienced facilitation`,
+    // toolsString: `Product Discovery, Discovery Activities, Value Propositions, Competitive Intelligence`,
+    toolsString: ``,
+    cover_image: ``,
+    url: `riapacheco.systems &nbsp; || &nbsp;  product-calgary.riapacheco.link`
+  },
+
+  {
+    id: 7,
     name: '@riapacheco/yutes',
     description: `With over 10k downloads since 2020, <strong>Yutes</strong> is an SCSS package that provides utilities commonly found in libraries like Bootstrap, without the rigidness that limits fluid design.`,
     url: `yutes-stats.riapacheco.link`,
@@ -349,7 +374,7 @@ export const WORKS_PRODUCT: IWork[] = [
     url: 'https://ria-run-site.carrd.co/#cold-bore-technology',
     dutiesString: `<ul>
                     <li>
-                      Owned and executed full enterprise product portfolio re-launch, re-positioning flagship offering (SmartPAD) to include all sensor-to-cloud capabilities, generating $30 million revenue for June 2022
+                      Owned and executed full enterprise product portfolio re-launch, generating $30 million revenue (June 2022)
                     </li>
                     <li>
                       Strategically introduced 4 under-utilized data products in branded product line (ColdEDGE Web Services)

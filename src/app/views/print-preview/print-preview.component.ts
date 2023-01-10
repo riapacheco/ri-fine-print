@@ -54,7 +54,7 @@ export class PrintPreviewComponent implements OnInit, AfterViewInit {
 
   projectDetailsWidth = 75;
   projectDetailsHighlight = false;
-  projectVerticalSpacing = 1.2;
+  projectVerticalSpacing = 0.45;
   projectVerticalHighlight = false;
 
   expDetailsWidth = 80;
