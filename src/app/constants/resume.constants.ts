@@ -50,7 +50,9 @@ export const SUMMARY_PRODUCT: ISummary = {
   twitter_handle: 'realriapacheco',
   linkedin_handle: 'riapacheco',
   github_handle: 'riapacheco',
-  summary_objective: `<p>Driven, versatile, and metrics-focused B2B <strong>Senior Product Manager</strong> with 8 yrs of experience driving buyer-focused products, managing technically complex lifecycles, and optimizing end-to-end customer UX; excited to join an innovative and engineer-focused team after returning from a creatively curious sabbatical.</p>`
+  summary_objective: `<p>
+  Driven, versatile, and metrics-focused B2B <strong>Senior Product Manager</strong> with 8 yrs of experience driving buyer-focused products, managing technically complex lifecycles, and optimizing end-to-end customer UX; excited to join an innovative and engineer-focused team after returning from a creatively curious sabbatical.
+  </p>`
 };
 
 
@@ -416,7 +418,7 @@ export const WORKS_PRODUCT: IWork[] = [
     company: `Showpass`,
     job_title: `Head of Strategy`,
     start_date: `2017-10-01`,
-    end_date: `20189-04-01`,
+    end_date: `2018-04-01`,
     dutiesString: `<ul>
                     <li>
                       Mandated with optimizing day-to-day operations for the ticketing and event management software company
